@@ -11,20 +11,42 @@ import javafx.scene.control.Button;
 
 public class ContadorPulsaciones extends Application {
 
+    private Label lbCont;
+    private int pulsaciones=1;
+
+    private void sumar(){
+        pulsaciones++;
+        lbCont.setText(String.valueOf(pulsaciones));
+    }
+
+    private void restar(){
+        pulsaciones--;
+        lbCont.setText((String.valueOf(pulsaciones)));
+    }
+
+    private void reiniciar(){
+        pulsaciones=0;
+        lbCont.setText((String.valueOf(pulsaciones)));
+    }
+
     @Override
     public void start(Stage escenarioPrincipal){
         try{
             Pane raiz=new Pane();
+            raiz.getStyleClass().add("raiz");
 
             Button btMas, btMenos, btCero;
-            btMas= new Button();
-            btMenos=new Button();
-            btCero=new Button();
-            btMas.setText("+");
-            btMenos.setText("-");
-            btCero.setText("0");
+            btMas= new Button("+");
+            btMas.setId("btMas");
 
-            Label lbCont = new Label("1");
+            btMenos=new Button("-");
+            btMenos.setId("btMenos");
+
+            btCero=new Button("0");
+            btCero.setId("btCero");
+
+            lbCont = new Label("1");
+            lbCont.setId("texto");
             lbCont.setFont(Font.font(30));
 
             btMas.setFont(Font.font(20));
@@ -40,9 +62,14 @@ public class ContadorPulsaciones extends Application {
             lbCont.setLayoutX(200);
             lbCont.setLayoutY(110);
 
+            btMas.setOnAction(e -> sumar());
+            btMenos.setOnAction(e -> restar());
+            btCero.setOnAction(e -> reiniciar());
+
             raiz.getChildren().addAll(btMas, btMenos, btCero, lbCont);
 
             Scene escena=new Scene(raiz, 400, 175);
+            escena.getStylesheets().add(getClass().getResource("/estilos/contador.css").toExternalForm());
             escenarioPrincipal.setTitle("Contador de pulsaciones");
             escenarioPrincipal.setScene(escena);
             escenarioPrincipal.show();

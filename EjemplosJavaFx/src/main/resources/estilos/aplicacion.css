@@ -1,0 +1,18 @@
+
+.raiz {
+	-fx-base: #ffe4c4;
+	-fx-background-image: url('../../../resources/imagenes/logo.png');
+	-fx-background-position: center;
+	-fx-background-repeat: no-repeat;
+}
+
+#btAceptar {
+	-fx-font: 22 arial;
+	-fx-base: #b6e7c9;
+}
+
+#btCancelar {
+	-fx-font: 20 arial;
+	-fx-base: #dc143c;
+}
+
