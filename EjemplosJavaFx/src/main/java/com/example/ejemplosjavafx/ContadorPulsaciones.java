@@ -1,6 +1,7 @@
 package com.example.ejemplosjavafx;
 
 import javafx.application.Application;
+import javafx.beans.property.IntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -11,27 +12,20 @@ import javafx.scene.control.Button;
 
 public class ContadorPulsaciones extends Application {
 
+    IntegerProperty numPulsaciones;
     private Label lbCont;
     private int pulsaciones=1;
 
-    private void sumar(){
-        pulsaciones++;
+    private void operacion(int num){
+        pulsaciones=num==0 ? pulsaciones=0 : pulsaciones+num;
+        //int i=num==0 ? pulsaciones=0 : (num==1 ? pulsaciones++ : pulsaciones--);
         lbCont.setText(String.valueOf(pulsaciones));
-    }
-
-    private void restar(){
-        pulsaciones--;
-        lbCont.setText((String.valueOf(pulsaciones)));
-    }
-
-    private void reiniciar(){
-        pulsaciones=0;
-        lbCont.setText((String.valueOf(pulsaciones)));
     }
 
     @Override
     public void start(Stage escenarioPrincipal){
         try{
+            Stage escenarioSecundario=new Stage();
             Pane raiz=new Pane();
             raiz.getStyleClass().add("raiz");
 
@@ -62,9 +56,9 @@ public class ContadorPulsaciones extends Application {
             lbCont.setLayoutX(200);
             lbCont.setLayoutY(110);
 
-            btMas.setOnAction(e -> sumar());
-            btMenos.setOnAction(e -> restar());
-            btCero.setOnAction(e -> reiniciar());
+            btMas.setOnAction(e -> operacion(1));
+            btMenos.setOnAction(e -> operacion(-1));
+            btCero.setOnAction(e -> operacion(0));
 
             raiz.getChildren().addAll(btMas, btMenos, btCero, lbCont);
 
@@ -74,10 +68,16 @@ public class ContadorPulsaciones extends Application {
             escenarioPrincipal.setScene(escena);
             escenarioPrincipal.show();
 
+            ContadorBotones panel1=new ContadorBotones();
+            panel1.crearEscena(escenarioPrincipal);
+            ContadorBotones panel2=new ContadorBotones();
+            panel2.crearEscena(escenarioSecundario);
+
 
         }catch (Exception e){
             e.printStackTrace();
         }
+
     }
 
     public static void main(String[] args){
