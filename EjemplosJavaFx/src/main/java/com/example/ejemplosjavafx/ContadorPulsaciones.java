@@ -2,6 +2,7 @@ package com.example.ejemplosjavafx;
 
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -12,14 +13,16 @@ import javafx.scene.control.Button;
 
 public class ContadorPulsaciones extends Application {
 
-    IntegerProperty numPulsaciones;
+    private IntegerProperty numPulsaciones = new SimpleIntegerProperty();
     private Label lbCont;
-    private int pulsaciones=1;
+    Button btMas, btMenos, btCero;
 
-    private void operacion(int num){
-        pulsaciones=num==0 ? pulsaciones=0 : pulsaciones+num;
+    private void operacion(Button button/*int num*/){
+        /*pulsaciones=num==0 ? pulsaciones=0 : pulsaciones+num;
         //int i=num==0 ? pulsaciones=0 : (num==1 ? pulsaciones++ : pulsaciones--);
-        lbCont.setText(String.valueOf(pulsaciones));
+        lbCont.setText(String.valueOf(pulsaciones));*/
+        numPulsaciones.set(button == btMas ? numPulsaciones.get() + 1 :
+                button == btMenos ? numPulsaciones.get() - 1 : 0);
     }
 
     @Override
@@ -29,7 +32,7 @@ public class ContadorPulsaciones extends Application {
             Pane raiz=new Pane();
             raiz.getStyleClass().add("raiz");
 
-            Button btMas, btMenos, btCero;
+
             btMas= new Button("+");
             btMas.setId("btMas");
 
@@ -42,6 +45,8 @@ public class ContadorPulsaciones extends Application {
             lbCont = new Label("1");
             lbCont.setId("texto");
             lbCont.setFont(Font.font(30));
+
+            numPulsaciones.addListener((obs, oldVal, newVal) -> lbCont.setText(newVal.toString()));
 
             btMas.setFont(Font.font(20));
             btMenos.setFont(Font.font(20));
@@ -56,9 +61,9 @@ public class ContadorPulsaciones extends Application {
             lbCont.setLayoutX(200);
             lbCont.setLayoutY(110);
 
-            btMas.setOnAction(e -> operacion(1));
-            btMenos.setOnAction(e -> operacion(-1));
-            btCero.setOnAction(e -> operacion(0));
+            btMas.setOnAction(e -> operacion(btMas));
+            btMenos.setOnAction(e -> operacion(btMenos));
+            btCero.setOnAction(e -> operacion(btCero));
 
             raiz.getChildren().addAll(btMas, btMenos, btCero, lbCont);
 
@@ -68,19 +73,13 @@ public class ContadorPulsaciones extends Application {
             escenarioPrincipal.setScene(escena);
             escenarioPrincipal.show();
 
-            ContadorBotones panel1=new ContadorBotones();
-            panel1.crearEscena(escenarioPrincipal);
-            ContadorBotones panel2=new ContadorBotones();
-            panel2.crearEscena(escenarioSecundario);
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
 
     }
 
-    public static void main(String[] args){
-        launch(args);
+    public IntegerProperty getNumPulsaciones(){
+        return numPulsaciones;
     }
 }
