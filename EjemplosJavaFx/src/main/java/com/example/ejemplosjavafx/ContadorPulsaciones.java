@@ -3,6 +3,7 @@ package com.example.ejemplosjavafx;
 import javafx.application.Application;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -17,10 +18,7 @@ public class ContadorPulsaciones extends Application {
     private Label lbCont;
     Button btMas, btMenos, btCero;
 
-    private void operacion(Button button/*int num*/){
-        /*pulsaciones=num==0 ? pulsaciones=0 : pulsaciones+num;
-        //int i=num==0 ? pulsaciones=0 : (num==1 ? pulsaciones++ : pulsaciones--);
-        lbCont.setText(String.valueOf(pulsaciones));*/
+    private void operacion(Button button){
         numPulsaciones.set(button == btMas ? numPulsaciones.get() + 1 :
                 button == btMenos ? numPulsaciones.get() - 1 : 0);
     }
@@ -28,7 +26,13 @@ public class ContadorPulsaciones extends Application {
     @Override
     public void start(Stage escenarioPrincipal){
         try{
-            Stage escenarioSecundario=new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(ContadorPulsaciones.class.getResource("hello-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+            escenarioPrincipal.setTitle("Hello!");
+            escenarioPrincipal.setScene(scene);
+            escenarioPrincipal.show();
+
+            /*Stage escenarioSecundario=new Stage();
             Pane raiz=new Pane();
             raiz.getStyleClass().add("raiz");
 
@@ -71,7 +75,7 @@ public class ContadorPulsaciones extends Application {
             escena.getStylesheets().add(getClass().getResource("/estilos/contador.css").toExternalForm());
             escenarioPrincipal.setTitle("Contador de pulsaciones");
             escenarioPrincipal.setScene(escena);
-            escenarioPrincipal.show();
+            escenarioPrincipal.show();*/
 
         }catch (Exception e){
             e.printStackTrace();

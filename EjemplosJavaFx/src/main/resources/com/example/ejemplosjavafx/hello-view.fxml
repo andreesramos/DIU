@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.ejemplosjavafx.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" stylesheets="@../../../../../../target/classes/estilos/contador.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button id="btMas" fx:id="btMas" layoutX="105.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="+">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button id="btMenos" fx:id="btMenos" layoutX="245.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="-">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button id="btCero" fx:id="btCero" layoutX="383.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="0">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField fx:id="texto" layoutX="178.0" layoutY="121.0" />
+      <Label id="texto" fx:id="lbCont" alignment="CENTER" layoutX="234.0" layoutY="187.0" prefHeight="19.0" prefWidth="50.0" text="0" textAlignment="CENTER">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progreso" layoutX="159.0" layoutY="256.0" prefWidth="200.0" progress="0.0" />
+   </children>
+</Pane>
