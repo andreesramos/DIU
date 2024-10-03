@@ -10,26 +10,26 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" stylesheets="@../../../../../../target/classes/estilos/contador.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="439.0" style="-fx-background-color: ff0000;" stylesheets="@../../../../../../target/classes/estilos/contador.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button id="btMas" fx:id="btMas" layoutX="105.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="+">
+      <Button id="btMas" fx:id="btMas" layoutX="45.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="+">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button id="btMenos" fx:id="btMenos" layoutX="245.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="-">
+      <Button id="btMenos" fx:id="btMenos" layoutX="116.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="-">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <Button id="btCero" fx:id="btCero" layoutX="383.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="0">
+      <Button id="btCero" fx:id="btCero" layoutX="188.0" layoutY="55.0" mnemonicParsing="false" onAction="#onButtonClick" text="0">
          <font>
             <Font size="16.0" />
          </font></Button>
-      <TextField fx:id="texto" layoutX="178.0" layoutY="121.0" />
-      <Label id="texto" fx:id="lbCont" alignment="CENTER" layoutX="234.0" layoutY="187.0" prefHeight="19.0" prefWidth="50.0" text="0" textAlignment="CENTER">
+      <TextField fx:id="texto" layoutX="259.0" layoutY="58.0" />
+      <Label id="texto" fx:id="lbCont" alignment="CENTER" layoutX="194.0" layoutY="142.0" prefHeight="19.0" prefWidth="50.0" text="0" textAlignment="CENTER">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="progreso" layoutX="159.0" layoutY="256.0" prefWidth="200.0" progress="0.0" />
+      <ProgressBar fx:id="progreso" layoutX="126.0" layoutY="202.0" prefHeight="15.0" prefWidth="187.0" progress="0.0" />
    </children>
 </Pane>
