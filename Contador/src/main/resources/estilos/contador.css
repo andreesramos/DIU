@@ -1,0 +1,20 @@
+
+.raiz{
+    -fx-base: #ff0000;
+}
+
+#btCero{
+    -fx-base: #000000;
+}
+
+#btMas{
+    -fx-base: #ffffff;
+}
+
+#btMenos{
+    -fx-base: #ffffff;
+}
+
+#texto{
+    -fx-text-fill: #0000ff;
+}
