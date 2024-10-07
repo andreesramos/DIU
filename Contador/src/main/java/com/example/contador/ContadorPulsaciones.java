@@ -25,19 +25,19 @@ public class ContadorPulsaciones extends Application {
             FXMLLoader fxmlLoader2 = new FXMLLoader(ContadorPulsaciones.class.getResource("hello-view.fxml"));
             Scene scene2 = new Scene(fxmlLoader2.load(), 440, 250);
             escenarioSecundario.setTitle("Contador de pulsaciones");
-            escenarioSecundario.setScene(scene);
+            escenarioSecundario.setScene(scene2);
             escenarioSecundario.show();
 
             HelloController controlador=fxmlLoader.getController();
-            HelloController controlador2=fxmlLoader.getController();
-            //controlador.numProperty().bindBidirectional(cont2.getNumPulsaciones()
+            HelloController controlador2=fxmlLoader2.getController();
+            controlador.numProperty().bindBidirectional(controlador2.numProperty());
 
         }catch (Exception e){
             e.printStackTrace();
         }
 
     }
-    IntegerProperty numProperty(){
+    public IntegerProperty numProperty(){
         return numPulsaciones;
     }
 }

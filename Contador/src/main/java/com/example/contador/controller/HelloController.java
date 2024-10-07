@@ -2,17 +2,19 @@ package com.example.contador.controller;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 public class HelloController {
-    private IntegerProperty numPulsaciones = new SimpleIntegerProperty();
+    private IntegerProperty numPulsaciones = new SimpleIntegerProperty(0);
 
     void setNumPulsaciones(IntegerProperty n){
         this.numPulsaciones=numPulsaciones;
     }
 
-    IntegerProperty getNumPulsaciones(){
+    public IntegerProperty numProperty(){
         return numPulsaciones;
     }
 
@@ -35,9 +37,15 @@ public class HelloController {
     private ProgressBar progreso;
 
     public void initialize(){
-        numPulsaciones.addListener((o, oldVal, newVal) -> lbCont.setText(newVal.toString()));
-        //numPulsaciones.bind(Integer.parseInt(lbCont.getText()));
-        progreso.progressProperty().bind(numPulsaciones.divide(50));
+
+        numPulsaciones.addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number newValue) {
+                lbCont.setText(newValue.toString());
+                cambiarProgreso(newValue.intValue());
+            }
+        });
+
     }
 
 
@@ -65,9 +73,8 @@ public class HelloController {
         lbCont.setText(String.valueOf(numPulsaciones.getValue()));
     }
 
-    /*@FXML
-    public void cambiarProgreso(){
-        double p=(numPulsaciones.getValue()/50.0);
+    private void cambiarProgreso(int num){
+        double p=((double)num/50.0);
         progreso.setProgress(p);
-    }*/
+    }
 }
