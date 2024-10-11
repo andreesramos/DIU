@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.agenda.PersonEditDialog">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../../../estilos/DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.agenda.controller.PersonEditDialogController">
    <children>
       <GridPane layoutX="180.0" layoutY="95.0" prefHeight="270.0" prefWidth="580.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -30,22 +29,22 @@
             <Label text="City" GridPane.rowIndex="3" />
             <Label text="Postal Code" GridPane.rowIndex="4" />
             <Label text="Birthday" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="postalCodeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="birthdayField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <HBox layoutX="368.0" layoutY="344.0" spacing="10.0">
          <children>
-            <Button layoutX="368.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="OK">
+            <Button defaultButton="true" layoutX="368.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="30.0" prefWidth="100.0" text="OK">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button layoutX="473.0" layoutY="350.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
+            <Button layoutX="473.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
    </children>
