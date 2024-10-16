@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.controller.conversorController">
+   <children>
+      <Label fx:id="labelEuros" layoutX="150.0" layoutY="148.0" text="Euros" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="148.0">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label fx:id="labelDolares" layoutX="398.0" layoutY="148.0" text="Dolares" AnchorPane.rightAnchor="144.0" AnchorPane.topAnchor="148.0">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <TextField fx:id="euros" layoutX="90.0" layoutY="186.0" />
+      <TextField fx:id="dolares" layoutX="346.0" layoutY="186.0" />
+      <Label layoutX="139.0" layoutY="40.0" prefHeight="78.0" prefWidth="322.0" text="CONVERSOR DE MONEDAS" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
