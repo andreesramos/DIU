@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor.controller.ConversorController">
    <children>
-      <Label fx:id="labelEuros" layoutX="150.0" layoutY="148.0" text="Euros" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="148.0">
+      <Label fx:id="labelEuros" layoutX="150.0" layoutY="171.0" text="EUROS" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="171.0">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="labelDolares" layoutX="398.0" layoutY="148.0" text="Dolares" AnchorPane.leftAnchor="398.0" AnchorPane.topAnchor="148.0">
+      <Label fx:id="labelDolares" layoutX="399.0" layoutY="171.0" text="DOLARES" AnchorPane.leftAnchor="399.0" AnchorPane.topAnchor="171.0">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <TextField fx:id="euros" layoutX="90.0" layoutY="186.0" onAction="#convertirMoneda" />
-      <TextField fx:id="dolares" layoutX="346.0" layoutY="186.0" />
+      <TextField fx:id="euros" layoutX="95.0" layoutY="201.0" onAction="#convertirMoneda" />
+      <TextField fx:id="dolares" layoutX="353.0" layoutY="201.0" />
       <Label layoutX="139.0" layoutY="40.0" prefHeight="78.0" prefWidth="322.0" text="CONVERSOR DE MONEDAS" AnchorPane.topAnchor="40.0">
          <font>
             <Font name="System Bold" size="24.0" />

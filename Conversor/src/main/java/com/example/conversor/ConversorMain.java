@@ -1,17 +1,13 @@
 package com.example.conversor;
 
-import Modelo.ExcepcionMoneda;
-import Modelo.MonedaVO;
-import Modelo.repository.impl.ConexionJDBC;
 import Modelo.repository.impl.MonedaRepositoryImpl;
 import com.example.conversor.controller.ConversorController;
 import com.example.conversor.modelo.ConversorModelo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
-import java.sql.Connection;
 
 public class ConversorMain extends Application {
     public static void main(String[] args) {
@@ -20,10 +16,8 @@ public class ConversorMain extends Application {
 
     @Override
     public void start(Stage escenarioPrincipal) {
-        ConexionJDBC conexion = new ConexionJDBC();
-        Connection con=null;
+
         try {
-            con = conexion.conectarBD();
             MonedaRepositoryImpl monedarepositoryImpl = new MonedaRepositoryImpl();
             ConversorModelo conversorModelo = new ConversorModelo();
             conversorModelo.setMonedaRepository(monedarepositoryImpl);
@@ -37,19 +31,13 @@ public class ConversorMain extends Application {
 
             ConversorController conversorController = fxmlLoader.getController();
             conversorController.setConversorModelo(conversorModelo);
-
-            /*MonedaVO monedaPrueba = new MonedaVO("prueba", 1.2F);
-            monedarepositoryImpl.addMoneda(monedaPrueba);*/
-
-            conexion.desconectarBD(con);
         }catch (Exception e){
-                e.printStackTrace();
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("No se ha podido encontrar la tasa de cambio");
+            alert.setContentText("Inténtelo más tarde");
+            alert.showAndWait();
         }
-        /*}catch (ExcepcionMoneda var5) {
-            ExcepcionMoneda e = var5;
-            System.out.println(e.imprimirMensaje());
-        }*/
-
 
     }
 }
