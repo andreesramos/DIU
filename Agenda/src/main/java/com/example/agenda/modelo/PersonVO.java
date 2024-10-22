@@ -1,0 +1,55 @@
+package com.example.agenda.modelo;
+
+public class PersonVO {
+    int codigo;
+    String firstName;
+    String lastName;
+    String street;
+    int postalCode;
+    String city;
+    String birthday;
+
+    public PersonVO(String nombre, String apellido, String calle, int codigoPostal, String ciudad, String fechaNacimiento) {
+        this.firstName = nombre;
+        this.lastName = apellido;
+        this.street = calle;
+        this.postalCode = codigoPostal;
+        this.city = ciudad;
+        this.birthday = fechaNacimiento;
+    }
+
+    public PersonVO(int codigo, String nombre, String apellido, String calle, int codigoPostal, String ciudad, String fechaNacimiento) {
+        this.codigo = codigo;
+        this.firstName = nombre;
+        this.lastName = apellido;
+        this.street = calle;
+        this.postalCode = codigoPostal;
+        this.city = ciudad;
+        this.birthday = fechaNacimiento;
+    }
+
+    public int getCodigo() {return codigo;}
+    public void setCodigo(int codigo) {this.codigo = codigo;}
+
+    public String getFirstName() {return this.firstName;}
+    public void setFirstName(String nombre) {this.firstName = nombre;}
+
+    public String getLastName() {return this.lastName;}
+    public void setLastName(String apellido) {this.lastName = apellido;}
+
+    public String getStreet() {return this.street;}
+    public void setStreet(String calle) {this.street = calle;}
+
+    public int getPostalCode() {return this.postalCode;}
+    public void setPostalCode(int codigoPostal) {this.postalCode = codigoPostal;}
+
+    public String getCity() {return this.city;}
+    public void setCity(String ciudad) {this.city = ciudad;}
+
+    public String getBirthday() {return this.birthday;}
+    public void setBirthday(String fechaNacimiento) {this.birthday = fechaNacimiento;}
+
+    public String toString(){
+        return "PersonVO{codigo=" + this.codigo + ", nombre=" + this.firstName + ", apellido=" + this.lastName + ", calle=" + this.street + ", codigoPostal=" + this.postalCode + ", ciudad=" + this.city + ", fechaNacimiento=" + this.birthday + "}";
+    }
+}

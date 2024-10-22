@@ -1,4 +1,4 @@
-package com.example.agenda;
+package com.example.agenda.modelo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -5,8 +5,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import com.example.agenda.Person;
-import com.example.agenda.DateUtil;
+import com.example.agenda.vista.Person;
+import com.example.agenda.modelo.DateUtil;
 
 
 public class PersonEditDialogController {
