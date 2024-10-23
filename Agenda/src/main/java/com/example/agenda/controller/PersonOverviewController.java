@@ -1,6 +1,7 @@
 package com.example.agenda.controller;
 
-import com.example.agenda.modelo.DateUtil;
+import com.example.agenda.modelo.AgendaModelo;
+import com.example.agenda.modelo.utilidad.DateUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -11,6 +12,13 @@ import com.example.agenda.MainApp;
 import com.example.agenda.vista.Person;
 
 public class PersonOverviewController {
+
+    private AgendaModelo agendaModelo;
+
+    public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }
+
     @FXML
     private TableView<Person> personTable;
     @FXML

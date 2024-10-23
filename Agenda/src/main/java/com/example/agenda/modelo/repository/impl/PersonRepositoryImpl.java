@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class PersonRepositoryImpl {
@@ -19,7 +20,7 @@ public class PersonRepositoryImpl {
     public PersonRepositoryImpl() {
     }
 
-    public ArrayList<PersonVO> ObtenerListaMonedas() throws ExcepcionPerson {
+    public ArrayList<PersonVO> ObtenerListaPersonas() throws ExcepcionPerson {
         try {
             Connection conn = this.conexion.conectarBD();
             this.personas = new ArrayList();
@@ -34,7 +35,7 @@ public class PersonRepositoryImpl {
                 String ca = rs.getString("calle");
                 Integer cp = rs.getInt("codigoPostal");
                 String ciu = rs.getString("ciudad");
-                String fecha = rs.getString("fechaNacimiento");
+                LocalDate fecha = rs.getDate("fechaNacimiento").toLocalDate();
                 this.persona = new PersonVO(cod, nom, ape, ca, cp, ciu, fecha);
                 this.persona.setCodigo(cod);
                 this.personas.add(this.persona);

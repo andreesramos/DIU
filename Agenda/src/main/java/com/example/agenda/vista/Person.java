@@ -22,7 +22,7 @@ public class Person {
      * Default constructor.
      */
     public Person() {
-        this(null, null);
+        this(null, null, null, 0, null, null);
     }
 
     /**
@@ -40,6 +40,16 @@ public class Person {
         this.postalCode = new SimpleIntegerProperty(1234);
         this.city = new SimpleStringProperty("some city");
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
+    }
+
+    public Person(String firstName, String lastName, String street, int postalCode, String city, LocalDate birthday) {
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        this.street = new SimpleStringProperty(street);
+        this.postalCode = new SimpleIntegerProperty(postalCode);
+        this.city = new SimpleStringProperty(city);
+        this.birthday = new SimpleObjectProperty(birthday);
+
     }
 
     public String getFirstName() {

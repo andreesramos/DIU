@@ -3,6 +3,8 @@ package com.example.agenda;
 import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.PersonOverviewController;
+import com.example.agenda.modelo.AgendaModelo;
+import com.example.agenda.modelo.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.vista.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -25,7 +27,7 @@ public class MainApp extends Application {
 
     public MainApp(){
         // Add some sample data
-        personData.add(new Person("Hans", "Muster"));
+        /*personData.add(new Person("Hans", "Muster"));
         personData.add(new Person("Ruth", "Mueller"));
         personData.add(new Person("Heinz", "Kurz"));
         personData.add(new Person("Cornelia", "Meier"));
@@ -33,7 +35,16 @@ public class MainApp extends Application {
         personData.add(new Person("Lydia", "Kunz"));
         personData.add(new Person("Anna", "Best"));
         personData.add(new Person("Stefan", "Meier"));
-        personData.add(new Person("Martin", "Mueller"));
+        personData.add(new Person("Martin", "Mueller"));*/
+        try {
+            PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
+            AgendaModelo agendaModelo = new AgendaModelo();
+            agendaModelo.setPersonRepository(personRepository);
+            System.out.println(agendaModelo.obtenerPersonas());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     /**

@@ -6,7 +6,7 @@ import com.example.agenda.modelo.ExcepcionPerson;
 import java.util.ArrayList;
 
 public interface PersonRepository {
-    ArrayList<PersonVO> ObtenerListaMonedas() throws ExcepcionPerson;
+    ArrayList<PersonVO> ObtenerListaPersonas() throws ExcepcionPerson;
 
     void addPersona(PersonVO var1) throws ExcepcionPerson;
 

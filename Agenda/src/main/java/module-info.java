@@ -20,4 +20,6 @@ module com.example.agenda {
     opens com.example.agenda.modelo to javafx.fxml;
     exports com.example.agenda.vista;
     opens com.example.agenda.vista to javafx.fxml;
+    exports com.example.agenda.modelo.utilidad;
+    opens com.example.agenda.modelo.utilidad to javafx.fxml;
 }

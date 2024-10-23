@@ -1,5 +1,7 @@
 package com.example.agenda.modelo;
 
+import java.time.LocalDate;
+
 public class PersonVO {
     int codigo;
     String firstName;
@@ -7,9 +9,9 @@ public class PersonVO {
     String street;
     int postalCode;
     String city;
-    String birthday;
+    LocalDate birthday;
 
-    public PersonVO(String nombre, String apellido, String calle, int codigoPostal, String ciudad, String fechaNacimiento) {
+    public PersonVO(String nombre, String apellido, String calle, int codigoPostal, String ciudad, LocalDate fechaNacimiento) {
         this.firstName = nombre;
         this.lastName = apellido;
         this.street = calle;
@@ -18,7 +20,7 @@ public class PersonVO {
         this.birthday = fechaNacimiento;
     }
 
-    public PersonVO(int codigo, String nombre, String apellido, String calle, int codigoPostal, String ciudad, String fechaNacimiento) {
+    public PersonVO(int codigo, String nombre, String apellido, String calle, int codigoPostal, String ciudad, LocalDate fechaNacimiento) {
         this.codigo = codigo;
         this.firstName = nombre;
         this.lastName = apellido;
@@ -46,8 +48,8 @@ public class PersonVO {
     public String getCity() {return this.city;}
     public void setCity(String ciudad) {this.city = ciudad;}
 
-    public String getBirthday() {return this.birthday;}
-    public void setBirthday(String fechaNacimiento) {this.birthday = fechaNacimiento;}
+    public LocalDate getBirthday() {return this.birthday;}
+    public void setBirthday(LocalDate fechaNacimiento) {this.birthday = fechaNacimiento;}
 
     public String toString(){
         return "PersonVO{codigo=" + this.codigo + ", nombre=" + this.firstName + ", apellido=" + this.lastName + ", calle=" + this.street + ", codigoPostal=" + this.postalCode + ", ciudad=" + this.city + ", fechaNacimiento=" + this.birthday + "}";
