@@ -11,10 +11,11 @@ import javafx.beans.property.StringProperty;
 
 public class Person {
 
+    private final IntegerProperty codigo;
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty street;
-    private final IntegerProperty postalCode;
+    private final StringProperty postalCode;
     private final StringProperty city;
     private final ObjectProperty<LocalDate> birthday;
 
@@ -22,7 +23,7 @@ public class Person {
      * Default constructor.
      */
     public Person() {
-        this(null, null, null, 0, null, null);
+        this(0, null, null, null, null, null, null);
     }
 
     /**
@@ -31,25 +32,39 @@ public class Person {
      * @param firstName
      * @param lastName
      */
-    public Person(String firstName, String lastName) {
+    public Person(Integer codigo, String firstName, String lastName) {
+        this.codigo = new SimpleIntegerProperty(codigo);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
 
         // Some initial dummy data, just for convenient testing.
         this.street = new SimpleStringProperty("some street");
-        this.postalCode = new SimpleIntegerProperty(1234);
+        this.postalCode = new SimpleStringProperty("1234");
         this.city = new SimpleStringProperty("some city");
         this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
     }
 
-    public Person(String firstName, String lastName, String street, int postalCode, String city, LocalDate birthday) {
+    public Person(Integer codigo, String firstName, String lastName, String street, String postalCode, String city, LocalDate birthday) {
+        this.codigo = new SimpleIntegerProperty(codigo);
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.street = new SimpleStringProperty(street);
-        this.postalCode = new SimpleIntegerProperty(postalCode);
+        this.postalCode = new SimpleStringProperty(postalCode);
         this.city = new SimpleStringProperty(city);
         this.birthday = new SimpleObjectProperty(birthday);
 
+    }
+
+    public Integer getCodigo() {
+        return codigo.get();
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo.set(codigo);
+    }
+
+    public IntegerProperty codigoProperty() {
+        return codigo;
     }
 
     public String getFirstName() {
@@ -88,15 +103,15 @@ public class Person {
         return street;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode.get();
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode.set(postalCode);
     }
 
-    public IntegerProperty postalCodeProperty() {
+    public StringProperty postalCodeProperty() {
         return postalCode;
     }
 

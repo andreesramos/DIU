@@ -56,7 +56,7 @@ public class PersonEditDialogController {
         firstNameField.setText(person.getFirstName());
         lastNameField.setText(person.getLastName());
         streetField.setText(person.getStreet());
-        postalCodeField.setText(Integer.toString(person.getPostalCode()));
+        postalCodeField.setText(person.getPostalCode());
         cityField.setText(person.getCity());
         birthdayField.setText(DateUtil.format(person.getBirthday()));
         birthdayField.setPromptText("dd.mm.yyyy");
@@ -80,7 +80,7 @@ public class PersonEditDialogController {
             person.setFirstName(firstNameField.getText());
             person.setLastName(lastNameField.getText());
             person.setStreet(streetField.getText());
-            person.setPostalCode(Integer.parseInt(postalCodeField.getText()));
+            person.setPostalCode(postalCodeField.getText());
             person.setCity(cityField.getText());
             person.setBirthday(DateUtil.parse(birthdayField.getText()));
 
@@ -117,14 +117,8 @@ public class PersonEditDialogController {
 
         if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n";
-        } else {
-            // try to parse the postal code into an int.
-            try {
-                Integer.parseInt(postalCodeField.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "No valid postal code (must be an integer)!\n";
-            }
         }
+
         if (cityField.getText() == null || cityField.getText().length() == 0) {
             errorMessage += "No valid city!\n";
         }

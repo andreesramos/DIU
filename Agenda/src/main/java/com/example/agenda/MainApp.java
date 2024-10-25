@@ -4,6 +4,7 @@ import com.example.agenda.controller.BirthdayStatisticsController;
 import com.example.agenda.controller.PersonEditDialogController;
 import com.example.agenda.controller.PersonOverviewController;
 import com.example.agenda.modelo.AgendaModelo;
+import com.example.agenda.modelo.PersonVO;
 import com.example.agenda.modelo.repository.impl.PersonRepositoryImpl;
 import com.example.agenda.vista.Person;
 import javafx.application.Application;
@@ -18,6 +19,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainApp extends Application {
 
@@ -40,7 +42,7 @@ public class MainApp extends Application {
             PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
             AgendaModelo agendaModelo = new AgendaModelo();
             agendaModelo.setPersonRepository(personRepository);
-            System.out.println(agendaModelo.obtenerPersonas());
+            personData.addAll(agendaModelo.mostrarPersonas());
         }catch (Exception e){
             e.printStackTrace();
         }

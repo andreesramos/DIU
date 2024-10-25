@@ -7,20 +7,20 @@ public class PersonVO {
     String firstName;
     String lastName;
     String street;
-    int postalCode;
+    String postalCode;
     String city;
     LocalDate birthday;
 
-    public PersonVO(String nombre, String apellido, String calle, int codigoPostal, String ciudad, LocalDate fechaNacimiento) {
+    /*public PersonVO(String nombre, String apellido, String calle, String codigoPostal, String ciudad, LocalDate fechaNacimiento) {
         this.firstName = nombre;
         this.lastName = apellido;
         this.street = calle;
         this.postalCode = codigoPostal;
         this.city = ciudad;
         this.birthday = fechaNacimiento;
-    }
+    }*/
 
-    public PersonVO(int codigo, String nombre, String apellido, String calle, int codigoPostal, String ciudad, LocalDate fechaNacimiento) {
+    public PersonVO(int codigo, String nombre, String apellido, String calle, String codigoPostal, String ciudad, LocalDate fechaNacimiento) {
         this.codigo = codigo;
         this.firstName = nombre;
         this.lastName = apellido;
@@ -42,8 +42,8 @@ public class PersonVO {
     public String getStreet() {return this.street;}
     public void setStreet(String calle) {this.street = calle;}
 
-    public int getPostalCode() {return this.postalCode;}
-    public void setPostalCode(int codigoPostal) {this.postalCode = codigoPostal;}
+    public String getPostalCode() {return this.postalCode;}
+    public void setPostalCode(String codigoPostal) {this.postalCode = codigoPostal;}
 
     public String getCity() {return this.city;}
     public void setCity(String ciudad) {this.city = ciudad;}

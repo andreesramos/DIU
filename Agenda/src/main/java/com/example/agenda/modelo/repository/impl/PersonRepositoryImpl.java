@@ -2,6 +2,7 @@ package com.example.agenda.modelo.repository.impl;
 
 import com.example.agenda.modelo.ExcepcionPerson;
 import com.example.agenda.modelo.PersonVO;
+import com.example.agenda.modelo.repository.PersonRepository;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class PersonRepositoryImpl {
+public class PersonRepositoryImpl implements PersonRepository {
     private final ConexionJDBC conexion = new ConexionJDBC();
     private Statement stmt;
     private String sentencia;
@@ -33,7 +34,7 @@ public class PersonRepositoryImpl {
                 String nom = rs.getString("nombre");
                 String ape = rs.getString("apellido");
                 String ca = rs.getString("calle");
-                Integer cp = rs.getInt("codigoPostal");
+                String cp = rs.getString("codigoPostal");
                 String ciu = rs.getString("ciudad");
                 LocalDate fecha = rs.getDate("fechaNacimiento").toLocalDate();
                 this.persona = new PersonVO(cod, nom, ape, ca, cp, ciu, fecha);
@@ -48,7 +49,7 @@ public class PersonRepositoryImpl {
         }
     }
 
-    public void addPerson(PersonVO m) throws ExcepcionPerson {
+    public void addPersona(PersonVO m) throws ExcepcionPerson {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
@@ -66,7 +67,7 @@ public class PersonRepositoryImpl {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM monedas WHERE codigo = %d", idPersona);
+            String sql = String.format("DELETE FROM personas WHERE codigo = %d", idPersona);
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {

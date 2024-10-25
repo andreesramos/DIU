@@ -91,7 +91,7 @@ public class PersonOverviewController {
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
-            postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+            postalCodeLabel.setText(person.getPostalCode());
             cityLabel.setText(person.getCity());
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
@@ -116,6 +116,7 @@ public class PersonOverviewController {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
+            //Llamar al metodo del modelo
         } else {
             // Nothing selected.
             Alert alert= new Alert(AlertType.WARNING);
@@ -136,6 +137,7 @@ public class PersonOverviewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
+            //Llamar al modelo
         }
     }
 
@@ -150,6 +152,7 @@ public class PersonOverviewController {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
+                //Llamar al modelo
             }
 
         } else {

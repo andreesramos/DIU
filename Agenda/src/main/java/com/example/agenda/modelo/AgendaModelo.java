@@ -19,4 +19,15 @@ public class AgendaModelo {
         ArrayList<PersonVO> listaPersons=personRepository.ObtenerListaPersonas();
         return listaPersons;
     }
+
+    public ArrayList<Person> mostrarPersonas() {
+        ArrayList<PersonVO> listaPersonsVO=obtenerPersonas();
+        ArrayList<Person> listaPersonas=new ArrayList<>();
+        listaPersonas=personUtil.getPerson(listaPersonsVO);
+        return listaPersonas;
+    }
+
+    //Llamar al metodo de personRepositoryImpl addPersona
+
+    //Controler llama al metodo de arriba
 }
