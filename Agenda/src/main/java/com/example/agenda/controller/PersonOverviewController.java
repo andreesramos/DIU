@@ -26,6 +26,8 @@ public class PersonOverviewController {
     @FXML
     private TableColumn<Person, String> lastNameColumn;
 
+    /*@FXML
+    private Label codigoLabel;*/
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -88,6 +90,7 @@ public class PersonOverviewController {
     private void showPersonDetails(Person person) {
         if (person != null) {
             // Fill the labels with info from the person object.
+            //codigoLabel.setText(String.valueOf(person.getCodigo()));
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
@@ -96,6 +99,7 @@ public class PersonOverviewController {
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
             // Person is null, remove all the text.
+            //codigoLabel.setText("");
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -117,6 +121,8 @@ public class PersonOverviewController {
         if (selectedIndex >= 0) {
             personTable.getItems().remove(selectedIndex);
             //Llamar al metodo del modelo
+            Person p=personTable.getSelectionModel().getSelectedItem();
+            agendaModelo.eliminarPersona(p.getCodigo());
         } else {
             // Nothing selected.
             Alert alert= new Alert(AlertType.WARNING);
@@ -138,6 +144,7 @@ public class PersonOverviewController {
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
             //Llamar al modelo
+            agendaModelo.insertarPersona(tempPerson);
         }
     }
 
@@ -153,6 +160,7 @@ public class PersonOverviewController {
             if (okClicked) {
                 showPersonDetails(selectedPerson);
                 //Llamar al modelo
+                agendaModelo.modificarPersona(selectedPerson);
             }
 
         } else {

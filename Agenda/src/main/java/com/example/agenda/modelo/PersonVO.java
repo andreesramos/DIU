@@ -20,6 +20,10 @@ public class PersonVO {
         this.birthday = fechaNacimiento;
     }*/
 
+    public PersonVO() {
+        this(0, null, null, null, null, null, null);
+    }
+
     public PersonVO(int codigo, String nombre, String apellido, String calle, String codigoPostal, String ciudad, LocalDate fechaNacimiento) {
         this.codigo = codigo;
         this.firstName = nombre;

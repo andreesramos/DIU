@@ -26,6 +26,7 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Person> personData = FXCollections.observableArrayList();
+    AgendaModelo agendaModelo;
 
     public MainApp(){
         // Add some sample data
@@ -40,7 +41,7 @@ public class MainApp extends Application {
         personData.add(new Person("Martin", "Mueller"));*/
         try {
             PersonRepositoryImpl personRepository = new PersonRepositoryImpl();
-            AgendaModelo agendaModelo = new AgendaModelo();
+            agendaModelo = new AgendaModelo();
             agendaModelo.setPersonRepository(personRepository);
             personData.addAll(agendaModelo.mostrarPersonas());
         }catch (Exception e){
@@ -114,6 +115,7 @@ public class MainApp extends Application {
             // Give the controller access to the main app.
             PersonOverviewController controller = loader.getController();
             controller.setMainApp(this);
+            controller.setAgendaModelo(agendaModelo);
         } catch (IOException e) {
             e.printStackTrace();
         }

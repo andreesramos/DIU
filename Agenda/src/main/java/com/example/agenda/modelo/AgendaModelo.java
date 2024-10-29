@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class AgendaModelo {
     PersonRepository personRepository;
-    PersonUtil personUtil;
 
     public void setPersonRepository(PersonRepository personRepository) {
         this.personRepository = personRepository;
@@ -23,11 +22,24 @@ public class AgendaModelo {
     public ArrayList<Person> mostrarPersonas() {
         ArrayList<PersonVO> listaPersonsVO=obtenerPersonas();
         ArrayList<Person> listaPersonas=new ArrayList<>();
-        listaPersonas=personUtil.getPerson(listaPersonsVO);
+        listaPersonas=PersonUtil.getPerson(listaPersonsVO);
         return listaPersonas;
     }
 
-    //Llamar al metodo de personRepositoryImpl addPersona
+    //Llamar al metodo de personRepositoryImpl addPersona, editPersona, deletePersona
+    public void insertarPersona(Person person) throws ExcepcionPerson{
+        PersonVO personVO=PersonUtil.getPersonVO(person);
+        personRepository.addPersona(personVO);
+    }
+
+    public void eliminarPersona(Integer id) throws ExcepcionPerson{
+        personRepository.deletePersona(id);
+    }
+
+    public void modificarPersona(Person person) throws ExcepcionPerson{
+        PersonVO personVO=PersonUtil.getPersonVO(person);
+        personRepository.editPersona(personVO);
+    }
 
     //Controler llama al metodo de arriba
 }

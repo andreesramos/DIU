@@ -23,5 +23,27 @@ public class PersonUtil {
         return persons;
     }
 
+    public static Person getPerson(PersonVO personVO) {
+        Person person = new Person();
+        person.setCodigo(personVO.getCodigo());
+        person.setFirstName(personVO.getFirstName());
+        person.setLastName(personVO.getLastName());
+        person.setStreet(personVO.getStreet());
+        person.setPostalCode(personVO.getPostalCode());
+        person.setCity(personVO.getCity());
+        person.setBirthday(personVO.getBirthday());
+        return person;
+    }
 
+    public static PersonVO getPersonVO(Person person) {
+        PersonVO personVO = new PersonVO();
+        personVO.setCodigo(person.getCodigo());
+        personVO.setFirstName(person.getFirstName());
+        personVO.setLastName(person.getLastName());
+        personVO.setStreet(person.getStreet());
+        personVO.setPostalCode(person.getPostalCode());
+        personVO.setCity(person.getCity());
+        personVO.setBirthday(person.getBirthday());
+        return personVO;
+    }
 }
