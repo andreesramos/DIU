@@ -3,11 +3,8 @@ package com.example.agenda.controller;
 import com.example.agenda.modelo.AgendaModelo;
 import com.example.agenda.modelo.utilidad.DateUtil;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import com.example.agenda.MainApp;
 import com.example.agenda.vista.Person;
 
@@ -119,10 +116,10 @@ public class PersonOverviewController {
     private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            Integer cod=personTable.getItems().get(selectedIndex).getCodigo();
             personTable.getItems().remove(selectedIndex);
             //Llamar al metodo del modelo
-            Person p=personTable.getSelectionModel().getSelectedItem();
-            agendaModelo.eliminarPersona(p.getCodigo());
+            agendaModelo.eliminarPersona(cod);
         } else {
             // Nothing selected.
             Alert alert= new Alert(AlertType.WARNING);
@@ -172,4 +169,5 @@ public class PersonOverviewController {
                     alert.showAndWait();
         }
     }
+
 }

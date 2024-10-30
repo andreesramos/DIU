@@ -67,7 +67,7 @@ public class PersonRepositoryImpl implements PersonRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM personas WHERE codigo = %d", idPersona);
+            String sql = String.format("DELETE FROM personas WHERE codigo = %d", lastId());
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
@@ -79,7 +79,7 @@ public class PersonRepositoryImpl implements PersonRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE personas SET nombre = '%s', apellido = '%s', calle = '%s', codigoPostal = '%s', ciudad = '%s', fechaNacimiento = '%s' WHERE codigo = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(), personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday(), personVO.getCodigo());
+            String sql = String.format("UPDATE personas SET nombre = '%s', apellido = '%s', calle = '%s', codigoPostal = '%s', ciudad = '%s', fechaNacimiento = '%s' WHERE codigo = %d", personVO.getFirstName(), personVO.getLastName(), personVO.getStreet(), personVO.getPostalCode(), personVO.getCity(), personVO.getBirthday(), lastId());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             throw new ExcepcionPerson("No se ha podido realizar la edición");

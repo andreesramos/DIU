@@ -8,13 +8,13 @@ import com.example.agenda.vista.Person;
 import java.util.ArrayList;
 
 public class AgendaModelo {
-    PersonRepository personRepository;
+    static PersonRepository personRepository;
 
     public void setPersonRepository(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
-    public ArrayList<PersonVO> obtenerPersonas() {
+    public static ArrayList<PersonVO> obtenerPersonas() {
         ArrayList<PersonVO> listaPersons=personRepository.ObtenerListaPersonas();
         return listaPersons;
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -26,8 +27,8 @@
             <Label text="First Name" />
             <Label text="Last Name" GridPane.rowIndex="1" />
             <Label text="Street" GridPane.rowIndex="2" />
-            <Label text="City" GridPane.rowIndex="3" />
-            <Label text="Postal Code" GridPane.rowIndex="4" />
+            <Label text="Postal Code" GridPane.rowIndex="3" />
+            <Label text="City" GridPane.rowIndex="4" />
             <Label text="Birthday" GridPane.rowIndex="5" />
             <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
             <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -47,5 +48,8 @@
             <Button layoutX="473.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
+      <ProgressBar fx:id="progreso" layoutX="20.0" layoutY="352.0" prefHeight="20.0" prefWidth="222.0" progress="0.0" />
+      <Text fill="WHITE" layoutX="253.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OCUPADO" />
+      <ProgressIndicator fx:id="indicator" layoutX="20.0" layoutY="322.0" progress="0.0" />
    </children>
 </AnchorPane>

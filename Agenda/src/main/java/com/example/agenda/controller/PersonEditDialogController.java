@@ -1,12 +1,16 @@
 package com.example.agenda.controller;
 
+import com.example.agenda.modelo.AgendaModelo;
+import com.example.agenda.modelo.PersonVO;
+import javafx.beans.property.IntegerProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import com.example.agenda.vista.Person;
 import com.example.agenda.modelo.utilidad.DateUtil;
+
+import java.util.ArrayList;
 
 
 public class PersonEditDialogController {
@@ -23,6 +27,10 @@ public class PersonEditDialogController {
     private TextField cityField;
     @FXML
     private TextField birthdayField;
+    @FXML
+    private ProgressBar progreso;
+    @FXML
+    private ProgressIndicator indicator;
     
     private Stage dialogStage;
     private Person person;
@@ -34,6 +42,8 @@ public class PersonEditDialogController {
      */
     @FXML
     private void initialize() {
+        ArrayList<PersonVO> personasVO=AgendaModelo.obtenerPersonas();
+        cambiarProgreso(personasVO.size());
     }
 
     /**
@@ -143,4 +153,14 @@ public class PersonEditDialogController {
             return false;
         }
     }
+
+    public void cambiarProgreso(int num){
+        double p=((double)num/50.0);
+        progreso.setProgress(p);
+    }
+
+    //Unir barra de progreso con indicator
+    /*public IntegerProperty numProperty(){
+        return
+    }*/
 }

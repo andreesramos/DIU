@@ -149,6 +149,7 @@ public class MainApp extends Application {
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
 
+
             // Show the dialog and wait until the user closes it
             dialogStage.showAndWait();
 

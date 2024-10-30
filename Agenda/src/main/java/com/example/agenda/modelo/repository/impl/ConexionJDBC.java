@@ -1,5 +1,7 @@
 package com.example.agenda.modelo.repository.impl;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,6 +16,12 @@ public class ConexionJDBC {
             Class.forName("com.mysql.cj.jdbc.Driver");
             return conn;
         } catch (SQLException var2) {
+            //Cambiar para que salga una alerta y la iterfaz sin datos. Tambien desahibilitar botones
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Error");
+            alert.setHeaderText("Servidor desactivado");
+            alert.setContentText("Conecta el servidor para acceder a la base de datos");
+            alert.showAndWait();
             SQLException ex = var2;
             System.out.println("\n--- SQLException capturada ---\n");
 
@@ -26,7 +34,7 @@ public class ConexionJDBC {
             }
 
             throw new SQLException();
-        } catch (Exception var3) {
+        } catch (ClassNotFoundException var3) {
             throw new SQLException();
         }
     }
