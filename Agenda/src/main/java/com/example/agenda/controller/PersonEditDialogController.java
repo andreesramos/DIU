@@ -2,7 +2,10 @@ package com.example.agenda.controller;
 
 import com.example.agenda.modelo.AgendaModelo;
 import com.example.agenda.modelo.PersonVO;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -14,6 +17,16 @@ import java.util.ArrayList;
 
 
 public class PersonEditDialogController {
+
+    //AgendaModelo agendaModelo;
+    private DoubleProperty progresoNum = new SimpleDoubleProperty();
+
+    public PersonEditDialogController() {
+    }
+
+    /*public void setAgendaModelo(AgendaModelo agendaModelo) {
+        this.agendaModelo = agendaModelo;
+    }*/
 
     @FXML
     private TextField firstNameField;
@@ -31,7 +44,7 @@ public class PersonEditDialogController {
     private ProgressBar progreso;
     @FXML
     private ProgressIndicator indicator;
-    
+
     private Stage dialogStage;
     private Person person;
     private boolean okClicked = false;
@@ -42,8 +55,10 @@ public class PersonEditDialogController {
      */
     @FXML
     private void initialize() {
-        ArrayList<PersonVO> personasVO=AgendaModelo.obtenerPersonas();
-        cambiarProgreso(personasVO.size());
+        ArrayList<PersonVO> personas = AgendaModelo.obtenerPersonas();
+        cambiarBarra(personas.size());
+        progreso.progressProperty().bindBidirectional(progresoNum);
+        indicator.progressProperty().bindBidirectional(progresoNum);
     }
 
     /**
@@ -127,6 +142,12 @@ public class PersonEditDialogController {
 
         if (postalCodeField.getText() == null || postalCodeField.getText().length() == 0) {
             errorMessage += "No valid postal code!\n";
+        } else {
+            try {
+                Integer.parseInt(postalCodeField.getText());
+            } catch (NumberFormatException e) {
+                errorMessage += "No valid postal code (must be an integer)!\n";
+            }
         }
 
         if (cityField.getText() == null || cityField.getText().length() == 0) {
@@ -144,23 +165,21 @@ public class PersonEditDialogController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message.
-            Alert alert=new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Invalid Fields");
-                    alert.setHeaderText("Please correct invalid fields");
-                    alert.setContentText(errorMessage);
-                    alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
             return false;
         }
     }
 
-    public void cambiarProgreso(int num){
-        double p=((double)num/50.0);
-        progreso.setProgress(p);
+    private void cambiarBarra(int n) {
+        progresoNum.set(n / 50.0);
     }
 
-    //Unir barra de progreso con indicator
-    /*public IntegerProperty numProperty(){
-        return
-    }*/
+    public IntegerProperty numProperty() {
+        return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
+    }
 }

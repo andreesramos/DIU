@@ -26,7 +26,6 @@ public class AgendaModelo {
         return listaPersonas;
     }
 
-    //Llamar al metodo de personRepositoryImpl addPersona, editPersona, deletePersona
     public void insertarPersona(Person person) throws ExcepcionPerson{
         PersonVO personVO=PersonUtil.getPersonVO(person);
         personRepository.addPersona(personVO);
@@ -41,5 +40,4 @@ public class AgendaModelo {
         personRepository.editPersona(personVO);
     }
 
-    //Controler llama al metodo de arriba
 }

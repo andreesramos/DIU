@@ -23,8 +23,6 @@ public class PersonOverviewController {
     @FXML
     private TableColumn<Person, String> lastNameColumn;
 
-    /*@FXML
-    private Label codigoLabel;*/
     @FXML
     private Label firstNameLabel;
     @FXML
@@ -87,7 +85,6 @@ public class PersonOverviewController {
     private void showPersonDetails(Person person) {
         if (person != null) {
             // Fill the labels with info from the person object.
-            //codigoLabel.setText(String.valueOf(person.getCodigo()));
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
             streetLabel.setText(person.getStreet());
@@ -96,7 +93,6 @@ public class PersonOverviewController {
             birthdayLabel.setText(DateUtil.format(person.getBirthday()));
         } else {
             // Person is null, remove all the text.
-            //codigoLabel.setText("");
             firstNameLabel.setText("");
             lastNameLabel.setText("");
             streetLabel.setText("");
@@ -118,7 +114,6 @@ public class PersonOverviewController {
         if (selectedIndex >= 0) {
             Integer cod=personTable.getItems().get(selectedIndex).getCodigo();
             personTable.getItems().remove(selectedIndex);
-            //Llamar al metodo del modelo
             agendaModelo.eliminarPersona(cod);
         } else {
             // Nothing selected.
@@ -140,7 +135,6 @@ public class PersonOverviewController {
         boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
         if (okClicked) {
             mainApp.getPersonData().add(tempPerson);
-            //Llamar al modelo
             agendaModelo.insertarPersona(tempPerson);
         }
     }
@@ -156,7 +150,6 @@ public class PersonOverviewController {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {
                 showPersonDetails(selectedPerson);
-                //Llamar al modelo
                 agendaModelo.modificarPersona(selectedPerson);
             }
 
