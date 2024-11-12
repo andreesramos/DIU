@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <SplitPane dividerPositions="0.3181818181818182" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <TableView fx:id="reservaTable" layoutX="-13.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="apellidosColumn" prefWidth="75.0" text="ID" />
+                                <TableColumn fx:id="nombreColumn" prefWidth="75.0" text="Fecha Entrada" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+                    <children>
+                        <Label layoutX="14.0" layoutY="14.0" styleClass="label-header" text="Detalles de la Reserva" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                            <font>
+                                <Font size="26.0" />
+                            </font></Label>
+                        <GridPane layoutX="43.0" layoutY="45.0" prefHeight="320.0" prefWidth="406.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label text="FECHA DE ENTRADA" />
+                                <Label text="FECHA DE SALIDA" GridPane.rowIndex="1" />
+                                <Label text="NUMERO DE HABITACIONES" GridPane.rowIndex="2" />
+                                <Label text="TIPO DE HABITACION" GridPane.rowIndex="3" />
+                                <Label GridPane.rowIndex="4" />
+                                <Label text="ALOJAMIENTO" GridPane.rowIndex="5" />
+                                <Label text="FUMADOR" GridPane.rowIndex="4" />
+                        <DatePicker fx:id="fechaEntradaPicker" GridPane.columnIndex="1" />
+                        <DatePicker fx:id="fechaSalidaPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ChoiceBox fx:id="tipoHabitacionChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <CheckBox fx:id="fumadorCkeck" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <RadioButton fx:id="mediaPensionButton" mnemonicParsing="false" text="Media Pension" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <RadioButton fx:id="alojamientoYDesayunoButton" mnemonicParsing="false" text="Alojamiento y desayuno" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                        <RadioButton fx:id="PensionCompletaButton" mnemonicParsing="false" text="Pension Completa" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                        <Spinner fx:id="spinnerHabtaciones" initialValue="3" max="100" min="0">
+                            <editable>true</editable>
+                        </Spinner>
+                            </children>
+                        </GridPane>
+
+                  <Label layoutX="5.0" layoutY="409.0" text="Detalles del Cliente" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="380.0">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Label>
+                  <GridPane AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="428.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="DNI" />
+                        <Label fx:id="dniClienteLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label text="NOMBRE" GridPane.rowIndex="1" />
+                        <Label fx:id="nombreClienteLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="APELLIDOS" GridPane.rowIndex="2" />
+                        <Label fx:id="apellidosClienteLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+                        <HBox layoutX="195.0" layoutY="255.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                            <children>
+                                <Button layoutX="195.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleNewReserva" text="Nueva" />
+                                <Button layoutX="268.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditReserva" text="Editar" />
+                                <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteReserva" text="Eliminar" />
+                            </children>
+                        </HBox>
+                    </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
