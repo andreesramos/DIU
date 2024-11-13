@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaOverviewController">
     <children>
         <SplitPane dividerPositions="0.3181818181818182" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -16,8 +16,8 @@
                     <children>
                         <TableView fx:id="reservaTable" layoutX="-13.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn fx:id="apellidosColumn" prefWidth="75.0" text="ID" />
-                                <TableColumn fx:id="nombreColumn" prefWidth="75.0" text="Fecha Entrada" />
+                                <TableColumn fx:id="idReservaColumn" prefWidth="75.0" text="ID" />
+                                <TableColumn fx:id="fechaEntradaColumn" prefWidth="75.0" text="Fecha Entrada" />
                             </columns>
                             <columnResizePolicy>
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -55,11 +55,11 @@
                         <DatePicker fx:id="fechaEntradaPicker" GridPane.columnIndex="1" />
                         <DatePicker fx:id="fechaSalidaPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <ChoiceBox fx:id="tipoHabitacionChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <CheckBox fx:id="fumadorCkeck" mnemonicParsing="false" text="CheckBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <CheckBox fx:id="fumadorCkeck" mnemonicParsing="false" text="Fumador" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <RadioButton fx:id="mediaPensionButton" mnemonicParsing="false" text="Media Pension" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <RadioButton fx:id="alojamientoYDesayunoButton" mnemonicParsing="false" text="Alojamiento y desayuno" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP" />
                         <RadioButton fx:id="PensionCompletaButton" mnemonicParsing="false" text="Pension Completa" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <Spinner fx:id="spinnerHabtaciones" initialValue="3" max="100" min="0">
+                        <Spinner fx:id="spinnerHabtaciones" initialValue="3" max="100" min="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <editable>true</editable>
                         </Spinner>
                             </children>

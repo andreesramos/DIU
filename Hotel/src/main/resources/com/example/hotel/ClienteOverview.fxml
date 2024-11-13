@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
     <children>
         <SplitPane dividerPositions="0.3538681948424069" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -47,8 +47,8 @@
                                 <Label text="DNI" />
                                 <Label fx:id="dniLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                                 <Label text="NOMBRE" GridPane.rowIndex="1" />
-                                <Label fx:id="nombreLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="apellidosLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="nombreColumn" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="apellidosColumn" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="APELLIDOS" GridPane.rowIndex="2" />
                                 <Label text="DIRECCION" GridPane.rowIndex="3" />
                                 <Label fx:id="direccionLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -66,6 +66,7 @@
                                 <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteCliente" text="Eliminar" />
                             </children>
                         </HBox>
+                  <Button layoutX="14.0" layoutY="455.0" mnemonicParsing="false" text="Consultar Reserva" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
                     </children></AnchorPane>
             </items>
         </SplitPane>
