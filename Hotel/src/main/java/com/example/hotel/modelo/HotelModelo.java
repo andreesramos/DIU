@@ -3,7 +3,9 @@ package com.example.hotel.modelo;
 import com.example.hotel.modelo.repository.ClienteRepository;
 import com.example.hotel.modelo.repository.ReservaRepository;
 import com.example.hotel.modelo.utilidad.ClienteUtil;
+import com.example.hotel.modelo.utilidad.ReservaUtil;
 import com.example.hotel.vista.Cliente;
+import com.example.hotel.vista.Reserva;
 
 import java.util.ArrayList;
 
@@ -48,5 +50,19 @@ public class HotelModelo {
     public void modificarCliente(Cliente cliente) throws ExcepcionHotel{
         ClienteVO clienteVO=ClienteUtil.getClienteVO(cliente);
         clienteRepository.editCliente(clienteVO);
+    }
+
+    public void insertarReserva(Reserva reserva) throws ExcepcionHotel{
+        ReservaVO reservaVO= ReservaUtil.getReservaVO(reserva);
+        reservaRepository.addReserva(reservaVO);
+    }
+
+    public void eliminarReserva(int idReserva) throws ExcepcionHotel{
+        reservaRepository.deleteReserva(idReserva);
+    }
+
+    public void modificarReserva(Reserva reserva) throws ExcepcionHotel{
+        ReservaVO reservaVO=ReservaUtil.getReservaVO(reserva);
+        reservaRepository.editReserva(reservaVO);
     }
 }

@@ -45,14 +45,11 @@ public class ClienteOverviewController {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
         apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         nombreColumn.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
 
-        // Clear person details
         showClienteDetails(null);
 
-        // Listen for selection changes and show the person details when changed.
         clienteTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showClienteDetails(newValue));
     }
@@ -61,21 +58,18 @@ public class ClienteOverviewController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
-        // Add observable list data to the table
         clienteTable.setItems(mainApp.getClienteData());
     }
 
 
     private void showClienteDetails(Cliente cliente) {
         if (cliente != null) {
-            // Fill the labels with info from the cliente object.
             dniLabel.setText(cliente.getNombre());
             nombreLabel.setText(cliente.getApellidos());
             apellidosLabel.setText(cliente.getDireccion());
             direccionLabel.setText(cliente.getLocalidad());
             localidadLabel.setText(cliente.getProvincia());
         } else {
-            // Person is null, remove all the text.
             dniLabel.setText("");
             nombreLabel.setText("");
             apellidosLabel.setText("");
@@ -85,7 +79,7 @@ public class ClienteOverviewController {
         }
     }
 
-
+    @FXML
     private void handleDeleteCliente() {
         int selectedIndex = clienteTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
@@ -93,11 +87,10 @@ public class ClienteOverviewController {
             clienteTable.getItems().remove(selectedIndex);
             hotelModelo.eliminarCliente(cod);
         } else {
-            // Nothing selected.
             Alert alert= new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setHeaderText("No Client Selected");
+            alert.setContentText("Please select a client in the table.");
             alert.showAndWait();
         }
     }
@@ -106,28 +99,25 @@ public class ClienteOverviewController {
     @FXML
     private void handleNewCliente() {
         Cliente tempCliente = new Cliente();
-        //Corregir error de abajo
-        /*boolean okClicked = mainApp.showClienteEditDialog(tempCliente);
+        boolean okClicked = mainApp.showClienteEditDialog(tempCliente);
         if (okClicked) {
             mainApp.getClienteData().add(tempCliente);
             hotelModelo.insertarCliente(tempCliente);
-        }*/
+        }
     }
 
 
     @FXML
-    private void handleEditPerson() {
+    private void handleEditCliente() {
         Cliente selectedCliente = clienteTable.getSelectionModel().getSelectedItem();
         if (selectedCliente != null) {
-            //Corregir error de abajo
-            /*boolean okClicked = mainApp.showClienteEditDialog(selectedCliente);
+            boolean okClicked = mainApp.showClienteEditDialog(selectedCliente);
             if (okClicked) {
                 showClienteDetails(selectedCliente);
                 hotelModelo.modificarCliente(selectedCliente);
-            }*/
+            }
 
         } else {
-            // Nothing selected.
             Alert alert=new Alert(Alert.AlertType.WARNING);
             alert.setTitle("No Selection");
             alert.setHeaderText("No Client Selected");

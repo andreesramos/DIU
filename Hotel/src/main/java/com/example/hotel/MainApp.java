@@ -1,16 +1,18 @@
 package com.example.hotel;
 
-import com.example.hotel.controller.OcupationStatisticsController;
+import com.example.hotel.controller.ClienteEditDialogController;
+import com.example.hotel.controller.ClienteOverviewController;
+import com.example.hotel.controller.ReservaEditDialogController;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
 import com.example.hotel.vista.Cliente;
+import com.example.hotel.vista.Reserva;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -21,6 +23,7 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     private ObservableList<Cliente> clienteData = FXCollections.observableArrayList();
+    private ObservableList<Reserva> reservaData = FXCollections.observableArrayList();
     HotelModelo hotelModelo;
 
     public MainApp(){
@@ -32,7 +35,7 @@ public class MainApp extends Application {
             hotelModelo.setReservaRepository(reservaRepository);
             System.out.println(hotelModelo.obtenerClientes());
             System.out.println(hotelModelo.obtenerReservas());
-            //personData.addAll(hotelModelo.mostrarPersonas());
+            clienteData.addAll(hotelModelo.mostrarClientes());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -42,12 +45,99 @@ public class MainApp extends Application {
     public ObservableList<Cliente> getClienteData() {
         return clienteData;
     }
+    public ObservableList<Reserva> getReservaData() {return reservaData;}
 
     @Override
     public void start(Stage stage) throws Exception {
-        primaryStage = stage;
-        primaryStage.setTitle("Hotel");
+        this.primaryStage = stage;
+        this.primaryStage.setTitle("Hotel");
 
+        initRootLayout();
+        showClienteOverview();
+
+    }
+
+    public void initRootLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showClienteOverview() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ClienteOverview.fxml"));
+            AnchorPane clienteOverview = (AnchorPane) loader.load();
+
+            rootLayout.setCenter(clienteOverview);
+
+            ClienteOverviewController controller = loader.getController();
+            controller.setMainApp(this);
+            controller.setHotelModelo(hotelModelo);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean showClienteEditDialog(Cliente cliente) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ClienteEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Editar Cliente");
+            //dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ClienteEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setCliente(cliente);
+
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean showReservaEditDialog(Reserva reserva) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ReservaEditDialog.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Editar Reserva");
+            //dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            ReservaEditDialogController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setReserva(reserva);
+
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /*public void showOcupationStatistics() {

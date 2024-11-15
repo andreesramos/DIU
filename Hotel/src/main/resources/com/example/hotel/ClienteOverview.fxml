@@ -24,7 +24,7 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
                         <Label layoutX="14.0" layoutY="14.0" text="Detalles Personales" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
@@ -45,17 +45,17 @@
                             </rowConstraints>
                             <children>
                                 <Label text="DNI" />
-                                <Label fx:id="dniLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
+                                <Label fx:id="dniLabel" text="Label" GridPane.columnIndex="1" />
                                 <Label text="NOMBRE" GridPane.rowIndex="1" />
-                                <Label fx:id="nombreColumn" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="apellidosColumn" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="nombreLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="apellidosLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="APELLIDOS" GridPane.rowIndex="2" />
                                 <Label text="DIRECCION" GridPane.rowIndex="3" />
-                                <Label fx:id="direccionLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label fx:id="direccionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                 <Label GridPane.rowIndex="4" />
-                                <Label fx:id="localidadLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Label fx:id="localidadLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                 <Label text="PROVINCIA" GridPane.rowIndex="5" />
-                                <Label fx:id="provinciaLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label fx:id="provinciaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                 <Label text="LOCALIDAD" GridPane.rowIndex="4" />
                             </children>
                         </GridPane>

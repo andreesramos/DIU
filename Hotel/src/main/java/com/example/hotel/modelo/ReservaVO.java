@@ -18,6 +18,7 @@ public class ReservaVO {
         this(0, null, null, 0, null, null, null, null);
     }
 
+
     public ReservaVO(int idReserva, LocalDate fechaEntrada, LocalDate fechaSalida, int numHabitaciones, String tipoHabitacion, Boolean fumador, String alojamiento, String dniCliente) {
         this.idReserva = idReserva;
         this.fechaEntrada = fechaEntrada;

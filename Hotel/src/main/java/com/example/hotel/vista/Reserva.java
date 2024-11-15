@@ -3,6 +3,9 @@ package com.example.hotel.vista;
 import javafx.beans.property.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Reserva {
     private final IntegerProperty idReserva;
@@ -124,5 +127,19 @@ public class Reserva {
 
     public StringProperty dniClienteProperty() {
         return dniCliente;
+    }
+
+    private List<String> alojamientoSeleccionado = new ArrayList<>();
+
+    public void setAlojamientoSeleccionado(List<String> alojamientoSeleccionado) {
+        this.alojamientoSeleccionado = alojamientoSeleccionado;
+    }
+    public List<String> getRegimenOpciones() {
+        // Devuelve una lista de todas las opciones disponibles de régimen
+        return Arrays.asList("Alojamiento y Desayuno", "Media Pensión", "Pensión completa");
+    }
+
+    public List<String> getAlojamientoSeleccionado() {
+        return alojamientoSeleccionado;
     }
 }
