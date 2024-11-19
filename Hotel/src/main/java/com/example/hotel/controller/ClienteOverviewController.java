@@ -64,11 +64,12 @@ public class ClienteOverviewController {
 
     private void showClienteDetails(Cliente cliente) {
         if (cliente != null) {
-            dniLabel.setText(cliente.getNombre());
-            nombreLabel.setText(cliente.getApellidos());
-            apellidosLabel.setText(cliente.getDireccion());
-            direccionLabel.setText(cliente.getLocalidad());
-            localidadLabel.setText(cliente.getProvincia());
+            dniLabel.setText(cliente.getDni());
+            nombreLabel.setText(cliente.getNombre());
+            apellidosLabel.setText(cliente.getApellidos());
+            direccionLabel.setText(cliente.getDireccion());
+            localidadLabel.setText(cliente.getLocalidad());
+            provinciaLabel.setText(cliente.getProvincia());
         } else {
             dniLabel.setText("");
             nombreLabel.setText("");
@@ -77,6 +78,11 @@ public class ClienteOverviewController {
             localidadLabel.setText("");
             provinciaLabel.setText("");
         }
+    }
+
+    @FXML
+    private void handleConsultarReserva(){
+        mainApp.showReservaOverview();
     }
 
     @FXML

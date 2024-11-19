@@ -18,6 +18,8 @@ public class ClienteEditDialogController {
     }
 
     @FXML
+    private TextField dniField;
+    @FXML
     private TextField nombreField;
     @FXML
     private TextField apellidosField;
@@ -51,6 +53,10 @@ public class ClienteEditDialogController {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
 
+        dniField.setText(cliente.getDni());
+        if(cliente.getDni() != null) {
+            dniField.setDisable(true);
+        }
         nombreField.setText(cliente.getNombre());
         apellidosField.setText(cliente.getApellidos());
         direccionField.setText(cliente.getDireccion());
@@ -65,6 +71,7 @@ public class ClienteEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
+            cliente.setDni(dniField.getText());
             cliente.setNombre(nombreField.getText());
             cliente.setApellidos(apellidosField.getText());
             cliente.setDireccion(direccionField.getText());
@@ -84,6 +91,9 @@ public class ClienteEditDialogController {
     private boolean isInputValid() {
         String errorMessage = "";
 
+        if(dniField.getText() == null || "".equals(dniField.getText())) {
+            errorMessage += "Dni no valido\n";
+        }
         if (nombreField.getText() == null || nombreField.getText().length() == 0) {
             errorMessage += "Nombre no valido\n";
         }

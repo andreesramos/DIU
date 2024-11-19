@@ -3,6 +3,7 @@ package com.example.hotel;
 import com.example.hotel.controller.ClienteEditDialogController;
 import com.example.hotel.controller.ClienteOverviewController;
 import com.example.hotel.controller.ReservaEditDialogController;
+import com.example.hotel.controller.ReservaOverviewController;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
@@ -33,8 +34,7 @@ public class MainApp extends Application {
             hotelModelo = new HotelModelo();
             hotelModelo.setClienteRepository(clienteRepository);
             hotelModelo.setReservaRepository(reservaRepository);
-            System.out.println(hotelModelo.obtenerClientes());
-            System.out.println(hotelModelo.obtenerReservas());
+
             clienteData.addAll(hotelModelo.mostrarClientes());
         }catch (Exception e){
             e.printStackTrace();
@@ -59,7 +59,6 @@ public class MainApp extends Application {
 
     public void initRootLayout() {
         try {
-            // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
@@ -111,6 +110,31 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public void showReservaOverview() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("ReservaOverview.fxml"));
+            AnchorPane reservaOverview = (AnchorPane) loader.load();
+
+            //rootLayout.setCenter(reservaOverview);
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Consultar Reserva");
+            //dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(reservaOverview);
+            dialogStage.setScene(scene);
+
+            ReservaOverviewController controller = loader.getController();
+            /*controller.setMainApp(this);
+            controller.setHotelModelo(hotelModelo);*/
+            controller.setDialogStage(dialogStage);
+
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

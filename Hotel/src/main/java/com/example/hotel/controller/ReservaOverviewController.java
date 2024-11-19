@@ -6,9 +6,11 @@ import com.example.hotel.modelo.utilidad.DateUtil;
 import com.example.hotel.vista.Reserva;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class ReservaOverviewController {
     private HotelModelo hotelModelo;
+    private Stage dialogStage;
 
     public void setHotelModelo(HotelModelo hotelModelo) {
         this.hotelModelo = hotelModelo;
@@ -56,6 +58,10 @@ public class ReservaOverviewController {
         reservaTable.setItems(mainApp.getReservaData());
     }
 
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+
     private void showReservaDetails(Reserva reserva) {
         if (reserva != null) {
             // Fill the labels with info from the reserva object.
@@ -76,6 +82,7 @@ public class ReservaOverviewController {
         }
     }
 
+    @FXML
     private void handleDeleteReserva() {
         int selectedIndex = reservaTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
