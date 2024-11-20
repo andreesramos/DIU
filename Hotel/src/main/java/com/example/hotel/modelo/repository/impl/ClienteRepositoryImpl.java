@@ -65,7 +65,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM clientes WHERE dni = %s", lastDni());
+            String sql = String.format("DELETE FROM clientes WHERE dni = %s", dni);
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
@@ -77,14 +77,14 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE clientes SET nombre = '%s', apellidos = '%s', direccion = '%s', localidad = '%s', provincia = '%s' WHERE dni = %s", clienteVO.getNombre(), clienteVO.getApellidos(), clienteVO.getDireccion(), clienteVO.getLocalidad(), clienteVO.getProvincia(), lastDni());
+            String sql = String.format("UPDATE clientes SET nombre = '%s', apellidos = '%s', direccion = '%s', localidad = '%s', provincia = '%s' WHERE dni = '%s'", clienteVO.getNombre(), clienteVO.getApellidos(), clienteVO.getDireccion(), clienteVO.getLocalidad(), clienteVO.getProvincia(), clienteVO.getDni());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
             throw new ExcepcionHotel("No se ha podido realizar la edición");
         }
     }
 
-    public String lastDni() throws ExcepcionHotel {
+    /*public String lastDni() throws ExcepcionHotel {
         String lastClienteDni = null;
 
         try {
@@ -93,10 +93,10 @@ public class ClienteRepositoryImpl implements ClienteRepository {
 
             for(ResultSet registro = comando.executeQuery("SELECT dni FROM clientes ORDER BY dni DESC LIMIT 1"); registro.next(); lastClienteDni = registro.getString("dni")) {
             }
-
+            System.out.println("Ultimo dni: " + lastClienteDni);
             return lastClienteDni;
         } catch (SQLException var5) {
             throw new ExcepcionHotel("No se ha podido realizar la busqueda del DNI");
         }
-    }
+    }*/
 }

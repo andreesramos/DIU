@@ -95,7 +95,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 
             for(ResultSet registro = comando.executeQuery("SELECT codigo FROM personas ORDER BY codigo DESC LIMIT 1"); registro.next(); lastPersonId = registro.getInt("codigo")) {
             }
-
+            System.out.println("ultimo id: " + lastPersonId);
             return lastPersonId;
         } catch (SQLException var5) {
             throw new ExcepcionPerson("No se ha podido realizar la busqueda del ID");

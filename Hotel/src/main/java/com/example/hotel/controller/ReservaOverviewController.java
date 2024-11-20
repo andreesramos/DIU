@@ -3,6 +3,7 @@ package com.example.hotel.controller;
 import com.example.hotel.MainApp;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.utilidad.DateUtil;
+import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,6 +12,9 @@ import javafx.stage.Stage;
 public class ReservaOverviewController {
     private HotelModelo hotelModelo;
     private Stage dialogStage;
+    private MainApp mainApp;
+    private Reserva reserva;
+    private Cliente cliente;
 
     public void setHotelModelo(HotelModelo hotelModelo) {
         this.hotelModelo = hotelModelo;
@@ -35,8 +39,12 @@ public class ReservaOverviewController {
     private Label fumadorLabel;
     @FXML
     private Label alojamientoLabel;
-
-    private MainApp mainApp;
+    @FXML
+    private Label dniClienteLabel;
+    @FXML
+    private Label nombreClienteLabel;
+    @FXML
+    private Label apellidosClienteLabel;
 
     public ReservaOverviewController() {
     }
@@ -52,33 +60,52 @@ public class ReservaOverviewController {
                 (observable, oldValue, newValue) -> showReservaDetails(newValue));
     }
 
-    public void setMainApp(MainApp mainApp) {
+    /*public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
 
         reservaTable.setItems(mainApp.getReservaData());
-    }
+    }*/
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
+    public void setReserva(/*Reserva reserva, */Cliente cliente) {
+        this.reserva = reserva;
+        this.cliente = cliente;
+
+        fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
+        fechaSalidaLabel.setText(reserva.getFechaSalida().toString());
+        numHabitacionesLabel.setText(reserva.getNumHabitaciones().toString());
+        tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
+        fumadorLabel.setText(reserva.getFumador().toString());
+        alojamientoLabel.setText(reserva.getAlojamiento());
+        dniClienteLabel.setText(reserva.getDniCliente());
+        nombreClienteLabel.setText(cliente.getNombre());
+        apellidosClienteLabel.setText(cliente.getApellidos());
+    }
+
     private void showReservaDetails(Reserva reserva) {
         if (reserva != null) {
-            // Fill the labels with info from the reserva object.
             fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
             fechaSalidaLabel.setText(reserva.getFechaSalida().toString());
             numHabitacionesLabel.setText(reserva.getNumHabitaciones().toString());
             tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
             fumadorLabel.setText(reserva.getFumador().toString());
             alojamientoLabel.setText(reserva.getAlojamiento());
+            dniClienteLabel.setText(reserva.getDniCliente());
+            /*nombreClienteLabel.setText(cliente.getNombre());
+            apellidosClienteLabel.setText(cliente.getApellidos());*/
         } else {
-            // Person is null, remove all the text.
             fechaEntradaLabel.setText("");
             fechaSalidaLabel.setText("");
             numHabitacionesLabel.setText("");
             tipoHabitacionLabel.setText("");
             fumadorLabel.setText("");
             alojamientoLabel.setText("");
+            dniClienteLabel.setText("");
+            nombreClienteLabel.setText("");
+            apellidosClienteLabel.setText("");
         }
     }
 

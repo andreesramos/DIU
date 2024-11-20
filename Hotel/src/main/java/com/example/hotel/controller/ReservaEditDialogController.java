@@ -54,7 +54,6 @@ public class ReservaEditDialogController {
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
 
-        //Corregir entero
         fechaEntradaPicker.setValue(reserva.getFechaEntrada());
         fechaSalidaPicker.setValue(reserva.getFechaSalida());
         if(spinnerHabitaciones.getValueFactory() != null) {

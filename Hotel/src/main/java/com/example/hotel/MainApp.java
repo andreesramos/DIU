@@ -113,7 +113,7 @@ public class MainApp extends Application {
         }
     }
 
-    public void showReservaOverview() {
+    public void showReservaOverview(Cliente cliente) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("ReservaOverview.fxml"));
@@ -127,12 +127,17 @@ public class MainApp extends Application {
             Scene scene = new Scene(reservaOverview);
             dialogStage.setScene(scene);
 
+            /*Llamar al metodo de HotelModelo obtener reservas para meter en una variable las reservas
+            asociadas al dni del cliente y poder pasar las reservas como parametro en setReserva
+             */
+
             ReservaOverviewController controller = loader.getController();
-            /*controller.setMainApp(this);
-            controller.setHotelModelo(hotelModelo);*/
+            controller.setReserva(cliente);
             controller.setDialogStage(dialogStage);
 
             dialogStage.showAndWait();
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

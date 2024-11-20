@@ -82,7 +82,17 @@ public class ClienteOverviewController {
 
     @FXML
     private void handleConsultarReserva(){
-        mainApp.showReservaOverview();
+        Cliente selectedCliente = clienteTable.getSelectionModel().getSelectedItem();
+        if(selectedCliente != null) {
+            mainApp.showReservaOverview(selectedCliente);
+        }else{
+            Alert alert= new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Client Selected");
+            alert.setContentText("Please select a client in the table.");
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
