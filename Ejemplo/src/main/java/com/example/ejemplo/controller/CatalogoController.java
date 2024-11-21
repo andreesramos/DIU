@@ -2,16 +2,14 @@ package com.example.ejemplo.controller;
 
 import Modelo.ArticuloVO;
 import Modelo.ExcepcionArticulo;
-import Modelo.Repository.ArticuloRepository;
 import com.example.ejemplo.MainApp;
-import com.example.ejemplo.modelo.repository.TotalInterface;
-import com.example.ejemplo.modelo.repository.impl.TotalInterfaceImpl;
-import com.example.ejemplo.vista.Articulo;
-import com.example.ejemplo.modelo.CatalogoModelo;
-import com.example.ejemplo.modelo.utilidad.ArticuloUtil;
+import com.example.ejemplo.Modelo.Articulo;
+import com.example.ejemplo.Modelo.CatalogoModelo;
+import com.example.ejemplo.util.ArticuloUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 
 public class CatalogoController {
 
@@ -55,22 +53,26 @@ public class CatalogoController {
 
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         precioColumn.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asString());
 
-        // Clear person details.
         showArticuloDetails(null);
 
-        // Listen for selection changes and show the person details when changed.
         articuloTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showArticuloDetails(newValue));
+
+        /*unidades.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                handleTotal(new ActionEvent());
+            }
+        });*/
     }
+
     public void setMainApp(MainApp mainApp) throws ExcepcionArticulo {
         this.mainApp = mainApp;
-        // Add observable list data to the table
         articuloTable.setItems(mainApp.getArticulosData());
     }
+
     private void showArticuloDetails(Articulo articulo) {
         if (articulo != null) {
             nombreLabel.setText(articulo.getNombre());

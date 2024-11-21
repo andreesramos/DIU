@@ -4,18 +4,17 @@ import Modelo.ArticuloVO;
 import Modelo.ExcepcionArticulo;
 import Modelo.Repository.ArticuloRepository;
 import Modelo.Repository.Impl.ArticuloRepositoryJDBC;
-import com.example.ejemplo.vista.Articulo;
-import com.example.ejemplo.modelo.CatalogoModelo;
+import com.example.ejemplo.Modelo.Articulo;
+import com.example.ejemplo.Modelo.CatalogoModelo;
 import com.example.ejemplo.controller.CatalogoController;
 import com.example.ejemplo.controller.NuevoArticuloController;
-import com.example.ejemplo.modelo.utilidad.ArticuloUtil;
+import com.example.ejemplo.util.ArticuloUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -36,9 +35,9 @@ public class MainApp extends Application {
     private ObservableList<Articulo> articulosData = FXCollections.observableArrayList();
 
     public MainApp() {
-        // Add some sample data
         articulosData.addAll(addList());
     }
+
     public ArrayList<Articulo> addList(){
         catalogoModelo=new CatalogoModelo();
         conversor=new ArticuloUtil();
@@ -46,6 +45,7 @@ public class MainApp extends Application {
         catalogoModelo.setArticuloRepository(articuloRepository);
         ArrayList<ArticuloVO>listaArticuloVO = new ArrayList<ArticuloVO>();
         ArrayList<Articulo>listaArticulo= new ArrayList<Articulo>();
+
         try{
             listaArticuloVO = catalogoModelo.obternerListaArticulos();
             catalogoModelo.setNumeroArticulos(listaArticuloVO.size());
@@ -56,7 +56,9 @@ public class MainApp extends Application {
             alert.setContentText("No se puede conectar con la base de datos");
             alert.showAndWait();
         }
+
         listaArticulo=conversor.lista(listaArticuloVO);
+
         return listaArticulo;
     }
 
@@ -76,10 +78,9 @@ public class MainApp extends Application {
         showCatalogoOverview();
 
     }
+
     public void showCatalogoOverview() {
         try {
-            // Load person overview.
-            //FXMLLoader loader = new FXMLLoader();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("Catalogo.fxml"));
             AnchorPane catalogoOverview = (AnchorPane) loader.load();
 
@@ -97,10 +98,9 @@ public class MainApp extends Application {
             throw new RuntimeException(e);
         }
     }
+
     public boolean showNuevoArticulo(Articulo articulo) {
         try {
-            // Load person overview.
-            //FXMLLoader loader = new FXMLLoader();
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("NuevoArticulo.fxml"));
             AnchorPane nuevoArticuloOverview = (AnchorPane) loader.load();
 

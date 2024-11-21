@@ -1,7 +1,7 @@
 package com.example.ejemplo.controller;
 
-import com.example.ejemplo.vista.Articulo;
-import com.example.ejemplo.modelo.CatalogoModelo;
+import com.example.ejemplo.Modelo.Articulo;
+import com.example.ejemplo.Modelo.CatalogoModelo;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ChangeListener;
@@ -30,6 +30,7 @@ public class NuevoArticuloController {
     private Articulo articulo;
     private IntegerProperty numArticulos=new SimpleIntegerProperty();
     private boolean okClicked = false;
+
     public NuevoArticuloController() {
     }
 
@@ -47,12 +48,15 @@ public class NuevoArticuloController {
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
+
     public void setCatalogoModelo(CatalogoModelo catalogoModelo) {
         this.catalogoModelo = catalogoModelo;
     }
+
     public boolean isOkClicked() {
         return okClicked;
     }
+
     public void setArticulo(Articulo articulo) {
         this.articulo = articulo;
         nombreA.setText(articulo.getNombre());
@@ -60,6 +64,7 @@ public class NuevoArticuloController {
         precioA.setText(String.valueOf(articulo.getPrecio()));
         stockA.setText(Integer.toString(articulo.getStock()));
     }
+
     public void handleAceptar(ActionEvent actionEvent) {
         if (isInputValid()) {
             articulo.setNombre(nombreA.getText());
@@ -70,6 +75,7 @@ public class NuevoArticuloController {
             dialogStage.close();
         }
     }
+
     private boolean isInputValid() {
         String errorMessage = "";
 
@@ -88,11 +94,9 @@ public class NuevoArticuloController {
                 errorMessage += "Debe introducir un numero\n";
             }
         }
-
         if (stockA.getText() == null || stockA.getText().length() == 0) {
             errorMessage += "Stock invalido\n";
         } else {
-            // try to parse the postal code into an int.
             try {
                 Integer.parseInt(stockA.getText());
             } catch (NumberFormatException e) {
@@ -102,7 +106,6 @@ public class NuevoArticuloController {
         if (errorMessage.length() == 0) {
             return true;
         } else {
-            // Show the error message.
             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
             alerta.setTitle("Campos invalidos");
             alerta.setHeaderText("Introduzca correctamente los campos");
