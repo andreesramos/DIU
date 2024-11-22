@@ -44,9 +44,9 @@ public class MainApp extends Application {
      * Returns the data as an observable list of Persons.
      * @return
      */
-    public ObservableList<Person> getPersonData() {
-        return personData;
-    }
+        public ObservableList<Person> getPersonData() {
+            return personData;
+        }
 
     /**
      * Returns the main stage.

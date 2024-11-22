@@ -50,7 +50,7 @@
                         </GridPane>
                   <HBox prefHeight="50.0" prefWidth="400.0" spacing="15.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="20.0">
                      <children>
-                              <TextField fx:id="total" editable="false" onAction="#handleTotal" prefHeight="30.0" prefWidth="98.0">
+                              <TextField fx:id="unidades" prefHeight="30.0" prefWidth="98.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
@@ -60,7 +60,7 @@
                               <Insets top="10.0" />
                            </padding>
                         </Label>
-                              <TextField fx:id="unidades" prefHeight="30.0" prefWidth="60.0">
+                              <TextField fx:id="total" editable="false" prefHeight="30.0" prefWidth="60.0">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>

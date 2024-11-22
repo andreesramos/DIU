@@ -25,7 +25,7 @@ public class ConversorController {
         return Float.valueOf(euros.getText());
     }
 
-    public void convertirMoneda()throws ExcepcionMoneda{
+    public void convertirMoneda(){
         float dolar=conversorModelo.obtenerDolar(obtenerEuros());
         dolares.setText(String.valueOf(dolar));
     }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.andresramosjavafx.controller.ImagenController">
+   <children>
+      <ImageView fx:id="imagenMoneda" fitHeight="211.0" fitWidth="325.0" layoutX="195.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Descargas/istockphoto-467379341-612x612.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="numMonedasLabel" layoutX="355.0" layoutY="318.0" text="Label" />
+      <Label layoutX="177.0" layoutY="318.0" text="NUMERO DE MONEDAS: " />
+   </children>
+</AnchorPane>

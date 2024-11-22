@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.andresramosjavafx.controller.ConversorViewController">
+    <children>
+        <SplitPane dividerPositions="0.3194842406876791" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <TableView fx:id="monedaTable" layoutX="-13.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="nombreMonedaColumn" prefWidth="75.0" text="Nombre de moneda" />
+                            </columns>
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                            </columnResizePolicy>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
+                    <children>
+                        <HBox layoutX="195.0" layoutY="255.0" spacing="5.0" stylesheets="@../../../estilos/botonesAzules.css" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                            <children>
+                                <Button layoutX="195.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleConvertirMoneda" prefWidth="90.0" text="Convertir" />
+                                <Button layoutX="336.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteMoneda" prefWidth="90.0" text="Eliminar" />
+                            </children>
+                        </HBox>
+                  <Label fx:id="nombreMonedaLabel" layoutX="97.0" layoutY="132.0" text="Label" />
+                  <Label layoutX="283.0" layoutY="132.0" text="Euros" />
+                  <Label layoutX="13.0" layoutY="14.0" text="Lista de monedas" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0" />
+                  <TextField fx:id="monedaField" layoutX="33.0" layoutY="179.0" onAction="#handleConvertirMoneda" />
+                  <TextField fx:id="eurosField" layoutX="220.0" layoutY="179.0" onAction="#handleConvertirMoneda" />
+                    </children>
+            </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
