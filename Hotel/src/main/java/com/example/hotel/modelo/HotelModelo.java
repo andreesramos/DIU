@@ -26,16 +26,23 @@ public class HotelModelo {
         return listaClientes;
     }
 
-    public static ArrayList<ReservaVO> obtenerReservas() {
-        ArrayList<ReservaVO> listaReservas=reservaRepository.obtenerListaReservas();
-        return listaReservas;
-    }
-
     public ArrayList<Cliente> mostrarClientes() {
         ArrayList<ClienteVO> listaClientesVO=obtenerClientes();
         ArrayList<Cliente> listaClientes=new ArrayList<>();
         listaClientes=ClienteUtil.getCliente(listaClientesVO);
         return listaClientes;
+    }
+
+    public static ArrayList<ReservaVO> obtenerReservas() {
+        ArrayList<ReservaVO> listaReservas=reservaRepository.obtenerListaReservas();
+        return listaReservas;
+    }
+
+    public ArrayList<Reserva> mostrarReservas() {
+        ArrayList<ReservaVO> listaReservasVO=obtenerReservas();
+        ArrayList<Reserva> listaReservas=new ArrayList<>();
+        listaReservas=ReservaUtil.getReserva(listaReservasVO);
+        return listaReservas;
     }
 
     public void insertarCliente(Cliente cliente) throws ExcepcionHotel{

@@ -36,7 +36,7 @@ public class ReservaEditDialogController {
     private ProgressIndicator indicator;*/
 
     private Stage dialogStage;
-    private Reserva reserva;
+    private Reserva reserva=new Reserva();
     private boolean okClicked = false;
 
     @FXML

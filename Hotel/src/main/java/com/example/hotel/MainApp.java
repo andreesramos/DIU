@@ -5,8 +5,10 @@ import com.example.hotel.controller.ClienteOverviewController;
 import com.example.hotel.controller.ReservaEditDialogController;
 import com.example.hotel.controller.ReservaOverviewController;
 import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
 import com.example.hotel.modelo.repository.impl.ReservaRepositoryImpl;
+import com.example.hotel.modelo.utilidad.ReservaUtil;
 import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
 import javafx.application.Application;
@@ -19,6 +21,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainApp extends Application {
     private Stage primaryStage;
@@ -36,6 +39,7 @@ public class MainApp extends Application {
             hotelModelo.setReservaRepository(reservaRepository);
 
             clienteData.addAll(hotelModelo.mostrarClientes());
+            reservaData.addAll(hotelModelo.mostrarReservas());
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -46,6 +50,16 @@ public class MainApp extends Application {
         return clienteData;
     }
     public ObservableList<Reserva> getReservaData() {return reservaData;}
+
+    public ObservableList<Reserva> getReservaData(Cliente cliente){
+        ObservableList<Reserva> reservas = FXCollections.observableArrayList();
+        for (Reserva reserva : reservaData){
+            if(reserva.getDniCliente().equals(cliente.getDni())){
+                reservas.add(reserva);
+            }
+        }
+        return reservas;
+    }
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -127,17 +141,17 @@ public class MainApp extends Application {
             Scene scene = new Scene(reservaOverview);
             dialogStage.setScene(scene);
 
-            /*Llamar al metodo de HotelModelo obtener reservas para meter en una variable las reservas
-            asociadas al dni del cliente y poder pasar las reservas como parametro en setReserva
-             */
-
             ReservaOverviewController controller = loader.getController();
-            controller.setReserva(cliente);
             controller.setDialogStage(dialogStage);
 
+            //ArrayList<Reserva> reservas= hotelModelo.mostrarReservas();
+            //for(Reserva reserva:reservas){
+                //if(reserva.getDniCliente().equals(cliente.getDni())){
+                    controller.setReserva(cliente);
+                //}
+            //}
+
             dialogStage.showAndWait();
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -18,7 +18,7 @@ public class Reserva {
     private final StringProperty dniCliente;
 
     public Reserva() {
-        this(0, null, null, 0, null, null, null, null);
+        this(0, null, null, 0, null, false, null, null);
     }
 
     public Reserva(Integer idReserva, LocalDate fechaEntrada, LocalDate fechaSalida, Integer numHabitaciones, String tipoHabitaciones, Boolean fumador, String alojamiento, String dniCliente) {

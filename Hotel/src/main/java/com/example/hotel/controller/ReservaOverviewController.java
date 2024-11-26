@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class ReservaOverviewController {
     private HotelModelo hotelModelo;
     private Stage dialogStage;
-    private MainApp mainApp;
+    private MainApp mainApp=new MainApp();
     private Reserva reserva;
     private Cliente cliente;
 
@@ -70,19 +70,21 @@ public class ReservaOverviewController {
         this.dialogStage = dialogStage;
     }
 
-    public void setReserva(/*Reserva reserva, */Cliente cliente) {
-        this.reserva = reserva;
+    public void setReserva(Cliente cliente) {
+        //this.reserva = reserva;
         this.cliente = cliente;
 
-        fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
+        /*fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
         fechaSalidaLabel.setText(reserva.getFechaSalida().toString());
         numHabitacionesLabel.setText(reserva.getNumHabitaciones().toString());
         tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
         fumadorLabel.setText(reserva.getFumador().toString());
-        alojamientoLabel.setText(reserva.getAlojamiento());
-        dniClienteLabel.setText(reserva.getDniCliente());
+        alojamientoLabel.setText(reserva.getAlojamiento());*/
+        dniClienteLabel.setText(cliente.getDni());
         nombreClienteLabel.setText(cliente.getNombre());
         apellidosClienteLabel.setText(cliente.getApellidos());
+
+        reservaTable.setItems(mainApp.getReservaData(cliente));
     }
 
     private void showReservaDetails(Reserva reserva) {
@@ -93,8 +95,8 @@ public class ReservaOverviewController {
             tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
             fumadorLabel.setText(reserva.getFumador().toString());
             alojamientoLabel.setText(reserva.getAlojamiento());
-            dniClienteLabel.setText(reserva.getDniCliente());
-            /*nombreClienteLabel.setText(cliente.getNombre());
+            /*dniClienteLabel.setText(reserva.getDniCliente());
+            nombreClienteLabel.setText(cliente.getNombre());
             apellidosClienteLabel.setText(cliente.getApellidos());*/
         } else {
             fechaEntradaLabel.setText("");
@@ -103,9 +105,9 @@ public class ReservaOverviewController {
             tipoHabitacionLabel.setText("");
             fumadorLabel.setText("");
             alojamientoLabel.setText("");
-            dniClienteLabel.setText("");
+            /*dniClienteLabel.setText("");
             nombreClienteLabel.setText("");
-            apellidosClienteLabel.setText("");
+            apellidosClienteLabel.setText("");*/
         }
     }
 
