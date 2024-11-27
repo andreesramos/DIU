@@ -60,12 +60,6 @@ public class ReservaOverviewController {
                 (observable, oldValue, newValue) -> showReservaDetails(newValue));
     }
 
-    /*public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-
-        reservaTable.setItems(mainApp.getReservaData());
-    }*/
-
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
@@ -80,6 +74,7 @@ public class ReservaOverviewController {
         tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
         fumadorLabel.setText(reserva.getFumador().toString());
         alojamientoLabel.setText(reserva.getAlojamiento());*/
+
         dniClienteLabel.setText(cliente.getDni());
         nombreClienteLabel.setText(cliente.getNombre());
         apellidosClienteLabel.setText(cliente.getApellidos());

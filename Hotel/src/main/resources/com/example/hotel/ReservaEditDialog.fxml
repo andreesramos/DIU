@@ -39,12 +39,12 @@
                 </Spinner>
             <VBox fx:id="alojamientoBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                      <RadioButton fx:id="alojamientoYDesayunoButton" mnemonicParsing="false" text="Alojamiento y desayuno" toggleGroup="$buenas">
-                        <toggleGroup>
-                            <ToggleGroup fx:id="buenas" />
-                        </toggleGroup></RadioButton>
-                      <RadioButton fx:id="mediaPensionButton" mnemonicParsing="false" text="Media Pension" toggleGroup="$buenas" />
-                      <RadioButton fx:id="pensionCompletaButton" mnemonicParsing="false" text="Pension Completa" toggleGroup="$buenas" />
+                    <RadioButton fx:id="alojamientoYDesayunoButton" mnemonicParsing="false" text="Alojamiento y desayuno">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="botones" />
+                     </toggleGroup></RadioButton>
+                    <RadioButton fx:id="mediaPensionButton" mnemonicParsing="false" text="Media Pension" toggleGroup="$botones" />
+                    <RadioButton fx:id="pensionCompletaButton" mnemonicParsing="false" text="Pension Completa" toggleGroup="$botones" />
                </children>
             </VBox>
             </children>

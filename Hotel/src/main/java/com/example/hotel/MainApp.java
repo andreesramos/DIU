@@ -143,13 +143,8 @@ public class MainApp extends Application {
 
             ReservaOverviewController controller = loader.getController();
             controller.setDialogStage(dialogStage);
-
-            //ArrayList<Reserva> reservas= hotelModelo.mostrarReservas();
-            //for(Reserva reserva:reservas){
-                //if(reserva.getDniCliente().equals(cliente.getDni())){
-                    controller.setReserva(cliente);
-                //}
-            //}
+            controller.setHotelModelo(hotelModelo);
+            controller.setReserva(cliente);
 
             dialogStage.showAndWait();
         } catch (IOException e) {

@@ -4,13 +4,16 @@ import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.utilidad.DateUtil;
 import com.example.hotel.vista.Reserva;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ReservaEditDialogController {
@@ -30,10 +33,10 @@ public class ReservaEditDialogController {
     private CheckBox fumadorCheck;
     @FXML
     private VBox alojamientoBox;
-    /*@FXML
-    private ProgressBar progreso;
     @FXML
-    private ProgressIndicator indicator;*/
+    private RadioButton alojamientoYDesayunoButton, mediaPensionButton, pensionCompletaButton;
+    @FXML
+    private ToggleGroup botones;
 
     private Stage dialogStage;
     private Reserva reserva=new Reserva();
@@ -42,9 +45,8 @@ public class ReservaEditDialogController {
     @FXML
     private void initialize() {
         ArrayList<ReservaVO> reservas = HotelModelo.obtenerReservas();
-        //cambiarBarra(reservas.size());
-        //progreso.progressProperty().bindBidirectional(progresoNum);
-        //indicator.progressProperty().bindBidirectional(progresoNum);
+
+        tipoHabitacionChoice.setItems(FXCollections.observableArrayList("Doble individual", "Doble", "Junior suite", "Suite"));
     }
 
     public void setDialogStage(Stage dialogStage) {
@@ -62,6 +64,23 @@ public class ReservaEditDialogController {
         tipoHabitacionChoice.setValue(reserva.getTipoHabitacion());
         fumadorCheck.setSelected(reserva.getFumador());
         alojamientoBox.getChildren().clear();
+
+        botones=new ToggleGroup();
+        for(String opc: reserva.getRegimenOpciones()){
+            RadioButton radioButton = new RadioButton(opc);
+            radioButton.setToggleGroup(botones);
+            if(opc.equals(reserva.getAlojamientoSeleccionado())){
+                radioButton.setSelected(true);
+            }
+            alojamientoBox.getChildren().add(radioButton);
+        }
+        botones.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue != null){
+                RadioButton radioButton = (RadioButton) newValue;
+                List<String> lista = Collections.singletonList(radioButton.getText());
+                reserva.setAlojamientoSeleccionado(lista);
+            }
+        });
     }
 
     public boolean isOkClicked() {
@@ -73,13 +92,21 @@ public class ReservaEditDialogController {
         if (isInputValid()) {
             reserva.setFechaEntrada(fechaEntradaPicker.getValue());
             reserva.setFechaSalida(fechaSalidaPicker.getValue());
+
             if(spinnerHabitaciones.getValue() != null) {
                 reserva.setNumHabitaciones(Integer.parseInt(spinnerHabitaciones.getValue().toString()));
             }
             reserva.setTipoHabitacion(tipoHabitacionChoice.getValue().toString());
             reserva.setFumador(fumadorCheck.isSelected());
 
-            List<String> alojamientoSeleccionado = new ArrayList<>();
+            RadioButton selectedAlojamiento = (RadioButton) botones.getSelectedToggle();
+            if(selectedAlojamiento != null){
+                reserva.setAlojamientoSeleccionado(Collections.singletonList(selectedAlojamiento.getText()));
+            }else{
+                System.out.println("Alojamiento nulo");
+            }
+
+            /*List<String> alojamientoSeleccionado = new ArrayList<>();
             for (Node node : alojamientoBox.getChildren()) {
                 if (node instanceof CheckBox) {
                     CheckBox checkBox = (CheckBox) node;
@@ -88,7 +115,7 @@ public class ReservaEditDialogController {
                     }
                 }
             }
-            reserva.setAlojamientoSeleccionado(alojamientoSeleccionado);
+            reserva.setAlojamientoSeleccionado(alojamientoSeleccionado);*/
 
             okClicked = true;
             dialogStage.close();
@@ -119,32 +146,21 @@ public class ReservaEditDialogController {
             errorMessage += "Tipo de habitacion no valida\n";
         }
 
-        if (!fumadorCheck.isSelected() || fumadorCheck.isIndeterminate()) {
+        /*if (!fumadorCheck.isSelected() || fumadorCheck.isIndeterminate()) {
             errorMessage += "Fumador no valido\n";
-        }
+        }*/
 
-        boolean isAlojamientoSeleccionado = false;
-        for (Node node : alojamientoBox.getChildren()) {
-            if (node instanceof CheckBox) {
-                CheckBox checkBox = (CheckBox) node;
-                if (checkBox.isSelected()) {
-                    isAlojamientoSeleccionado = true;
-                    break;
-                }
-            }
+        if (botones.getSelectedToggle() == null) {
+            errorMessage += "Régimen de alojamiento no válido\n";
         }
-        if (!isAlojamientoSeleccionado) {
-            errorMessage += "Regimen de alojamiento no valido\n";
-        }
-
 
         if (errorMessage.length() == 0) {
             return true;
         } else {
             Alert alert= new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Nada Seleccionado");
-            alert.setHeaderText("No hay reserva seleccionada");
-            alert.setContentText("Porfavor, seleccione una reserva");
+            alert.setTitle("Campos inválidos");
+            alert.setHeaderText("Algún campo es inválido");
+            alert.setContentText("Porfavor, corrija los campos");
 
             alert.showAndWait();
             return false;
