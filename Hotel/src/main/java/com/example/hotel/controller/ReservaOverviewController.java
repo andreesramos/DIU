@@ -90,9 +90,6 @@ public class ReservaOverviewController {
             tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
             fumadorLabel.setText(reserva.getFumador().toString());
             alojamientoLabel.setText(reserva.getAlojamiento());
-            /*dniClienteLabel.setText(reserva.getDniCliente());
-            nombreClienteLabel.setText(cliente.getNombre());
-            apellidosClienteLabel.setText(cliente.getApellidos());*/
         } else {
             fechaEntradaLabel.setText("");
             fechaSalidaLabel.setText("");
@@ -100,9 +97,6 @@ public class ReservaOverviewController {
             tipoHabitacionLabel.setText("");
             fumadorLabel.setText("");
             alojamientoLabel.setText("");
-            /*dniClienteLabel.setText("");
-            nombreClienteLabel.setText("");
-            apellidosClienteLabel.setText("");*/
         }
     }
 
@@ -125,6 +119,7 @@ public class ReservaOverviewController {
     @FXML
     private void handleNewReserva() {
         Reserva tempReserva = new Reserva();
+        tempReserva.setDniCliente(dniClienteLabel.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
             mainApp.getReservaData().add(tempReserva);

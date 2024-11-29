@@ -64,7 +64,7 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         String sql = "INSERT INTO reservas (fechaEntrada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, alojamiento, dniCliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = this.conexion.conectarBD();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setDate(1, java.sql.Date.valueOf(m.getFechaEntrada()));
             pstmt.setDate(2, java.sql.Date.valueOf(m.getFechaSalida()));
@@ -75,9 +75,18 @@ public class ReservaRepositoryImpl implements ReservaRepository {
             pstmt.setString(7, m.getDniCliente());
 
             pstmt.executeUpdate();
+            pstmt.close();
+
+            /*Connection conn = this.conexion.conectarBD();
+            this.stmt = conn.createStatement();
+            this.sentencia = "INSERT INTO reservas (fechaEntrada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, alojamiento, dniCliente) VALUES ('" + m.getFechaEntrada() + "','" + m.getFechaSalida() + "','" + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getAlojamiento() + "','" + m.getDniCliente() + "');";
+            System.out.println(m.toString());
+            this.stmt.executeUpdate(this.sentencia);
+            this.stmt.close();*/
+            this.conexion.desconectarBD(conn);
 
         } catch (SQLException e) {
-            e.printStackTrace(); // Para depuración (puedes eliminar en producción)
+            e.printStackTrace();
             throw new ExcepcionHotel("No se ha podido realizar la operación: " + e.getMessage());
         }
     }

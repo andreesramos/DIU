@@ -78,7 +78,7 @@ public class ReservaEditDialogController {
             if(newValue != null){
                 RadioButton radioButton = (RadioButton) newValue;
                 List<String> lista = Collections.singletonList(radioButton.getText());
-                reserva.setAlojamientoSeleccionado(lista);
+                reserva.setAlojamiento(lista.getFirst());
             }
         });
     }
@@ -99,23 +99,12 @@ public class ReservaEditDialogController {
             reserva.setTipoHabitacion(tipoHabitacionChoice.getValue().toString());
             reserva.setFumador(fumadorCheck.isSelected());
 
-            RadioButton selectedAlojamiento = (RadioButton) botones.getSelectedToggle();
-            if(selectedAlojamiento != null){
+            if (botones.getSelectedToggle() != null) {
+                RadioButton selectedAlojamiento = (RadioButton) botones.getSelectedToggle();
                 reserva.setAlojamientoSeleccionado(Collections.singletonList(selectedAlojamiento.getText()));
-            }else{
-                System.out.println("Alojamiento nulo");
+            } else {
+                reserva.setAlojamientoSeleccionado(Collections.singletonList("Ninguno"));
             }
-
-            /*List<String> alojamientoSeleccionado = new ArrayList<>();
-            for (Node node : alojamientoBox.getChildren()) {
-                if (node instanceof CheckBox) {
-                    CheckBox checkBox = (CheckBox) node;
-                    if (checkBox.isSelected()) {
-                        alojamientoSeleccionado.add(checkBox.getText());
-                    }
-                }
-            }
-            reserva.setAlojamientoSeleccionado(alojamientoSeleccionado);*/
 
             okClicked = true;
             dialogStage.close();

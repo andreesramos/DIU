@@ -45,8 +45,11 @@ public class ClienteOverviewController {
 
     @FXML
     private void initialize() {
-        apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        nombreColumn.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
+        apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
+        nombreColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+
+        apellidosColumn.setSortable(true);
+        nombreColumn.setSortable(true);
 
         showClienteDetails(null);
 
