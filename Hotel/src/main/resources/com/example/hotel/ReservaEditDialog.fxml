@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaEditDialogController">
+<AnchorPane prefHeight="420.0" prefWidth="700.0" styleClass="background" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaEditDialogController">
     <children>
         <GridPane prefHeight="290.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <columnConstraints>
@@ -34,7 +34,7 @@
                 <DatePicker fx:id="fechaSalidaPicker" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <ChoiceBox fx:id="tipoHabitacionChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <CheckBox fx:id="fumadorCheck" mnemonicParsing="false" text="Fumador" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                <Spinner fx:id="spinnerHabitaciones" initialValue="3" max="100" min="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Spinner fx:id="spinnerHabitaciones" initialValue="3" max="1" min="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <editable>true</editable>
                 </Spinner>
             <VBox fx:id="alojamientoBox" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -49,11 +49,12 @@
             </VBox>
             </children>
         </GridPane>
-        <HBox layoutX="447.0" layoutY="348.0" spacing="10.0">
+        <HBox layoutX="447.0" layoutY="348.0" spacing="10.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="447.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="100.0" text="OK" />
+                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk" prefWidth="100.0" text="OK" />
                 <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="CANCELAR" />
             </children>
         </HBox>
+      <Label fx:id="fumadorLabel" prefHeight="50.0" prefWidth="500.0" text="En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin." wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="315.0" />
     </children>
 </AnchorPane>

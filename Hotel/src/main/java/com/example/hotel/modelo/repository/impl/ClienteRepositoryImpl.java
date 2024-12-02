@@ -3,11 +3,9 @@ package com.example.hotel.modelo.repository.impl;
 import com.example.hotel.modelo.ClienteVO;
 import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.repository.ClienteRepository;
+import com.example.hotel.vista.Cliente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ClienteRepositoryImpl implements ClienteRepository {
@@ -65,10 +63,11 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
             Statement comando = conn.createStatement();
-            String sql = String.format("DELETE FROM clientes WHERE dni = %s", dni);
+            String sql = String.format("DELETE FROM clientes WHERE dni = '%s'", dni);
             comando.executeUpdate(sql);
             this.conexion.desconectarBD(conn);
         } catch (SQLException var5) {
+            System.out.println(var5.getMessage());
             throw new ExcepcionHotel("No se ha podido realizar la eliminación");
         }
     }
@@ -79,9 +78,44 @@ public class ClienteRepositoryImpl implements ClienteRepository {
             this.stmt = conn.createStatement();
             String sql = String.format("UPDATE clientes SET nombre = '%s', apellidos = '%s', direccion = '%s', localidad = '%s', provincia = '%s' WHERE dni = '%s'", clienteVO.getNombre(), clienteVO.getApellidos(), clienteVO.getDireccion(), clienteVO.getLocalidad(), clienteVO.getProvincia(), clienteVO.getDni());
             this.stmt.executeUpdate(sql);
+            this.conexion.desconectarBD(conn);
         } catch (Exception var4) {
             throw new ExcepcionHotel("No se ha podido realizar la edición");
         }
+    }
+
+    public ClienteVO buscarCliente(String dni) throws ExcepcionHotel {
+        String sql = "SELECT * FROM clientes WHERE dni = ?";
+        try (Connection conn = this.conexion.conectarBD();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, dni);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String nombre = rs.getString("nombre");
+                String apellidos = rs.getString("apellidos");
+                String direccion = rs.getString("direccion");
+                String localidad = rs.getString("localidad");
+                String provincia = rs.getString("provincia");
+                return new ClienteVO(nombre, apellidos, dni, direccion, localidad, provincia);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new ExcepcionHotel("No se ha podido realizar la búsqueda");
+        }
+        return null;
+
+        /*try{
+            Connection conn = this.conexion.conectarBD();
+            this.stmt = conn.createStatement();
+            String sql = String.format("SELECT * FROM clientes WHERE dni = '%s'", dni);
+            this.stmt.executeUpdate(sql);
+            this.conexion.desconectarBD(conn);
+        }catch (SQLException var7) {
+            System.out.println(var7.getMessage());
+            throw new ExcepcionHotel("No se ha podido realizar la busqueda");
+        }*/
     }
 
     /*public String lastDni() throws ExcepcionHotel {

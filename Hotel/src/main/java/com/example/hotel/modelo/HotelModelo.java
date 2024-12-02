@@ -59,6 +59,12 @@ public class HotelModelo {
         clienteRepository.editCliente(clienteVO);
     }
 
+    public Cliente buscarCliente(String dni) throws ExcepcionHotel{
+        ClienteVO clienteVO=clienteRepository.buscarCliente(dni);
+        Cliente cliente=ClienteUtil.getCliente(clienteVO);
+        return cliente;
+    }
+
     public void insertarReserva(Reserva reserva) throws ExcepcionHotel{
         ReservaVO reservaVO= ReservaUtil.getReservaVO(reserva);
         reservaRepository.addReserva(reservaVO);

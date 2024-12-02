@@ -37,6 +37,8 @@ public class ReservaEditDialogController {
     private RadioButton alojamientoYDesayunoButton, mediaPensionButton, pensionCompletaButton;
     @FXML
     private ToggleGroup botones;
+    @FXML
+    private Label fumadorLabel;
 
     private Stage dialogStage;
     private Reserva reserva=new Reserva();
@@ -45,6 +47,14 @@ public class ReservaEditDialogController {
     @FXML
     private void initialize() {
         ArrayList<ReservaVO> reservas = HotelModelo.obtenerReservas();
+
+        fumadorCheck.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue){
+                fumadorLabel.setText("En virtud de la ley de sanidad se informa a los clientes de que solo podrán fumar en las habitaciones reservadas para tal fin.");
+            }else{
+                fumadorLabel.setText("");
+            }
+        });
 
         tipoHabitacionChoice.setItems(FXCollections.observableArrayList("Doble individual", "Doble", "Junior suite", "Suite"));
     }

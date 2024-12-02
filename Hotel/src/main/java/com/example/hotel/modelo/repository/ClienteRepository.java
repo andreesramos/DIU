@@ -15,5 +15,7 @@ public interface ClienteRepository {
 
     void editCliente(ClienteVO var1) throws ExcepcionHotel;
 
+    ClienteVO buscarCliente(String var1) throws ExcepcionHotel;
+
     //String lastDni() throws ExcepcionHotel;
 }

@@ -80,6 +80,11 @@ public class ReservaOverviewController {
         apellidosClienteLabel.setText(cliente.getApellidos());
 
         reservaTable.setItems(mainApp.getReservaData(cliente));
+
+        fechaEntradaColumn.setSortType(TableColumn.SortType.DESCENDING);
+        reservaTable.getSortOrder().add(fechaEntradaColumn);
+
+        reservaTable.sort();
     }
 
     private void showReservaDetails(Reserva reserva) {
@@ -124,6 +129,7 @@ public class ReservaOverviewController {
         if (okClicked) {
             mainApp.getReservaData().add(tempReserva);
             hotelModelo.insertarReserva(tempReserva);
+            reservaTable.sort();
         }
     }
 
@@ -135,6 +141,7 @@ public class ReservaOverviewController {
             if (okClicked) {
                 showReservaDetails(selectedReserva);
                 hotelModelo.modificarReserva(selectedReserva);
+                reservaTable.sort();
             }
 
         } else {

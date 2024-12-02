@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteEditDialogController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" styleClass="background" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteEditDialogController">
    <children>
       <GridPane prefHeight="270.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
         <columnConstraints>
@@ -22,13 +22,13 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Dni" GridPane.rowIndex="0"/>
+            <Label text="Dni" GridPane.rowIndex="0" />
             <Label text="Nombre" GridPane.rowIndex="1" />
             <Label text="Apellido" GridPane.rowIndex="2" />
             <Label text="Direccion" GridPane.rowIndex="3" />
             <Label text="Localidad" GridPane.rowIndex="4" />
             <Label text="Provincia" GridPane.rowIndex="5" />
-            <TextField fx:id="dniField" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <TextField fx:id="dniField" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
             <TextField fx:id="nombreField" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="apellidosField" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="direccionField" prefHeight="40.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -39,7 +39,7 @@
       </GridPane>
       <HBox layoutX="447.0" layoutY="348.0" spacing="10.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#handleOk" prefWidth="100.0" text="OK" />
+            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk" prefWidth="100.0" text="OK" />
             <Button mnemonicParsing="false" onAction="#handleCancel" prefHeight="30.0" prefWidth="100.0" text="CANCELAR" />
          </children>
       </HBox>

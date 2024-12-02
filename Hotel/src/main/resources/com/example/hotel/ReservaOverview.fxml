@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaOverviewController">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ReservaOverviewController">
     <children>
         <SplitPane dividerPositions="0.3181818181818182" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -25,9 +25,9 @@
                         </TableView>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Detalles de la Reserva" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <Label layoutX="14.0" layoutY="14.0" styleClass="label-header" text="Detalles de la Reserva" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                             <font>
                                 <Font size="26.0" />
                             </font></Label>
@@ -51,16 +51,16 @@
                                 <Label text="Tipo de Habitacion" GridPane.rowIndex="3" />
                                 <Label text="Fumador" GridPane.rowIndex="4" />
                                 <Label text="Alojamiento" GridPane.rowIndex="5" />
-                        <Label fx:id="fechaEntradaLabel" text="Label" GridPane.columnIndex="1" />
-                        <Label fx:id="fechaSalidaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="numHabitacionesLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="tipoHabitacionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="fumadorLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="alojamientoLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="fechaEntradaLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="fechaSalidaLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="numHabitacionesLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="tipoHabitacionLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="fumadorLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="alojamientoLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                             </children>
                         </GridPane>
 
-                  <Label layoutX="5.0" layoutY="409.0" text="Detalles del Cliente" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="380.0">
+                  <Label layoutX="5.0" layoutY="409.0" styleClass="label-header" text="Detalles del Cliente" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="380.0">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -77,11 +77,11 @@
                     </rowConstraints>
                      <children>
                         <Label text="DNI" />
-                        <Label fx:id="dniClienteLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="dniClienteLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                         <Label text="NOMBRE" GridPane.rowIndex="1" />
-                        <Label fx:id="nombreClienteLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="nombreClienteLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label text="APELLIDOS" GridPane.rowIndex="2" />
-                        <Label fx:id="apellidosClienteLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="apellidosClienteLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                         <HBox layoutX="195.0" layoutY="255.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">

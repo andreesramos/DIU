@@ -1,13 +1,11 @@
 package com.example.hotel.controller;
 
 import com.example.hotel.MainApp;
+import com.example.hotel.modelo.ExcepcionHotel;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.vista.Cliente;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 public class ClienteOverviewController {
     private HotelModelo hotelModelo;
@@ -22,6 +20,10 @@ public class ClienteOverviewController {
     private TableColumn<Cliente, String> apellidosColumn;
     @FXML
     private TableColumn<Cliente, String> nombreColumn;
+    @FXML
+    private TextField dniBuscar;
+    @FXML
+    private Button buscarButton;
 
     @FXML
     private Label dniLabel;
@@ -48,9 +50,6 @@ public class ClienteOverviewController {
         apellidosColumn.setCellValueFactory(cellData -> cellData.getValue().apellidosProperty());
         nombreColumn.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
 
-        apellidosColumn.setSortable(true);
-        nombreColumn.setSortable(true);
-
         showClienteDetails(null);
 
         clienteTable.getSelectionModel().selectedItemProperty().addListener(
@@ -62,6 +61,11 @@ public class ClienteOverviewController {
         this.mainApp = mainApp;
 
         clienteTable.setItems(mainApp.getClienteData());
+
+        apellidosColumn.setSortType(TableColumn.SortType.ASCENDING);
+        clienteTable.getSortOrder().add(apellidosColumn);
+
+        clienteTable.sort();
     }
 
 
@@ -122,6 +126,7 @@ public class ClienteOverviewController {
         if (okClicked) {
             mainApp.getClienteData().add(tempCliente);
             hotelModelo.insertarCliente(tempCliente);
+            clienteTable.sort();
         }
     }
 
@@ -134,6 +139,7 @@ public class ClienteOverviewController {
             if (okClicked) {
                 showClienteDetails(selectedCliente);
                 hotelModelo.modificarCliente(selectedCliente);
+                clienteTable.sort();
             }
 
         } else {
@@ -142,6 +148,39 @@ public class ClienteOverviewController {
             alert.setHeaderText("No Client Selected");
             alert.setContentText("Please select a client in the table.");
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleBuscarCliente() {
+        String dni = dniBuscar.getText();
+
+        if(dni.isEmpty()) {
+            Alert alert=new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("BUSQUEDA VÁCIA");
+            alert.setHeaderText("Introduce DNI");
+            alert.setContentText("Introduce un DNI para buscar");
+            alert.showAndWait();
+        }else {
+            try {
+                Cliente cliente = hotelModelo.buscarCliente(dni);
+                if (cliente != null) {
+                    boolean okClicked = mainApp.showClienteEditDialog(cliente);
+                    if (okClicked) {
+                        showClienteDetails(cliente);
+                        hotelModelo.modificarCliente(cliente);
+                        clienteTable.sort();
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("DNI no encontrado");
+                    alert.setHeaderText("Ningun cliente con ese dni");
+                    alert.setContentText("No existe ningun cliente con ese dni");
+                    alert.showAndWait();
+                }
+            } catch (ExcepcionHotel e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

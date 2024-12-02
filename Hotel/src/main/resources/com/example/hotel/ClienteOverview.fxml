@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,26 +8,40 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.ClienteOverviewController">
     <children>
         <SplitPane dividerPositions="0.3538681948424069" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <TableView fx:id="clienteTable" layoutX="-13.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <columns>
-                                <TableColumn fx:id="apellidosColumn" prefWidth="75.0" text="Apellidos" />
-                                <TableColumn fx:id="nombreColumn" prefWidth="75.0" text="Nombre" />
-                            </columns>
-                            <columnResizePolicy>
-                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                            </columnResizePolicy>
-                        </TableView>
+                  <VBox prefHeight="498.0" prefWidth="243.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                              <TableView fx:id="clienteTable" prefHeight="420.0" prefWidth="200.0">
+                                  <columns>
+                                      <TableColumn fx:id="apellidosColumn" prefWidth="75.0" text="Apellidos" />
+                                      <TableColumn fx:id="nombreColumn" prefWidth="75.0" text="Nombre" />
+                                  </columns>
+                                  <columnResizePolicy>
+                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                  </columnResizePolicy>
+                              </TableView>
+                        <TextField fx:id="dniBuscar" onAction="#handleBuscarCliente">
+                           <VBox.margin>
+                              <Insets top="7.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Button fx:id="botonBuscar" mnemonicParsing="false" onAction="#handleBuscarCliente" prefWidth="80.0" text="Buscar">
+                           <VBox.margin>
+                              <Insets bottom="5.0" left="80.0" top="5.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                     <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="Detalles Personales" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <Label layoutX="14.0" layoutY="14.0" styleClass="label-header" text="Detalles Personales" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font size="32.0" />
                      </font></Label>
@@ -45,17 +60,17 @@
                             </rowConstraints>
                             <children>
                                 <Label text="DNI" />
-                                <Label fx:id="dniLabel" text="Label" GridPane.columnIndex="1" />
+                                <Label fx:id="dniLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                                 <Label text="NOMBRE" GridPane.rowIndex="1" />
-                                <Label fx:id="nombreLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label fx:id="apellidosLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="nombreLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="apellidosLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                 <Label text="APELLIDOS" GridPane.rowIndex="2" />
                                 <Label text="DIRECCION" GridPane.rowIndex="3" />
-                                <Label fx:id="direccionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label fx:id="direccionLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                 <Label GridPane.rowIndex="4" />
-                                <Label fx:id="localidadLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Label fx:id="localidadLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                 <Label text="PROVINCIA" GridPane.rowIndex="5" />
-                                <Label fx:id="provinciaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                <Label fx:id="provinciaLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                 <Label text="LOCALIDAD" GridPane.rowIndex="4" />
                             </children>
                         </GridPane>

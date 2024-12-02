@@ -109,9 +109,12 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         try {
             Connection conn = this.conexion.conectarBD();
             this.stmt = conn.createStatement();
-            String sql = String.format("UPDATE reservas SET fechaEntrada = '%s', fechaSalida = '%s', numHabitaciones = '%d', tipoHabitacion = '%s', fumador = '%s', alojamiento = '%s', dniCliente = '%s' WHERE idReserva = %d", reservaVO.getFechaEntrada(), reservaVO.getFechaSalida(), reservaVO.getNumHabitaciones(), reservaVO.getTipoHabitacion(), reservaVO.getFumador(), reservaVO.getAlojamiento(), reservaVO.getDniCliente(), lastId());
+            String fumadorValue = reservaVO.getFumador() ? "1" : "0";
+            String sql = String.format("UPDATE reservas SET fechaEntrada = '%s', fechaSalida = '%s', numHabitaciones = '%d', tipoHabitacion = '%s', fumador = '%s', alojamiento = '%s', dniCliente = '%s' WHERE idReserva = %d", reservaVO.getFechaEntrada(), reservaVO.getFechaSalida(), reservaVO.getNumHabitaciones(), reservaVO.getTipoHabitacion(), fumadorValue, reservaVO.getAlojamiento(), reservaVO.getDniCliente(), lastId());
             this.stmt.executeUpdate(sql);
         } catch (Exception var4) {
+            System.out.println(var4.getMessage());
+            var4.printStackTrace();
             throw new ExcepcionHotel("No se ha podido realizar la edición");
         }
     }
