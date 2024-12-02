@@ -167,6 +167,7 @@ public class MainApp extends Application {
 
             ReservaEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
+            controller.setModificar(true);
             controller.setReserva(reserva);
 
             dialogStage.showAndWait();

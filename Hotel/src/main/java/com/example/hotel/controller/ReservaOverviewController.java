@@ -90,7 +90,7 @@ public class ReservaOverviewController {
     private void showReservaDetails(Reserva reserva) {
         if (reserva != null) {
             fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
-            fechaSalidaLabel.setText(reserva.getFechaSalida().toString());
+            fechaSalidaLabel.setText(DateUtil.format(reserva.getFechaSalida()));
             numHabitacionesLabel.setText(reserva.getNumHabitaciones().toString());
             tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
             fumadorLabel.setText(reserva.getFumador().toString());

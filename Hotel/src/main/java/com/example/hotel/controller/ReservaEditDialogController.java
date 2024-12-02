@@ -12,11 +12,17 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ReservaEditDialogController {
+
+    private int doblesIndividualReservadas = 0;
+    private int doblesReservadas = 0;
+    private int juniorSuitesReservadas = 0;
+    private int suitesReservadas = 0;
 
     public ReservaEditDialogController() {
     }
@@ -43,6 +49,7 @@ public class ReservaEditDialogController {
     private Stage dialogStage;
     private Reserva reserva=new Reserva();
     private boolean okClicked = false;
+    private boolean modificar;
 
     @FXML
     private void initialize() {
@@ -55,6 +62,9 @@ public class ReservaEditDialogController {
                 fumadorLabel.setText("");
             }
         });
+        if(!fumadorCheck.isSelected()){
+            fumadorLabel.setText("");
+        }
 
         tipoHabitacionChoice.setItems(FXCollections.observableArrayList("Doble individual", "Doble", "Junior suite", "Suite"));
     }
@@ -62,6 +72,7 @@ public class ReservaEditDialogController {
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
+    public void setModificar(boolean modificar) {this.modificar = modificar;}
 
     public void setReserva(Reserva reserva) {
         this.reserva = reserva;
@@ -99,13 +110,36 @@ public class ReservaEditDialogController {
 
     @FXML
     private void handleOk() {
-        if (isInputValid()) {
+        if (isInputValid(modificar)) {
             reserva.setFechaEntrada(fechaEntradaPicker.getValue());
             reserva.setFechaSalida(fechaSalidaPicker.getValue());
 
             if(spinnerHabitaciones.getValue() != null) {
+                if(modificar){
+                    if(reserva.getTipoHabitacion().equals("Doble individual")){
+                        doblesIndividualReservadas--;
+                    } else if (reserva.getTipoHabitacion().equals("Doble")) {
+                        doblesReservadas--;
+                    } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
+                        juniorSuitesReservadas--;
+                    } else if (reserva.getTipoHabitacion().equals("Suite")) {
+                        suitesReservadas--;
+                    }
+                }
+
+                if(reserva.getTipoHabitacion().equals("Doble individual")){
+                    doblesIndividualReservadas++;
+                } else if (reserva.getTipoHabitacion().equals("Doble")) {
+                    doblesReservadas++;
+                } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
+                    juniorSuitesReservadas++;
+                } else if (reserva.getTipoHabitacion().equals("Suite")) {
+                    suitesReservadas++;
+                }
+
                 reserva.setNumHabitaciones(Integer.parseInt(spinnerHabitaciones.getValue().toString()));
             }
+
             reserva.setTipoHabitacion(tipoHabitacionChoice.getValue().toString());
             reserva.setFumador(fumadorCheck.isSelected());
 
@@ -126,14 +160,29 @@ public class ReservaEditDialogController {
         dialogStage.close();
     }
 
-    private boolean isInputValid() {
+    private boolean isInputValid(boolean modificar) {
         String errorMessage = "";
 
-        if (fechaEntradaPicker.getValue() == null) {
+        LocalDate fechaEntrada = fechaEntradaPicker.getValue();
+        LocalDate fechaSalida = fechaSalidaPicker.getValue();
+
+        if (fechaEntrada == null) {
             errorMessage += "Fecha de entrada no valida\n";
         }
 
-        if (fechaSalidaPicker.getValue() == null) {
+        if(fechaEntrada .isBefore(LocalDate.now())){
+            errorMessage += "Fecha de entrada no valida\n";
+        }
+
+        if (fechaSalida == null) {
+            errorMessage += "Fecha de salida no valida\n";
+        }
+
+        if(fechaSalida.isBefore(fechaEntrada)){
+            errorMessage += "Fecha de salida no valida\n";
+        }
+
+        if(modificar && fechaSalida.isBefore(LocalDate.now())) {
             errorMessage += "Fecha de salida no valida\n";
         }
 
@@ -141,8 +190,17 @@ public class ReservaEditDialogController {
             errorMessage += "Numero de habitaciones no valido\n";
         }
 
-        if (tipoHabitacionChoice.getValue() == null || tipoHabitacionChoice.getValue().toString().isEmpty()) {
+        String tipoHabitacion=tipoHabitacionChoice.getValue().toString();
+        if (tipoHabitacionChoice.getValue() == null || tipoHabitacion.isEmpty()) {
             errorMessage += "Tipo de habitacion no valida\n";
+        }else if (tipoHabitacion.equals("Doble individual") && doblesIndividualReservadas>20){
+            errorMessage += "No hay habitaciones disponibles\n";
+        }else if (tipoHabitacion.equals("Doble") && doblesReservadas>80) {
+            errorMessage += "No hay habitaciones disponibles\n";
+        }else if (tipoHabitacion.equals("Junior suite") && juniorSuitesReservadas>15){
+            errorMessage += "No hay habitaciones disponibles\n";
+        }else if (tipoHabitacion.equals("Suite") && suitesReservadas>5){
+            errorMessage += "No hay habitaciones disponibles\n";
         }
 
         /*if (!fumadorCheck.isSelected() || fumadorCheck.isIndeterminate()) {
