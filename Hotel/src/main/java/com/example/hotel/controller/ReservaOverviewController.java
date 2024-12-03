@@ -5,6 +5,8 @@ import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.utilidad.DateUtil;
 import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -14,7 +16,7 @@ public class ReservaOverviewController {
     private Stage dialogStage;
     private MainApp mainApp=new MainApp();
     private Reserva reserva;
-    private Cliente cliente;
+    private Cliente currentCliente;
 
     public void setHotelModelo(HotelModelo hotelModelo) {
         this.hotelModelo = hotelModelo;
@@ -65,21 +67,20 @@ public class ReservaOverviewController {
     }
 
     public void setReserva(Cliente cliente) {
-        //this.reserva = reserva;
-        this.cliente = cliente;
-
-        /*fechaEntradaLabel.setText(DateUtil.format(reserva.getFechaEntrada()));
-        fechaSalidaLabel.setText(reserva.getFechaSalida().toString());
-        numHabitacionesLabel.setText(reserva.getNumHabitaciones().toString());
-        tipoHabitacionLabel.setText(reserva.getTipoHabitacion());
-        fumadorLabel.setText(reserva.getFumador().toString());
-        alojamientoLabel.setText(reserva.getAlojamiento());*/
+        this.currentCliente = cliente;
+        ObservableList<Reserva> reservasFiltradas = FXCollections.observableArrayList();
 
         dniClienteLabel.setText(cliente.getDni());
         nombreClienteLabel.setText(cliente.getNombre());
         apellidosClienteLabel.setText(cliente.getApellidos());
 
-        reservaTable.setItems(mainApp.getReservaData(cliente));
+        for (Reserva reserva : mainApp.getReservaData()) {
+            if (reserva.getDniCliente().equals(cliente.getDni())) {
+                reservasFiltradas.add(reserva);
+            }
+        }
+
+        reservaTable.setItems(reservasFiltradas);
 
         fechaEntradaColumn.setSortType(TableColumn.SortType.DESCENDING);
         reservaTable.getSortOrder().add(fechaEntradaColumn);
@@ -127,8 +128,14 @@ public class ReservaOverviewController {
         tempReserva.setDniCliente(dniClienteLabel.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
+            //Meter en la base de datos, limpiar tabla y recoger de la base de datos
             mainApp.getReservaData().add(tempReserva);
+            /*if(currentCliente!=null && tempReserva.getDniCliente().equals(currentCliente.getDni())) {
+                reservaTable.getItems().add(tempReserva);
+            }*/
+
             hotelModelo.insertarReserva(tempReserva);
+            reservaTable.refresh();
             reservaTable.sort();
         }
     }

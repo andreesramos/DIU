@@ -114,33 +114,35 @@ public class ReservaEditDialogController {
             reserva.setFechaEntrada(fechaEntradaPicker.getValue());
             reserva.setFechaSalida(fechaSalidaPicker.getValue());
 
+
             if(spinnerHabitaciones.getValue() != null) {
-                if(modificar){
-                    if(reserva.getTipoHabitacion().equals("Doble individual")){
-                        doblesIndividualReservadas--;
-                    } else if (reserva.getTipoHabitacion().equals("Doble")) {
-                        doblesReservadas--;
-                    } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
-                        juniorSuitesReservadas--;
-                    } else if (reserva.getTipoHabitacion().equals("Suite")) {
-                        suitesReservadas--;
-                    }
-                }
-
-                if(reserva.getTipoHabitacion().equals("Doble individual")){
-                    doblesIndividualReservadas++;
-                } else if (reserva.getTipoHabitacion().equals("Doble")) {
-                    doblesReservadas++;
-                } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
-                    juniorSuitesReservadas++;
-                } else if (reserva.getTipoHabitacion().equals("Suite")) {
-                    suitesReservadas++;
-                }
-
                 reserva.setNumHabitaciones(Integer.parseInt(spinnerHabitaciones.getValue().toString()));
             }
 
             reserva.setTipoHabitacion(tipoHabitacionChoice.getValue().toString());
+
+            if(modificar){
+                if(reserva.getTipoHabitacion().equals("Doble individual")){
+                    doblesIndividualReservadas--;
+                } else if (reserva.getTipoHabitacion().equals("Doble")) {
+                    doblesReservadas--;
+                } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
+                    juniorSuitesReservadas--;
+                } else if (reserva.getTipoHabitacion().equals("Suite")) {
+                    suitesReservadas--;
+                }
+            }
+
+            if(reserva.getTipoHabitacion().equals("Doble individual")){
+                doblesIndividualReservadas++;
+            } else if (reserva.getTipoHabitacion().equals("Doble")) {
+                doblesReservadas++;
+            } else if (reserva.getTipoHabitacion().equals("Junior suite")) {
+                juniorSuitesReservadas++;
+            } else if (reserva.getTipoHabitacion().equals("Suite")) {
+                suitesReservadas++;
+            }
+
             reserva.setFumador(fumadorCheck.isSelected());
 
             if (botones.getSelectedToggle() != null) {
