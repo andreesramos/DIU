@@ -1,49 +1,49 @@
 .background {
-    -fx-background-color: #ffde55;
+    -fx-background-color: #ffcc44;
 }
 
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #1a1a1a;
     -fx-opacity: 0.6;
 }
 
 .label-bright {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #1a1a1a;
     -fx-opacity: 1;
 }
 
 .label-header {
     -fx-font-size: 26pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #355c7d; /* Azul oscuro para destacar */
+    -fx-text-fill: #355c7d;
     -fx-opacity: 1;
 }
 
 .table-view {
-    -fx-base: #ffde55;
-    -fx-control-inner-background: #ffde55;
-    -fx-background-color: #ffde55;
-    -fx-table-cell-border-color: #d4a200;
-    -fx-table-header-border-color: #d4a200;
+    -fx-base: #ffcc44;
+    -fx-control-inner-background: #ffcc44;
+    -fx-background-color: #ffcc44;
+    -fx-table-cell-border-color: #d49c1f;
+    -fx-table-header-border-color: #d49c1f;
     -fx-padding: 5;
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #ffde55;
+    -fx-background-color: #ffcc44;
 }
 
 .table-view .column-header, .table-view .filler {
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
-    -fx-background-color: #ffde55;
+    -fx-background-color: #ffcc44;
     -fx-border-color:
             transparent
             transparent
-            #d4a200
+            #d49c1f
             transparent;
     -fx-border-insets: 0 10 1 0;
 }
@@ -51,19 +51,19 @@
 .table-view .column-header .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #355c7d; /* Azul oscuro */
+    -fx-text-fill: #355c7d;
     -fx-alignment: center-left;
     -fx-opacity: 1;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #355c7d; /* Azul oscuro */
-    -fx-text-fill: #ffffff; /* Blanco para contraste */
+    -fx-background-color: #355c7d;
+    -fx-text-fill: #ffffff;
 }
 
 .split-pane:horizontal > .split-pane-divider {
-    -fx-border-color: transparent #d4a200 transparent #d4a200;
-    -fx-background-color: transparent, derive(#ffde55, 20%);
+    -fx-border-color: transparent #d49c1f transparent #d49c1f;
+    -fx-background-color: transparent, derive(#ffcc44, 20%);
 }
 
 .split-pane {
@@ -71,54 +71,54 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(#ffde55, 20%);
+    -fx-background-color: derive(#ffcc44, 20%);
 }
 
 .context-menu {
-    -fx-background-color: derive(#ffde55, 50%);
+    -fx-background-color: derive(#ffcc44, 50%);
 }
 
 .menu-bar .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #355c7d; /* Azul oscuro */
+    -fx-text-fill: #355c7d;
     -fx-opacity: 0.9;
 }
 
 .menu .left-container {
-    -fx-background-color: #d4a200;
+    -fx-background-color: #d49c1f;
 }
 
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-background-color: #fff;
-    -fx-text-fill: #1d1d1d;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #1a1a1a;
 }
 
 .button {
     -fx-padding: 5 10 5 10;
-    -fx-border-color: #d4a200;
+    -fx-border-color: #d49c1f;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #355c7d; /* Botones con azul oscuro */
+    -fx-background-color: #355c7d;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
-    -fx-text-fill: #ffffff; /* Blanco */
+    -fx-text-fill: #ffffff;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {
-    -fx-background-color: #437a92; /* Azul más claro */
+    -fx-background-color: #437a92;
 }
 
 .button:pressed, .button:default:hover:pressed {
-    -fx-background-color: #1d1d1d;
-    -fx-text-fill: #ffde55; /* Amarillo */
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: #ffcc44;
 }
 
 .button:focused {
-    -fx-border-color: #1d1d1d, #355c7d; /* Azul oscuro */
+    -fx-border-color: #1a1a1a, #355c7d;
     -fx-border-width: 1, 1;
     -fx-border-style: solid;
     -fx-border-radius: 0, 0;
@@ -127,18 +127,19 @@
 
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
-    -fx-background-color: #ffde55;
-    -fx-text-fill: #1d1d1d;
+    -fx-background-color: #ffcc44;
+    -fx-text-fill: #1a1a1a;
 }
 
 .button:default {
-    -fx-background-color: #d4a200;
+    -fx-background-color: #d49c1f;
     -fx-text-fill: #ffffff;
 }
 
 .button:default:hover {
-    -fx-background-color: #b68f00;
+    -fx-background-color: #b6890d;
 }
+
 
 
 
@@ -163,7 +164,7 @@
 .label-header {
     -fx-font-size: 26pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #355c7d;
     -fx-opacity: 1;
 }
 
@@ -195,13 +196,14 @@
 .table-view .column-header .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #355c7d;
     -fx-alignment: center-left;
     -fx-opacity: 1;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #d4a200;
+    -fx-background-color: #355c7d;
+    -fx-text-fill: #ffffff;
 }
 
 .split-pane:horizontal > .split-pane-divider {
@@ -224,7 +226,7 @@
 .menu-bar .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #355c7d;
     -fx-opacity: 0.9;
 }
 
@@ -244,15 +246,15 @@
     -fx-border-color: #d4a200;
     -fx-border-width: 2;
     -fx-background-radius: 0;
-    -fx-background-color: #ffde55;
+    -fx-background-color: #355c7d;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
-    -fx-text-fill: #1d1d1d;
+    -fx-text-fill: #ffffff;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .button:hover {
-    -fx-background-color: #e3c847;
+    -fx-background-color: #437a92;
 }
 
 .button:pressed, .button:default:hover:pressed {
@@ -261,7 +263,7 @@
 }
 
 .button:focused {
-    -fx-border-color: #1d1d1d, #1d1d1d;
+    -fx-border-color: #1d1d1d, #355c7d;
     -fx-border-width: 1, 1;
     -fx-border-style: solid;
     -fx-border-radius: 0, 0;

@@ -2,7 +2,9 @@ package com.example.hotel.controller;
 
 import com.example.hotel.MainApp;
 import com.example.hotel.modelo.HotelModelo;
+import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.utilidad.DateUtil;
+import com.example.hotel.modelo.utilidad.ReservaUtil;
 import com.example.hotel.vista.Cliente;
 import com.example.hotel.vista.Reserva;
 import javafx.collections.FXCollections;
@@ -10,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class ReservaOverviewController {
     private HotelModelo hotelModelo;
@@ -128,15 +132,30 @@ public class ReservaOverviewController {
         tempReserva.setDniCliente(dniClienteLabel.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
-            //Meter en la base de datos, limpiar tabla y recoger de la base de datos
-            mainApp.getReservaData().add(tempReserva);
-            /*if(currentCliente!=null && tempReserva.getDniCliente().equals(currentCliente.getDni())) {
-                reservaTable.getItems().add(tempReserva);
-            }*/
-
+            //Inserta la reserva en la base de datos
             hotelModelo.insertarReserva(tempReserva);
-            reservaTable.refresh();
+
+            //Limpia los datos de la tabla
+            reservaTable.getItems().clear();
+
+            //Recarga las reservas desde la base de datos
+            ArrayList<Reserva> listaReservasBD = ReservaUtil.getReserva(hotelModelo.obtenerReservas());
+            ObservableList<Reserva> reservasBD = FXCollections.observableArrayList(listaReservasBD);
+
+            //Actualiza la lista principal y la tabla
+            mainApp.getReservaData().setAll(reservasBD);
+            reservaTable.setItems(mainApp.getReservaData());
             reservaTable.sort();
+
+            /*// Agregar la nueva reserva a los datos principales
+            mainApp.getReservaData().add(tempReserva);
+
+            // Insertar la nueva reserva en la base de datos
+            hotelModelo.insertarReserva(tempReserva);
+
+            // Actualizar y ordenar el TableView
+            reservaTable.refresh();
+            reservaTable.sort();*/
         }
     }
 
