@@ -13,12 +13,18 @@
           <Menu mnemonicParsing="false" text="Gestion">
             <items>
               <MenuItem mnemonicParsing="false" text="Estadisticas" />
-                  <MenuItem mnemonicParsing="false" text="Fotos y ocupacion actual" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Aplicacion">
             <items>
-              <MenuItem mnemonicParsing="false" text="Documentacion" />
+                  <Menu mnemonicParsing="false" text="Fotos y ocupacion">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Doble" />
+                        <MenuItem mnemonicParsing="false" text="Doble de uso individual" />
+                        <MenuItem mnemonicParsing="false" text="Junior Suite" />
+                        <MenuItem mnemonicParsing="false" text="Suite" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
         </menus>

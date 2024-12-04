@@ -202,6 +202,14 @@ public class MainApp extends Application {
         }
     }*/
 
+    /*public void showRoomDoble(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }*/
+
     public static void main(String[] args) {
         launch();
     }

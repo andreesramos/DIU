@@ -11,4 +11,9 @@ public class RootLayoutController {
     private void handleshowOcupationStatistics(){
         //mainApp.showOcupationStatistics();
     }
+
+    @FXML
+    private void handleshowRoomDoble(){
+
+    }
 }

@@ -94,6 +94,11 @@ public class ClienteEditDialogController {
         if(dniField.getText() == null || "".equals(dniField.getText())) {
             errorMessage += "Dni no valido\n";
         }
+
+        if(!dniField.getText().matches("\\d{8}[A-Z]")){
+            errorMessage += "Dni no valido\n";
+        }
+
         if (nombreField.getText() == null || nombreField.getText().length() == 0) {
             errorMessage += "Nombre no valido\n";
         }
@@ -116,9 +121,9 @@ public class ClienteEditDialogController {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Client Selected");
-            alert.setContentText("Please select a client in the table.");
+            alert.setTitle("Campos inválidos");
+            alert.setHeaderText("Algún campo es inválido");
+            alert.setContentText("Porfavor, corrija los campos");
 
             alert.showAndWait();
             return false;
