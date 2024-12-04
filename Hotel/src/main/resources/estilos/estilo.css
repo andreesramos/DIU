@@ -132,8 +132,9 @@
 }
 
 .button:default {
-    -fx-background-color: #d49c1f;
     -fx-text-fill: #ffffff;
+    -fx-background-color: #5C87A6;
+    /*-fx-background-color: #8a8a8a;*/
 }
 
 .button:default:hover {

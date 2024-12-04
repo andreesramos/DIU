@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<AnchorPane prefHeight="550.0" prefWidth="700.0" styleClass="background" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.RoomDobleIndividualController">
+    <children>
+        <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+            <image>
+                <Image url="@../../../imagenes/dobleIndv1.jpg" />
+            </image></ImageView>
+        <ImageView fitHeight="250.0" fitWidth="300.0" layoutX="370.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="79.0">
+            <image>
+                <Image url="@../../../imagenes/dobleIndv3.jpg" />
+            </image></ImageView>
+        <ImageView fitHeight="250.0" fitWidth="300.0" layoutX="200.0" layoutY="310.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="310.0">
+            <image>
+                <Image url="@../../../imagenes/dobleIndv2.jpg" />
+            </image></ImageView>
+        <ProgressIndicator fx:id="progressIndicator" layoutX="450.0" layoutY="488.0" progress="0.0" />
+        <ProgressBar fx:id="progressBar" layoutX="250.0" layoutY="516.0" prefWidth="200.0" progress="0.0" />
+        <Label layoutX="100.0" layoutY="14.0" styleClass="label-header" text="HABITACION DOBLE INDIVIDUAL" />
+    </children>
+
+</AnchorPane>

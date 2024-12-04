@@ -1,9 +1,6 @@
 package com.example.hotel;
 
-import com.example.hotel.controller.ClienteEditDialogController;
-import com.example.hotel.controller.ClienteOverviewController;
-import com.example.hotel.controller.ReservaEditDialogController;
-import com.example.hotel.controller.ReservaOverviewController;
+import com.example.hotel.controller.*;
 import com.example.hotel.modelo.HotelModelo;
 import com.example.hotel.modelo.ReservaVO;
 import com.example.hotel.modelo.repository.impl.ClienteRepositoryImpl;
@@ -180,7 +177,7 @@ public class MainApp extends Application {
         }
     }
 
-    /*public void showOcupationStatistics() {
+    public void showOcupationStatistics() {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("OcupationStatistics.fxml"));
@@ -193,22 +190,114 @@ public class MainApp extends Application {
             dialogStage.setScene(scene);
 
             OcupationStatisticsController controller = loader.getController();
-            controller.setClienteData(personData);
+            controller.setReservaData(reservaData);
 
             dialogStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
-    /*public void showRoomDoble(){
+    public void showRoomDoble(int numHab){
         try{
             FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RoomDoble.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Habitación Doble");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            RoomDobleController controller = loader.getController();
+            controller.actualizarProgreso(numHab);
+
+            dialogStage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
-    }*/
+    }
+
+    public void showRoomDobleIndividual(int numHab){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RoomDobleIndividual.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Habitación Doble Individual");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            RoomDobleIndividualController controller = loader.getController();
+            controller.actualizarProgreso(numHab);
+
+            dialogStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showRoomJuniorSuite(int numHab){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RoomJuniorSuite.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Habitación Junior Suite");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            RoomJuniorSuiteController controller = loader.getController();
+            controller.actualizarProgreso(numHab);
+
+            dialogStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showRoomSuite(int numHab){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("RoomSuite.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Habitación Suite");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            RoomSuiteController controller = loader.getController();
+            controller.actualizarProgreso(numHab);
+
+            dialogStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void showWebView(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("WebView.fxml"));
+            BorderPane page = (BorderPane) loader.load();
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("WEBVIEW");
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+
+            WebViewController controller = loader.getController();
+            controller.mostrarWebView();
+
+            dialogStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         launch();

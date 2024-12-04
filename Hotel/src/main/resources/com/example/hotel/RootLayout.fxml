@@ -6,27 +6,32 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.RootLayoutController">
+<BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../estilos/estilo.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel.controller.RootLayoutController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Gestion">
+          <Menu mnemonicParsing="false" text="Grafica">
             <items>
-              <MenuItem mnemonicParsing="false" text="Estadisticas" />
+              <MenuItem mnemonicParsing="false" onAction="#handleshowOcupationStatistics" text="Grafica" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Aplicacion">
+          <Menu mnemonicParsing="false" text="Galeria">
             <items>
-                  <Menu mnemonicParsing="false" text="Fotos y ocupacion">
+                  <Menu mnemonicParsing="false" text="Habitaciones">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Doble" />
-                        <MenuItem mnemonicParsing="false" text="Doble de uso individual" />
-                        <MenuItem mnemonicParsing="false" text="Junior Suite" />
-                        <MenuItem mnemonicParsing="false" text="Suite" />
+                      <MenuItem mnemonicParsing="false" onAction="#handleShowRoomDoble" text="Doble" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowRoomDobleIndividual" text="Doble de uso individual" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowRoomJuniorSuite" text="Junior Suite" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleShowRoomSuite" text="Suite" />
                     </items>
                   </Menu>
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="WebView">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleShowWebView" text="WebView" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
