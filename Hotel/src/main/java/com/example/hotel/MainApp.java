@@ -46,6 +46,7 @@ public class MainApp extends Application {
 
     }
 
+    public void setReservaData(ObservableList<Reserva> reservaData){this.reservaData = reservaData;};
     public ObservableList<Cliente> getClienteData() {
         return clienteData;
     }

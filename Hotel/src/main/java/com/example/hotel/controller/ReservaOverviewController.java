@@ -130,21 +130,32 @@ public class ReservaOverviewController {
     private void handleNewReserva() {
         Reserva tempReserva = new Reserva();
         tempReserva.setDniCliente(dniClienteLabel.getText());
+        Cliente tempCliente = hotelModelo.buscarCliente(dniClienteLabel.getText());
         boolean okClicked = mainApp.showReservaEditDialog(tempReserva);
         if (okClicked) {
             //Inserta la reserva en la base de datos
             hotelModelo.insertarReserva(tempReserva);
 
             //Limpia los datos de la tabla
-            reservaTable.getItems().clear();
+//            reservaTable.getItems().clear();
 
             //Recarga las reservas desde la base de datos
             ArrayList<Reserva> listaReservasBD = ReservaUtil.getReserva(hotelModelo.obtenerReservas());
             ObservableList<Reserva> reservasBD = FXCollections.observableArrayList(listaReservasBD);
+            ObservableList<Reserva> reservasFinales = FXCollections.observableArrayList();
 
             //Actualiza la lista principal y la tabla
-            mainApp.getReservaData().setAll(reservasBD);
-            reservaTable.setItems(mainApp.getReservaData());
+//            mainApp.setReservaData(reservasBD);
+            for (Reserva reserva : reservasBD){
+                if(reserva.getDniCliente().equals(dniClienteLabel.getText())){
+                    reservasFinales.add(reserva);
+                }
+            }
+
+
+            //Actualizar lista de reservaData
+//            reservaTable.setItems(mainApp.getReservaData(tempCliente));
+            reservaTable.setItems(reservasFinales);
             reservaTable.sort();
 
             /*// Agregar la nueva reserva a los datos principales
