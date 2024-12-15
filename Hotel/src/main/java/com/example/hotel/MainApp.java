@@ -131,7 +131,6 @@ public class MainApp extends Application {
             loader.setLocation(MainApp.class.getResource("ReservaOverview.fxml"));
             AnchorPane reservaOverview = (AnchorPane) loader.load();
 
-            //rootLayout.setCenter(reservaOverview);
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Consultar Reserva");
             //dialogStage.initModality(Modality.WINDOW_MODAL);

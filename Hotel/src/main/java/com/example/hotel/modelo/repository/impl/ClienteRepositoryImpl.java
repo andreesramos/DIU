@@ -98,7 +98,7 @@ public class ClienteRepositoryImpl implements ClienteRepository {
                 String direccion = rs.getString("direccion");
                 String localidad = rs.getString("localidad");
                 String provincia = rs.getString("provincia");
-                return new ClienteVO(nombre, apellidos, dni, direccion, localidad, provincia);
+                return new ClienteVO(dni, nombre, apellidos, direccion, localidad, provincia);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -118,19 +118,4 @@ public class ClienteRepositoryImpl implements ClienteRepository {
         }*/
     }
 
-    /*public String lastDni() throws ExcepcionHotel {
-        String lastClienteDni = null;
-
-        try {
-            Connection conn = this.conexion.conectarBD();
-            Statement comando = conn.createStatement();
-
-            for(ResultSet registro = comando.executeQuery("SELECT dni FROM clientes ORDER BY dni DESC LIMIT 1"); registro.next(); lastClienteDni = registro.getString("dni")) {
-            }
-            System.out.println("Ultimo dni: " + lastClienteDni);
-            return lastClienteDni;
-        } catch (SQLException var5) {
-            throw new ExcepcionHotel("No se ha podido realizar la busqueda del DNI");
-        }
-    }*/
 }

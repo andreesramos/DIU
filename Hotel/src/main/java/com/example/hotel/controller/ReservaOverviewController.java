@@ -149,15 +149,6 @@ public class ReservaOverviewController {
             reservaTable.getSortOrder().add(fechaEntradaColumn);
             reservaTable.sort();
 
-            /*// Agregar la nueva reserva a los datos principales
-            mainApp.getReservaData().add(tempReserva);
-
-            // Insertar la nueva reserva en la base de datos
-            hotelModelo.insertarReserva(tempReserva);
-
-            // Actualizar y ordenar el TableView
-            reservaTable.refresh();
-            reservaTable.sort();*/
         }
     }
 

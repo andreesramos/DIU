@@ -29,10 +29,7 @@ public class ClienteEditDialogController {
     private TextField localidadField;
     @FXML
     private TextField provinciaField;
-    /*@FXML
-    private ProgressBar progreso;
-    @FXML
-    private ProgressIndicator indicator;*/
+
 
     private Stage dialogStage;
     private Cliente cliente;
@@ -41,9 +38,7 @@ public class ClienteEditDialogController {
     @FXML
     private void initialize() {
         ArrayList<ClienteVO> clientes = HotelModelo.obtenerClientes();
-        //cambiarBarra(clientes.size());
-        //progreso.progressProperty().bindBidirectional(progresoNum);
-        //indicator.progressProperty().bindBidirectional(progresoNum);
+
     }
 
     public void setDialogStage(Stage dialogStage) {
@@ -130,11 +125,4 @@ public class ClienteEditDialogController {
         }
     }
 
-    /*private void cambiarBarra(int n) {
-        progresoNum.set(n / 50.0);
-    }*/
-
-    /*public IntegerProperty numProperty() {
-        return new SimpleIntegerProperty((int) (progresoNum.get() * 50));
-    }*/
 }

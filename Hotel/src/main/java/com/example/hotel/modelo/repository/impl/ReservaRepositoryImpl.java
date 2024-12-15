@@ -47,18 +47,6 @@ public class ReservaRepositoryImpl implements ReservaRepository {
         }
     }
 
-    /*public void addReserva(ReservaVO m) throws ExcepcionHotel {
-        try {
-            Connection conn = this.conexion.conectarBD();
-            this.stmt = conn.createStatement();
-            this.sentencia = "INSERT INTO reservas (fechaEntrada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, alojamiento, dniCliente) VALUES ('" + m.getFechaEntrada() + "','" + m.getFechaSalida() + "','" + m.getNumHabitaciones() + "','" + m.getTipoHabitacion() + "','" + m.getFumador() + "','" + m.getAlojamiento() + "','" + m.getDniCliente() + "');";
-            this.stmt.executeUpdate(this.sentencia);
-            this.stmt.close();
-            this.conexion.desconectarBD(conn);
-        } catch (SQLException var3) {
-            throw new ExcepcionHotel("No se ha podido realizar la operación");
-        }
-    }*/
 
     public void addReserva(ReservaVO m) throws ExcepcionHotel {
         String sql = "INSERT INTO reservas (fechaEntrada, fechaSalida, numHabitaciones, tipoHabitacion, fumador, alojamiento, dniCliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
