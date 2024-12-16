@@ -1,0 +1,21 @@
+.header {
+    background-color: blue;
+    color: white;
+    padding: 30px;
+    text-align: center;
+
+    .title{
+        margin: 0;
+    }
+
+    .nav-list{
+        display: flex;
+        justify-content: space-around;
+
+        .link{
+            color: white;
+            text-decoration: none;
+            
+        }
+    }
+}
