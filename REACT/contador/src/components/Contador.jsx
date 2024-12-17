@@ -19,8 +19,6 @@ export default class Contador extends Component{
 }
 
 
-
-
 /*function Contador(props) {
 
     const {num, incrementar, decrementar, resetear} = props;

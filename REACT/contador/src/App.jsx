@@ -6,24 +6,24 @@ class App extends Component{
   constructor(){
     super()
     this.state={
-      num: "0"
+      num: 0
     }
   }
 
-  incrementar=(event) => {
-    this.state({
-      num: num+1
-    })
-  }
+  incrementar = () => {
+    this.setState((prevState) => ({
+      num: prevState.num + 1,
+    }));
+  };
 
-  decrementar=(event) => {
-    this.state({
-      num: num-1
-    })
-  }
+  decrementar=() => {
+    this.setState((prevState) => ({
+      num: prevState.num -1,
+    }));
+  };
 
-  resetear=(event) => {
-    this.state({
+  resetear=() => {
+    this.setState({
       num: 0
     })
   }
@@ -38,8 +38,6 @@ class App extends Component{
     )
   }
 }
-
-
 
 
 /*function App() {
