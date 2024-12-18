@@ -6,7 +6,7 @@ import { TaskContext } from "../context/task.context";
 import CreateTask from "../components/CreateTask";
 
 function TasksPage(){
-    const {tasks, getTasks} = useContext(TaskContext);
+    const {tasks, getTasks, hasLoaded, hasError} = useContext(TaskContext);
 
     useEffect(() => {
         getTasks();
@@ -28,7 +28,13 @@ function TasksPage(){
                     <li>
                         <CreateTask></CreateTask>
                     </li>
-                    {taskCards}
+                    {hasError ? (
+                        <h2>No se han podido obtener las tareas</h2>
+                    ) : !hasLoaded ? (
+                        <h2>Cargando...</h2>
+                    ) : (
+                        taskCards
+                    )}
                 </ul>
             </section>
         </>
