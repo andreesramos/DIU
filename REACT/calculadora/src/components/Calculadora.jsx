@@ -1,43 +1,47 @@
+import "./Calculadora.css"
+
 function Calculadora(props){
 
-    const{num, cambiarTexto, borrar} = props;
+    const{num, igual, cambiarTexto, borrar, calcular, negativo} = props;
+
+    const handleClick = (event) => {
+        const texto = event.target.innerText;
+        cambiarTexto(texto);
+    }
 
     return (
         <div>
             <div>
-                <h1>CALCULADORA</h1>
+                <input type="text" className="barra" value={num}/>
             </div>
             <div>
-                <input type="text" value={num}/>
+                <button className="gris" onClick={borrar}>AC</button>
+                <button className="gris" onClick={negativo}>+/-</button>
+                <button className="gris" onClick={handleClick}>%</button>
+                <button className="naranja" onClick={handleClick}>/</button>
             </div>
             <div>
-                <button onClick={borrar}>AC</button>
-                <button onClick={cambiarTexto}>+/-</button>
-                <button onClick={cambiarTexto}>%</button>
-                <button onClick={cambiarTexto}>/</button>
+                <button onClick={handleClick}>7</button>
+                <button onClick={handleClick}>8</button>
+                <button onClick={handleClick}>9</button>
+                <button className="naranja" onClick={handleClick}>*</button>
             </div>
             <div>
-                <button onClick={cambiarTexto}>7</button>
-                <button onClick={cambiarTexto}>8</button>
-                <button onClick={cambiarTexto}>9</button>
-                <button onClick={cambiarTexto}>x</button>
+                <button onClick={handleClick}>4</button>
+                <button onClick={handleClick}>5</button>
+                <button onClick={handleClick}>6</button>
+                <button className="naranja" onClick={handleClick}>-</button>
             </div>
             <div>
-                <button onClick={cambiarTexto}>4</button>
-                <button onClick={cambiarTexto}>5</button>
-                <button onClick={cambiarTexto}>6</button>
-                <button onClick={cambiarTexto}>-</button>
+                <button onClick={handleClick}>1</button>
+                <button onClick={handleClick}>2</button>
+                <button onClick={handleClick}>3</button>
+                <button className="naranja" onClick={handleClick}>+</button>
             </div>
             <div>
-                <button onClick={cambiarTexto}>1</button>
-                <button onClick={cambiarTexto}>2</button>
-                <button onClick={cambiarTexto}>3</button>
-                <button onClick={cambiarTexto}>+</button>
-            </div>
-            <div>
-                <button onClick={cambiarTexto}>0</button>
-                <button onClick={cambiarTexto}>.</button>
-                <button onClick={cambiarTexto}>=</button>
+                <button className="cero" onClick={handleClick}>0</button>
+                <button onClick={handleClick}>.</button>
+                <button className="naranja" onClick={calcular}>=</button>
             </div>
         </div>
     )
