@@ -22,9 +22,20 @@ function App() {
     setIgual(false)
   }
 
-  const calcular = () => {
-    setNum(math.evaluate(num))
-    setIgual(true)
+  const calcular = async () => {
+    //setNum(math.evaluate(num))
+    const response = await fetch('http://api.mathjs.org/v4/', {
+      method: 'POST',
+      body: JSON.stringify({expr: num}),
+    });
+    const data = await response.json();
+    if(response.ok){
+      setNum(data.result)
+      setIgual(true)
+    }else{
+      throw new Error(response.statusText)
+    }
+    
   }
 
   const negativo = () => {
