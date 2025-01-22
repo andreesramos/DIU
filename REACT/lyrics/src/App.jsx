@@ -18,39 +18,24 @@ class App extends React.Component {
   
   passParams= (data) => {
     let dataNew = this.state.data; 
-    dataNew.push(data)
+    dataNew.push(data) 
     this.setState({
       data: dataNew
     });
   }
 
-  /*componentDidMount() {
-    fetch('https://api.lyrics.ovh/v1/{artista}/{cancion}')
-    .then(response => {
-      if(response.ok){
-        return response.json();
-      }else{
-        throw new Error(response.statusText);
-      }
-    })
-    .then(data => {
-      this.setState({data: data});
-    })
-  }*/
-
-  /*const buscarLyrics = async () => {
-    const response = await fetch(`https://api.lyrics.ovh/v1/${artista}/${cancion}`, {
-      method: 'POST',
-      body: JSON.stringify({expr: num}),
-    });
-    const data = await response.json();
-    if(response.ok){
-      setLetra(data.lyrics);
-    }else{
-      throw new Error(response.statusText);
-    }
-
-  };*/
+  componentDidMount() {
+    fetch('https://api.lyrics.ovh/v1/${artista}/${cancion}')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al cargar los datos iniciales.");
+            }
+            return response.json();
+        })
+        .then(data => {
+          this.setState({ data: [data] });
+        });
+}
 
   render(){
     return (

@@ -1,0 +1,21 @@
+table {
+    margin-top: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid darkgray;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid lightgray
+}
+
+table th {
+    background-color: #42a5f5;
+    color: white;
+    font-weight: bold;
+    border-bottom: 1px solid darkgray;
+}
+
+

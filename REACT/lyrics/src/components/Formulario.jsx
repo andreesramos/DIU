@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button, Row, Col, FormGroup } from 'react-bootstrap';
+import "./Formulario.css";
 
 class Formulario extends React.Component {
 
@@ -19,21 +20,18 @@ class Formulario extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        fetch(`https://api.lyrics.ovh/v1/${artista}/${cancion}`, {
-            method: 'POST',
-            body: JSON.stringify({ artista: this.state.artista, cancion: this.state.cancion }),
-        })
-        .then(response => {
-            if(response.ok){
+        fetch(`https://api.lyrics.ovh/v1/${this.state.artista}/${this.state.cancion}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("No se pudo obtener la letra. Verifica los datos ingresados.");
+                }
                 return response.json();
-            }else{
-                throw new Error(response.statusText);
-            }
-        })
-        .then(data => {
-            this.props.buscarLyrics(data.lyrics);
-        })
+            })
+            .then(data => {
+                this.props.passParams({ artista: this.state.artista, cancion: this.state.cancion, letra: data.lyrics });
+            });
     }
+    
 
     render(){
         return (

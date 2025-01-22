@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from 'react-bootstrap';
+import "./Tabla.css";
 
 
 class Tabla extends React.Component {
@@ -8,31 +9,35 @@ class Tabla extends React.Component {
         super();
     }
     
-    renderData(data) {
+    renderData(data, index) {
         return (
-            <tr>
-                <td>{data.artist}</td>
-                <td>{data.song}</td>
-                <td>{data.lyrics}</td>
+            <tr key={index}>
+                <td>{data.artista}</td>
+                <td>{data.cancion}</td>
+                <td>{data.letra}</td>
             </tr>
         )
     }
 
     render() {
+        const { data } = this.props;
+    
         return (
             <Table responsive striped bordered hover size="sm">
                 <thead>
-                        <tr>
-                            <th>Artista/Grupo</th>
-                            <th>Cancion</th>
-                            <th>Letra</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.data.map(this.renderData)}
-                    </tbody>
-            </Table>)
+                    <tr>
+                        <th>Artista/Grupo</th>
+                        <th>Canción</th>
+                        <th>Letra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map(this.renderData)}
+                </tbody>
+            </Table>
+        );
     }
+    
 }
 
 export default Tabla;
