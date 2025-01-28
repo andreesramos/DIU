@@ -1,14 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import PokemonCard from "./PokemonCard";
 import "./PokemonList.css";
-import GetForm from "./GetForm";
-import { PokemonContext } from "../context/pokemon.context";
+import { useEffect, useState } from "react";
+import PokemonCard from "./PokemonCard";
 
-function PokemonList(props) {
-  const { pokemons, setPokemons } = useContext(PokemonContext);
+function PokemonList() {
+  const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    getPokemons(1, 10);
+    getPokemons(10);
   }, []);
 
   const fetchPokemon = async (index) => {
@@ -17,10 +15,10 @@ function PokemonList(props) {
     return data;
   };
 
-  const getPokemons = async (from, to) => {
+  const getPokemons = async (quantity) => {
     const pkmnArr = [];
 
-    for (let i = from; i <= to; i++) {
+    for (let i = 1; i <= quantity; i++) {
       const pokemon = await fetchPokemon(i);
       pkmnArr.push(pokemon);
     }
@@ -29,21 +27,13 @@ function PokemonList(props) {
   };
 
   const pokemonCards = pokemons.map((pokemon) => {
-    return (
-      <PokemonCard
-        key={pokemon.id}
-        pokemon={pokemon}
-        selectPokemon={props.selectPokemon}
-        selectPokemon2={props.selectPokemon2}
-      ></PokemonCard>
-    );
-  });
+    return <PokemonCard key={pokemon.id} pokemon={pokemon}></PokemonCard>;
+  })
 
   return (
-    <div>
-      <GetForm getPokemons={getPokemons}></GetForm>
-      <ul className="pokemon-list">{pokemonCards}</ul>
-    </div>
+    <ul className="pokemon-list">
+      {pokemonCards}
+    </ul>
   );
 }
 
