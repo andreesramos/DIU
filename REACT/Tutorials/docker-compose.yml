@@ -1,0 +1,30 @@
+version: '2' #Versión del fichero Docker-compose (si no se pone la etiqueta, se cogerá la versión 1 automáticamente
+networks: #Define la/s redes que usarán los contenedores
+ mired: #Nombre de la red
+  ipam: #Administra las direcciones ips
+   config: #Etiqueta usada para definir la configuración de la red
+    - subnet: 182.28.0.0/16 #Aquí definimos la subred a usar
+      gateway: 182.28.0.1 #Aquí definimos la puerta de enlace de la red
+services: #Esta etiqueta es usada para definir los contenedores que instalaremos en Docker
+  db: #Nombre del servicio
+   image: bitnami/mongodb:latest #Especificamos la imagen a usar.
+   container_name: mongo_DB #Nombre del contenedor en nuestro Docker
+   networks:
+    mired:
+     ipv4_address: 182.28.0.11 #Dirección ip del contenedor
+   ports:
+    - "27017:27017" #Especificamos los puertos
+   expose:
+    - 27017 #Expone los puertos sin publicarlos al host.
+  app-tutorials:
+   image: andreesramos/tutorials2025:1
+   container_name: tutorialsapp
+   networks:
+    mired:
+     ipv4_address: 182.28.0.12
+   expose:
+   - 80
+   ports:
+   - "80:8080"
+   depends_on: #En esta etiqueta colocamos de qué servicio depende este contenedor
+   - db

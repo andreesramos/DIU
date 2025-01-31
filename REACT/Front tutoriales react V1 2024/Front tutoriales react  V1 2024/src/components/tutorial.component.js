@@ -47,33 +47,42 @@ const Tutorial = () => {
 
     return (
         <div className="submit-form">
-            <div>
-                <div className="form-group">
-                    <label htmlFor="id">Id</label>
-                    <input type="text" className="form-control" id="id" name="id" required readOnly />
+            {
+                submitted ? (
+                    <div>
+                        <h4>Tutorial updated successfully!</h4>
+                    </div>
+                ) : (
+                    <div>
+                    <div className="form-group">
+                        <label htmlFor="id">Id</label>
+                        <input type="text" className="form-control" id="id" name="id" value={id} required readOnly />
+                    </div>
+    
+                    <div className="form-group">
+                        <label htmlFor="title">Title</label>
+                        <input type="text" className="form-control" id="title" name="title" value={title} required onChange={(e) => setTitle(e.target.value)} />
+                    </div>
+    
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <input className="form-control" type="text" id="description" name="description" value={description} required onChange={(e) => setDescription(e.target.value)} />
+                    </div>
+    
+                    <div className="form-group">
+                        <label htmlFor="published">Published &nbsp;</label>
+                        <input type="checkbox" id="published" name="published" checked={published} onChange={handleCheckboxChange} />
+                    </div>
+    
+                    <div>
+                        <button type="submit" className="btn btn-success" onClick={updateTutorial}>
+                            Update
+                        </button>
+                    </div>
                 </div>
-
-                <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" className="form-control" id="title" name="title" value={title} required onChange={(e) => setTitle(e.target.value)} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="description">Description</label>
-                    <input className="form-control" type="text" id="description" name="description" value={description} required onChange={(e) => setDescription(e.target.value)} />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="published">Published &nbsp;</label>
-                    <input type="checkbox" id="published" name="published" checked={published} onChange={handleCheckboxChange} />
-                </div>
-
-                <div>
-                    <button type="submit" className="btn btn-success" onClick={updateTutorial}>
-                        Update
-                    </button>
-                </div>
-            </div>
+                )
+            }
+            
         </div>
     );
 };
