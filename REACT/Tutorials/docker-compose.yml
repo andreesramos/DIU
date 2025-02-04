@@ -6,7 +6,7 @@ networks: #Define la/s redes que usarán los contenedores
     - subnet: 182.28.0.0/16 #Aquí definimos la subred a usar
       gateway: 182.28.0.1 #Aquí definimos la puerta de enlace de la red
 services: #Esta etiqueta es usada para definir los contenedores que instalaremos en Docker
-  db: #Nombre del servicio
+  db2: #Nombre del servicio
    image: bitnami/mongodb:latest #Especificamos la imagen a usar.
    container_name: mongo_DB #Nombre del contenedor en nuestro Docker
    networks:
@@ -27,4 +27,4 @@ services: #Esta etiqueta es usada para definir los contenedores que instalaremos
    ports:
    - "80:8080"
    depends_on: #En esta etiqueta colocamos de qué servicio depende este contenedor
-   - db
+   - db2

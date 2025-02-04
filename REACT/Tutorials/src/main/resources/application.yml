@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 80
 spring:
     application:
       name:tutorialsService
@@ -7,7 +7,6 @@ main:
       allow-bean-definition-overriding: true
 data:
       mongodb:
-#        database: tutorialsservice_db
+        database: tutorialsservice_db
         host: mongo_DB #182.28.0.11
         port: 27017
-        database: tutorialsservice_db
