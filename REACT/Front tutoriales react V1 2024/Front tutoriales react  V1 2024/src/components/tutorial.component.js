@@ -31,6 +31,7 @@ const Tutorial = () => {
 
     const updateTutorial = () => {
         const data = {
+            id,
             title,
             description,
             published

@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "build",
+    "site": "miprimeraappreact-21e2c-c6904",
     "ignore": [
       "firebase.json",
       "**/.*",
