@@ -1,0 +1,12 @@
+server:
+  port: 8099
+spring:
+  application:
+    name:personService
+main:
+  allow-bean-definition-overriding: true
+data:
+  mongodb:
+    database: tutorialsservice_db
+    #host: mongo_DB #182.28.0.11
+    port: 27017
