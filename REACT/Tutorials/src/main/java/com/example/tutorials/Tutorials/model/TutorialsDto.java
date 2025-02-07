@@ -7,9 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@Document
 @Builder
 public class TutorialsDto {
 

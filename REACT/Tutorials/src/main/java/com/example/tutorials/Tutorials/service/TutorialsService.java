@@ -1,6 +1,5 @@
 package com.example.tutorials.Tutorials.service;
 
-import com.example.tutorials.Tutorials.model.Tutorials;
 import com.example.tutorials.Tutorials.model.TutorialsDto;
 import org.springframework.http.ResponseEntity;
 
