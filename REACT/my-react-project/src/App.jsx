@@ -6,6 +6,7 @@ import { use } from 'react';
 import Login from './components/Login';
 import MovieList from './components/MovieList';
 import AnimalList from './components/AnimalList';
+import MemeList from './components/MemeList';
 
 function App() {
   // let number = 0;
@@ -59,14 +60,16 @@ function App() {
       <HeaderComponent greetings={greetings} links={links}></HeaderComponent>
       
       <main className='main-content'>
+        <MemeList></MemeList>
+
         {/*<h2>Hola a todos</h2>*/}
 
         {/*<MovieList></MovieList>
         <AnimalList></AnimalList>*/}
 
-        <h2>Hola {user.username}</h2>
+        {/* <h2>Hola {user.username}</h2>
 
-        <Login handleLogin={login}></Login>
+        <Login handleLogin={login}></Login> */}
 
         {/* <button onClick={() => setShowMovies(!showMovies)}>Toggle Movies</button>
         {showMovies && <MovieList></MovieList>} */}

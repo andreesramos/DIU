@@ -2,4 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+
+    :hover{
+        background-color: darkorange;
+    }
 }
