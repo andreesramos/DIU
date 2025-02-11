@@ -17,6 +17,7 @@ public class PersonDto {
     private int codigoPostal;
     private String ciudad;
     private LocalDate fechaNacimiento;
+    //private String[] tutoriales;
 
 }
 

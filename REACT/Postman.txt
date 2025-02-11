@@ -1,0 +1,18 @@
+Postman
+Tutorials:
+{"id":1,
+"title": "Tutorial 1",
+"description": "Tutorial de Prueba",
+"published": true,
+"imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6AlywQvp2m57YJDJkWqHxG3KF3vcO_0guBg&s"}
+
+
+
+Agenda:
+{"id":1,
+"nombre": "Andres",
+"apellidos": "Ramos Navarro",
+"calle": "Padre Flores",
+"codigoPostal": 41500,
+"ciudad": "Sevilla",
+"fechaNacimiento": "2003-03-16"}
