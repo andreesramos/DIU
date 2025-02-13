@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import "./PokemonCard.css";
 
 function PokemonCard(props) {
-  const { pokemon, selectPokemon } = props;
+  const { pokemon, selectPokemon, selectPokemon2 } = props;
 
   return pokemon.id ? (
-    <li className="pokemon-card" onClick={() => selectPokemon(pokemon)}>
+    <li
+      className="pokemon-card"
+      onClick={() => selectPokemon(pokemon)}
+      onAuxClick={() => selectPokemon2(pokemon)}
+    >
       <h2 className="pokemon-name">{pokemon.name}</h2>
       <img
         src={pokemon.sprites.front_default}
