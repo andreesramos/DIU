@@ -3,7 +3,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-//import AddTutorial from "./components/add-person.component";
+import AddPerson from "./components/add-person.component";
 //Componente para editar componente
 //import Tutorial from "./components/tutorial.component";
 import PersonsList from "./components/persons-list.component";
@@ -34,7 +34,7 @@ class App extends Component {
           <Switch>
           {/*El en switch se renderizarán todas los compoentes cuta URL coicidan con la activa*/}
             <Route exact path={["/", "/agenda"]} component={PersonsList} />
-          {/*  <Route exact path="/add" component={AddPerson} /> */}
+            <Route exact path="/add" component={AddPerson} />
           {/*  <Route path="/tutorials/:id" component={Agenda} /> */}
           </Switch>
         </div>
