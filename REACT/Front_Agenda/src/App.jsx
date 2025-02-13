@@ -19,12 +19,12 @@ class App extends Component {
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/agenda"} className="nav-link">
-                Persons
+                Personas
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"/add"} className="nav-link">
-                Add
+                Añadir
               </Link>
             </li>
           </div>
@@ -33,9 +33,9 @@ class App extends Component {
         <div className="container mt-3">
           <Switch>
           {/*El en switch se renderizarán todas los compoentes cuta URL coicidan con la activa*/}
-            <Route exact path={["/", "/tutorials"]} component={PersonsList} />
-          {/*  <Route exact path="/add" component={AddTutorial} /> */}
-          {/*  <Route path="/tutorials/:id" component={Tutorial} /> */}
+            <Route exact path={["/", "/agenda"]} component={PersonsList} />
+          {/*  <Route exact path="/add" component={AddPerson} /> */}
+          {/*  <Route path="/tutorials/:id" component={Agenda} /> */}
           </Switch>
         </div>
       </div>

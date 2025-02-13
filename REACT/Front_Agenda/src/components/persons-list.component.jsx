@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const PersonsList = () => {
   const [persons, setPersons] = useState([]);
-  const [currentPerson, setCurrentPerson] = useState(null);
+  const [currentPerson, setCurrentPerson] = useState();
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchNombre, setSearchNombre] = useState("");
 
