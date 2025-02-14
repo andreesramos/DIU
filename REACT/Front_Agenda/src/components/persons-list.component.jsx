@@ -13,8 +13,20 @@ const PersonsList = () => {
   }, []);
 
   const onChangeSearchNombre = (e) => {
-    setSearchNombre(e.target.value);
+    buscarNombre(e.target.value);
   };
+
+  //MODIFICAR
+  const buscarNombre = (nombre) => {
+    AgendaDataService.findByNombre(nombre)
+      .then((response) => {
+        setPersons(response.data);
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+  }
 
   const retrievePersons = () => {
     AgendaDataService.getAll()
@@ -49,6 +61,17 @@ const PersonsList = () => {
       });
   };
 
+  const deletePerson = (id) => {
+    AgendaDataService.delete(id)
+      .then((response) => {
+        console.log(response.data);
+        refreshList();
+      })
+      .catch((e) => {
+        console.log();
+      });
+  };
+
   const searchNombreHandler = () => {
     AgendaDataService.findByNombre(searchNombre)
       .then((response) => {
@@ -67,7 +90,7 @@ const PersonsList = () => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by nombre"
+            placeholder="Buscar por nombre"
             value={searchNombre}
             onChange={onChangeSearchNombre}
           />
@@ -155,10 +178,17 @@ const PersonsList = () => {
 
             <Link
               to={"/agenda/" + currentPerson.id}
-              className="badge badge-warning"
+              className="btn btn-warning btn-sm"
             >
               Edit
             </Link>
+
+            <button
+              className="m-3 btn btn-sm btn-danger"
+              onClick={() => deletePerson(currentPerson.id)}
+            >
+              Delete
+            </button>
           </div>
         ) : (
           <div>

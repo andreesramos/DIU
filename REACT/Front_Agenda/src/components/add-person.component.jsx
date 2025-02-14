@@ -10,6 +10,7 @@ const AddPerson = () => {
     const [codigoPostal, setCodigoPostal] = useState(0);
     const [ciudad, setCiudad] = useState("");
     const [fechaNacimiento, setFechaNacimiento] = useState("");
+    const [tutoriales, setTutoriales] = useState([]);
     const [submitted, setSubmitted] = useState(false);
 
     // Maneja el cambio de estado del checkbox
@@ -27,7 +28,8 @@ const AddPerson = () => {
             calle: calle,
             codigoPostal: codigoPostal,
             ciudad: ciudad,
-            fechaNacimiento: fechaNacimiento
+            fechaNacimiento: fechaNacimiento,
+            //tutoriales: tutoriales
         };
 
         // Llamamos al servicio para crear la persona
@@ -41,6 +43,7 @@ const AddPerson = () => {
                 setCodigoPostal(response.data.codigoPostal);
                 setCiudad(response.data.ciudad);
                 setFechaNacimiento(response.data.fechaNacimiento);
+                //setTutoriales(response.data.tutoriales);
                 setSubmitted(true); // Cambiamos el estado a "enviado"
             })
             .catch(error => {
@@ -56,7 +59,8 @@ const AddPerson = () => {
         setCalle("");
         setCodigoPostal(0);
         setCiudad("");
-        setFechaNacimiento(""); 
+        setFechaNacimiento("");
+        //setTutoriales([]);
         setSubmitted(false); 
     };
 
@@ -107,6 +111,11 @@ const AddPerson = () => {
                         <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
                         <input className="form-control" type="text" id="fechaNacimiento" name="fechaNacimiento" required onChange={(e) => setFechaNacimiento(e.target.value)} />
                     </div>
+
+                    {/*<div className="form-group">
+                        <label htmlFor="tutoriales">Tutoriales</label>
+                        <input className="form-control" type="text" id="tutoriales" name="tutoriales" required onChange={(e) => setTutoriales(e.target.value)} />
+                    </div>*/}
 
                     {/* Botón para enviar los datos y guardar la persona */}
                     <div>
