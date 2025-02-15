@@ -1,0 +1,32 @@
+#home-page{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+
+    .title{
+        font-size: 3em;
+    }
+
+    .logo{
+        width: 60%;
+    }
+
+    .link{
+        background-color: orange;
+        color: black;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .link:hover{
+        background-color: orangered;
+    }
+
+    .link:active{
+        background-color: orange;
+    }
+}
