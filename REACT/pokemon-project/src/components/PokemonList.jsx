@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import PokemonCard from "./PokemonCard";
 import "./PokemonList.css";
 import GetForm from "./GetForm";
@@ -22,23 +22,27 @@ function PokemonList(props) {
     setPokemons(pkmnArr);
   };
 
-  const pokemonCards = pokemons.map((pokemon) => {
-    return (
-      <PokemonCard
-        key={pokemon.id}
-        pokemon={pokemon}
-        selectPokemon={props.selectPokemon}
-        selectPokemon2={props.selectPokemon2}
-      ></PokemonCard>
-    );
-  });
- 
+  const pokemonCards = useMemo(
+    () =>
+      pokemons.map((pokemon) => {
+        return (
+          <PokemonCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            selectPokemon={props.selectPokemon}
+            selectPokemon2={props.selectPokemon2}
+          ></PokemonCard>
+        );
+      }),
+    [pokemons]
+  );
+
   return (
     <div>
       <GetForm getPokemons={getPokemons}></GetForm>
       <ul className="pokemon-list">{pokemonCards}</ul>;
     </div>
-  ) 
+  );
 }
 
 export default PokemonList;

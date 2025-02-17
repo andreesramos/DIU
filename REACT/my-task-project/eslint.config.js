@@ -34,6 +34,5 @@ export default [
         { allowConstantExport: true },
       ],
     },
-    "react/prop-types": "off",
   },
 ]

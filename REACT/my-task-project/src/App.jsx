@@ -6,8 +6,9 @@ import TasksPage from './pages/TasksPage'
 function App() {
   return (
     <Routes>
-      <Route path='/' element={<HomePage />}/>
-      <Route path='/tasks' element={<TasksPage />}/>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/tasks' element={<TasksPage/>}/>
+
     </Routes>
   )
 }

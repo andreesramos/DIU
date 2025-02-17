@@ -1,4 +1,4 @@
-.header {
+.header{
     background-color: blue;
     color: white;
     padding: 30px;
@@ -15,7 +15,6 @@
         .link{
             color: white;
             text-decoration: none;
-            
         }
     }
 }
