@@ -6,11 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import { TaskProviderWrapper } from "./context/task.context.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <TaskProviderWrapper>
         <App />
       </TaskProviderWrapper>
     </BrowserRouter>
-  </StrictMode>
+  // </StrictMode> 
 );

@@ -1,0 +1,39 @@
+.task-form{
+    width: 400px;
+    background-color: lightgreen;
+    border: 3px solid darkblue;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.2s;
+
+    .task-title{
+        background-color: transparent;
+        border: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .create-btn{
+        width: 30px;
+        height: 30px;
+        font-size: 1.5rem;
+        background-color: green;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+
+    .create-btn:hover{
+        background-color: darkgreen;
+    }
+
+    .create-btn:active{
+        background-color: green;
+    }
+}
+
+.task-form:hover{
+    border: 3px solid black;
+    box-shadow: 0 0 10px;
+}
