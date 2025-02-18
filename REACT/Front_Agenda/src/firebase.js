@@ -1,10 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
 //////////////////////////////////////////////////////////
-
-
 
   // Your web app's Firebase configuration
   const firebaseConfig = {    
@@ -19,19 +17,10 @@ import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
   // Initialize Firebase
   //firebase.initializeApp(firebaseConfig);
 
-
-
-
-
 /////////////////////////////////////////////////////////
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const firestore = getFirestore(app);
-
-const provider = new GoogleAuthProvider();
-export const signInWithGoogle = () => {
-  signInWithPopup(auth, provider);
-};
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
@@ -40,12 +29,12 @@ export const generateUserDocument = async (user, additionalData) => {
   const snapshot = await getDoc(userRef);
 
   if (!snapshot.exists) {
-    const { email, displayName/*, photoURL*/ } = user;
+    const { email, displayName, photoURL } = user;
     try {
       await setDoc(userRef, {
         displayName,
         email,
-        //photoURL,
+        photoURL,
         ...additionalData
       });
     } catch (error) {

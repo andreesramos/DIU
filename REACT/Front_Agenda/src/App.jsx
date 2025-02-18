@@ -7,13 +7,13 @@ import AddPerson from "./components/Add-person.component";
 import EditPerson from "./components/Edit-person.component";
 import PersonsList from "./components/Persons-list.component";
 import SignIn from "./components/SignIn";
-import SignUp from "./components/SingUp";
+import SignUp from "./components/SignUp";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <Link to={"/agenda"} className="navbar-brand">
             Agenda
           </Link>

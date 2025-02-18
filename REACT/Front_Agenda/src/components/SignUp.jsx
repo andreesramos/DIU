@@ -10,15 +10,23 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
+  const createUserWithEmailAndPasswordHandler = async (event) => {
     event.preventDefault();
+    setError(null);
     try{
-      const {user} = await createUserWithEmailAndPassword(auth, email, password);
+      if(!email || !password || !displayName){
+        setError("All fields required");
+        return;
+      }
+
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
       await generateUserDocument(user, {displayName});
       navigate("/signIn");
     }
     catch(error){
-      setError('Error Signing up with email and password');
+      setError('Error Signing up');
       console.error("Error creating user: ", error);
     }
       
@@ -27,17 +35,17 @@ const SignUp = () => {
     setDisplayName("");
   };
 
-  const onChangeHandler = event => {
-    const { name, value } = event.currentTarget;
+  // const onChangeHandler = event => {
+  //   const { name, value } = event.currentTarget;
 
-    if (name === "userEmail") {
-      setEmail(value);
-    } else if (name === "userPassword") {
-      setPassword(value);
-    } else if (name === "displayName") {
-      setDisplayName(value);
-    }
-  };
+  //   if (name === "userEmail") {
+  //     setEmail(value);
+  //   } else if (name === "userPassword") {
+  //     setPassword(value);
+  //   } else if (name === "displayName") {
+  //     setDisplayName(value);
+  //   }
+  // };
 
   return (
     <div className="mt-8">

@@ -1,84 +1,65 @@
-import React, {useState} from "react";
-import { signInWithGoogle } from "../firebase";
+import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
-
+import "../styles/SignIn.css";
+import logo from "../assets/logo_agenda.png";
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
-    const navigate = useNavigate();
+  const signInWithEmailAndPasswordHandler = async (event) => {
+    event.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/");
+    } catch (error) {
+      setError("Error signing in with email and password!");
+      console.error("Error signing in:", error);
+    }
+  };
 
-    const signInWithEmailAndPasswordHandler = async (event) => {
-        event.preventDefault();
-        try {
-          await signInWithEmailAndPassword(auth, email, password);
-          navigate("/")
-        } catch (error) {
-          setError("Error signing in with email and password!");
-          console.error("Error signing in:", error);
-        }
-      };
-      
-      const onChangeHandler = (event) => {
-          const {name, value} = event.currentTarget;
-        
-          if(name === 'userEmail') {
-              setEmail(value);
-          }
-          else if(name === 'userPassword'){
-            setPassword(value);
-          }
-      };
-   
+  const onChangeHandler = (event) => {
+    const { name, value } = event.currentTarget;
+
+    if (name === "userEmail") {
+      setEmail(value);
+    } else if (name === "userPassword") {
+      setPassword(value);
+    }
+  };
 
   return (
-    <div className="mt-8">
-      <h1 className="text-3xl mb-2 text-center font-bold">Sign In</h1>
-      <div className="border border-blue-400 mx-auto w-11/12 md:w-2/4 rounded py-8 px-4 md:px-8">
-        {error !== null && <div className = "py-4 w-full text-red text-center mb-3">{error}</div>}
-        <form className="">
-          <label htmlFor="userEmail" className="block">
-            Email:
-          </label>
+    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+      <div className="card">
+        <img src={logo} alt="Logo" className="logo" />
+        <h2>Sign In</h2>
+        {error !== null && <div className="error-message">{error}</div>}
+        <form className="form" onSubmit={signInWithEmailAndPasswordHandler}>
           <input
             type="email"
-            className="my-1 p-1 w-full"
             name="userEmail"
-            value = {email}
-            placeholder="E.g: prueba@gmail.com"
+            value={email}
+            placeholder="Email"
             id="userEmail"
-            onChange = {(event) => onChangeHandler(event)}
+            onChange={onChangeHandler}
           />
-          <label htmlFor="userPassword" className="block">
-            Password:
-          </label>
           <input
             type="password"
-            className="mt-1 mb-3 p-1 w-full"
             name="userPassword"
-            value = {password}
-            placeholder="Your Password"
+            value={password}
+            placeholder="Password"
             id="userPassword"
-            onChange = {(event) => onChangeHandler(event)}
+            onChange={onChangeHandler}
           />
-          <button className="bg-green-400 hover:bg-green-500 w-full py-2 text-white" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, email, password)}}>
-            Sign in
-          </button>
+          <button type="submit">Sign In</button>
         </form>
-        <p className="text-center my-3">or</p>
-        
-        <p className="text-center my-3">
-          Don't have an account?{" "}
-          <Link to="/signUp" className="text-blue-500 hover:text-blue-600">
-            Sign up here
-          </Link>{" "}
-          <br />{" "}
-          
-        </p>
+        <footer>
+          Need an account? <Link to="/signUp">Sign up <span>here</span></Link>
+        </footer>
       </div>
     </div>
   );

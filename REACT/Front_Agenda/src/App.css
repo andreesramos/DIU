@@ -13,3 +13,12 @@
   max-width: 300px;
   margin: auto;
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+

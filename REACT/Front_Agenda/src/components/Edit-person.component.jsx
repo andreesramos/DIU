@@ -99,7 +99,7 @@ const EditPerson = () => {
 
                     <div className="form-group">
                         <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-                        <input className="form-control" type="text" id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} required onChange={(e) => setFechaNacimiento(e.target.value)} />
+                        <input className="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" value={fechaNacimiento} required onChange={(e) => setFechaNacimiento(e.target.value)} />
                     </div>
 
                     {/*<div className="form-group">
