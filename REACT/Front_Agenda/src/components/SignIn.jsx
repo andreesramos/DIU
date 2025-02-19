@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/SignIn.css";
+import "../styles/Login.css";
 import logo from "../assets/logo_agenda.png";
 
 const SignIn = () => {

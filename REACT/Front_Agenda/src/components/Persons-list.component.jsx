@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AgendaDataService from "../services/agenda.service";
 import { Link } from "react-router-dom";
+import ButtonDelete from "./ButtonDelete";
+import { usePersons } from "../context/PersonContext";
 
 const PersonsList = () => {
-  const [persons, setPersons] = useState([]);
-  const [currentPerson, setCurrentPerson] = useState();
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const [searchNombre, setSearchNombre] = useState("");
+  const { persons, currentPerson, setCurrentPerson, setCurrentIndex } = useContext(usePersons);
+
+  // const [persons, setPersons] = useState([]);
+  // const [currentPerson, setCurrentPerson] = useState();
+  // const [currentIndex, setCurrentIndex] = useState(-1);
+  // const [searchNombre, setSearchNombre] = useState("");
 
   useEffect(() => {
     retrievePersons();
@@ -183,12 +187,13 @@ const PersonsList = () => {
               Edit
             </Link>
 
-            <button
+            <ButtonDelete onClick={() => deletePerson(currentPerson.id)}></ButtonDelete>
+            {/* <button
               className="m-3 btn btn-sm btn-danger"
               onClick={() => deletePerson(currentPerson.id)}
             >
               Delete
-            </button>
+            </button> */}
           </div>
         ) : (
           <div>

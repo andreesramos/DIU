@@ -1,0 +1,30 @@
+version: '2'
+networks:
+  mired:
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+          gateway: 172.28.0.1
+services: 
+  db:
+    image: bitnami/mongodb:5.0.6-debian-10-r50
+    container_name: mongo_DB_examen_2025
+    networks:
+     mired:
+        ipv4_address: 172.28.0.11
+    ports:
+       - "27017:27017"
+    expose:
+     - 27017
+  app-products:
+    image: jalovi/app:1
+    container_name: app_monedas_app_examen
+    networks:
+      mired:
+        ipv4_address: 172.28.0.12
+    expose:
+      - 8080
+    ports:
+        - "8080:8080"
+    depends_on:
+      - db

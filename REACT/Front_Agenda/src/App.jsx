@@ -8,6 +8,7 @@ import EditPerson from "./components/Edit-person.component";
 import PersonsList from "./components/Persons-list.component";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import { PersonProvider } from "./context/PersonContext";
 
 class App extends Component {
   render() {
@@ -37,14 +38,17 @@ class App extends Component {
         </nav>
 
         <div className="container mt-3">
-          <Routes>
-            <Route path="/" element={<PersonsList />} />
-            <Route path="/agenda" element={<PersonsList />} />
-            <Route path="/add" element={<AddPerson />} />
-            <Route path="/agenda/:id" element={<EditPerson />} />
-            <Route path="/signIn" element={<SignIn/>} />
-            <Route path="/signUp" element={<SignUp />} />
-          </Routes>
+          <PersonProvider>
+            <Routes>
+              <Route path="/" element={<PersonsList />} />
+              <Route path="/agenda" element={<PersonsList />} />
+              <Route path="/add" element={<AddPerson />} />
+              <Route path="/agenda/:id" element={<EditPerson />} />
+              <Route path="/signIn" element={<SignIn/>} />
+              <Route path="/signUp" element={<SignUp />} />
+            </Routes>
+          </PersonProvider>
+          
         </div>
       </div>
     );

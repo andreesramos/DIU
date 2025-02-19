@@ -26,7 +26,7 @@ const AddPerson = () => {
             nombre: nombre,
             apellidos: apellidos,
             calle: calle,
-            codigoPostal: codigoPostal,
+            codigoPostal: parseInt(codigoPostal),
             ciudad: ciudad,
             fechaNacimiento: fechaNacimiento,
             //tutoriales: tutoriales
@@ -99,7 +99,7 @@ const AddPerson = () => {
 
                     <div className="form-group">
                         <label htmlFor="codigoPostal">Codigo Postal</label>
-                        <input className="form-control" type="text" id="codigoPostal" name="codigoPostal" required onChange={(e) => setCodigoPostal(e.target.value)} />
+                        <input className="form-control" type="number" id="codigoPostal" name="codigoPostal" required onChange={(e) => setCodigoPostal(e.target.value)} />
                     </div>
 
                     <div className="form-group">
