@@ -1,0 +1,36 @@
+.search-container {
+  display: flex; /* Utiliza flexbox para organizar los elementos de la barra de búsqueda */
+  justify-content: center; /* Centra la barra de búsqueda horizontalmente */
+  margin-bottom: 20px; /* Agrega espacio debajo de la barra de búsqueda */
+}
+
+.search-input {
+  width: 100%; /* La barra de búsqueda ocupará todo el ancho disponible */
+  max-width: 400px; /* Define un ancho máximo para evitar que sea demasiado grande */
+  padding: 10px 15px; /* Agrega espacio interno para mejorar la accesibilidad */
+  border: 2px solid #ccc; /* Borde gris claro para darle un diseño limpio */
+  border-radius: 25px; /* Bordes redondeados para un estilo moderno */
+  font-size: 16px; /* Ajusta el tamaño del texto dentro del campo */
+  outline: none; /* Elimina el borde azul predeterminado al hacer clic */
+  transition: all 0.3s ease-in-out; /* Agrega una transición suave en cambios de estilos */
+}
+
+.search-input:focus {
+  border-color: #007bff; /* Cambia el color del borde al enfocarse */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Agrega un efecto de resplandor al enfocar */
+}
+
+.search-icon {
+  position: absolute; /* Posiciona el icono de búsqueda dentro del campo */
+  right: 15px; /* Lo ubica a la derecha dentro del contenedor */
+  top: 50%; /* Lo centra verticalmente en el campo */
+  transform: translateY(-50%); /* Ajusta la posición para alineación perfecta */
+  font-size: 18px; /* Ajusta el tamaño del icono */
+  color: #666; /* Color gris para un diseño neutro */
+  cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el icono */
+  transition: color 0.3s; /* Agrega una transición suave en el cambio de color */
+}
+
+.search-input:focus + .search-icon {
+  color: #007bff; /* Cambia el color del icono cuando el campo está enfocado */
+}

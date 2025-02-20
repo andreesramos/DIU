@@ -1,55 +1,60 @@
 .submit-form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .form-control {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  input[type="checkbox"] {
-    transform: scale(1.2);
-    margin-left: 5px;
-  }
-  
-  .btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .btn-success:hover {
-    background-color: #218838;
-  }
-  
-  h4 {
-    color: #28a745;
-    text-align: center;
-    margin-bottom: 15px;
-  }
+  max-width: 500px; /* Limita el ancho máximo del formulario a 500px */
+  margin: 20px auto; /* Centra el formulario en la página con un margen superior/inferior de 20px */
+  padding: 20px; /* Añade espacio interno dentro del formulario */
+  background: #f9f9f9; /* Establece un color de fondo claro */
+  border-radius: 8px; /* Redondea los bordes del formulario */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Aplica una sombra ligera para resaltar el formulario */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Añade espacio entre los grupos de entrada del formulario */
+}
+
+label {
+  font-weight: bold; /* Resalta las etiquetas con negrita */
+  display: block; /* Hace que las etiquetas ocupen todo el ancho disponible */
+  margin-bottom: 5px; /* Añade espacio entre la etiqueta y el campo de entrada */
+}
+
+.form-control {
+  width: 100%; /* Hace que los campos de entrada ocupen todo el ancho del contenedor */
+  padding: 8px; /* Añade espacio dentro del campo de entrada */
+  border: 1px solid #ccc; /* Define un borde gris claro */
+  border-radius: 5px; /* Redondea los bordes de los campos de entrada */
+  font-size: 16px; /* Ajusta el tamaño del texto en los campos */
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2); /* Aumenta el tamaño del checkbox para mejor accesibilidad */
+  margin-left: 5px; /* Agrega un pequeño margen a la izquierda del checkbox */
+}
+
+.btn {
+  padding: 8px 16px; /* Define un padding uniforme en los botones */
+  border: none; /* Elimina los bordes predeterminados de los botones */
+  border-radius: 5px; /* Redondea los bordes del botón */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+  font-size: 16px; /* Aumenta el tamaño del texto en los botones */
+  transition: background-color 0.3s; /* Agrega una transición suave al cambiar el color de fondo */
+}
+
+.btn-success {
+  background-color: #28a745; /* Define un color verde para el botón de éxito */
+  color: white; /* Texto en color blanco */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Oscurece el color verde cuando el botón es presionado */
+}
+
+h4 {
+  color: #28a745; /* Define un color verde para los títulos */
+  text-align: center; /* Centra el texto */
+  margin-bottom: 15px; /* Añade espacio debajo del título */
+}
+
+.text-danger {
+  color: red; /* Define el color rojo para los mensajes de error */
+  padding-top: 20px; /* Agrega un espacio superior para separar los mensajes de error */
+}

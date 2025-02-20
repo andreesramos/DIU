@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddProduct from "./components/add-product.component";
 import EditProduct from "./components/edit-product.component";
 import ProductsList from "./components/products-list.component";
+import DeleteProduct from "./components/delete-product.component";
+import BuyProduct from "./components/buy-product.component";
 
 class App extends Component{
   render(){
@@ -18,12 +20,12 @@ class App extends Component{
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/products"} className="nav-link">
-                Products
+                Productos
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"/add"} className="nav-link">
-                Add
+                Añadir
               </Link>
             </li>
           </div>
@@ -34,8 +36,10 @@ class App extends Component{
           <Routes>
             <Route path="/" element={<ProductsList />} />
             <Route path="/products" element={<ProductsList />} />
-            <Route path="/add" element={<AddProduct />} /> 
-            <Route path="/tutorials/:id" element={<EditProduct />} /> 
+            <Route path="/add" element={<AddProduct />} />
+            <Route path="/products/:id" element={<EditProduct />} />
+            <Route path="/products/:id/delete" element={<DeleteProduct />} />
+            <Route path="/products/:id/buy" element={<BuyProduct />} />
           </Routes>
         </div>
       </div>

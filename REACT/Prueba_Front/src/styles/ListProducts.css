@@ -1,58 +1,91 @@
-.background{
-  background-color: #f4f4f4;
+.background {
+  background-color: #f4f4f4; /* Define un color de fondo gris claro para toda la página */
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
+  display: flex; /* Utiliza flexbox para organizar los elementos en fila */
+  flex-wrap: wrap; /* Permite que los elementos se ajusten en varias líneas si es necesario */
+  justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+  margin-top: 20px; /* Agrega un margen superior para separar de otros elementos */
 }
 
 .list-group {
-  width: 100%;
-  max-width: 400px;
-  padding: 0;
+  width: 100%; /* La lista ocupa todo el ancho disponible */
+  max-width: 400px; /* Establece un ancho máximo para evitar que sea demasiado grande */
+  padding: 0; /* Elimina el padding por defecto */
 }
 
 .list-group-item {
-  padding: 10px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  padding: 10px; /* Añade espacio dentro de cada elemento de la lista */
+  border: 1px solid #ddd; /* Define un borde gris claro */
+  cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre los elementos */
+  transition: background-color 0.3s ease; /* Agrega una transición suave en el color de fondo */
 }
 
 .list-group-item:hover {
-  background-color: #f0f0f0;
+  background-color: #f0f0f0; /* Cambia el color de fondo al pasar el mouse sobre el elemento */
 }
 
 .list-group-item.active {
-  background-color: #007bff;
-  color: white;
-  font-weight: bold;
+  background-color: #007bff; /* Establece el color azul para el elemento activo */
+  color: white; /* Cambia el color del texto a blanco */
+  font-weight: bold; /* Hace que el texto sea más grueso */
 }
 
 .col-md-6 {
-  flex: 1;
-  min-width: 300px;
-  margin: 10px;
+  flex: 1; /* Permite que las columnas se ajusten automáticamente */
+  min-width: 300px; /* Establece un ancho mínimo para evitar que sean demasiado pequeñas */
+  margin: 10px; /* Agrega espacio entre las columnas */
 }
 
 h4 {
-  margin-bottom: 15px;
-  font-size: 1.5rem;
+  margin-bottom: 15px; /* Agrega espacio debajo del título */
+  font-size: 1.5rem; /* Define el tamaño del texto */
 }
 
 label {
-  font-weight: bold;
-  display: block;
-  margin-top: 10px;
+  font-weight: bold; /* Resalta las etiquetas con negrita */
+  display: block; /* Hace que la etiqueta ocupe toda la línea */
+  margin-top: 10px; /* Añade espacio superior entre los labels */
+}
+
+/* Estilos para botones tipo badge con diferentes colores */
+.badge-success {
+  display: inline-block; /* Hace que el badge sea un elemento en línea */
+  padding: 5px 10px; /* Agrega espacio dentro del botón */
+  background-color: #28a745; /* Color verde de éxito */
+  color: #212529; /* Texto oscuro */
+  text-decoration: none; /* Elimina el subrayado en enlaces */
+  border-radius: 5px; /* Bordes redondeados */
+  margin-top: 10px; /* Espacio superior */
+  transition: background-color 0.3s ease; /* Suaviza el cambio de color al pasar el cursor */
+  margin-right: 5px; /* Espacio entre botones */
+}
+
+.badge-success:hover {
+  background-color: #218838; /* Oscurece el color al pasar el mouse */
 }
 
 .badge-warning {
   display: inline-block;
   padding: 5px 10px;
-  background-color: #ffc107;
+  background-color: #ffc107; /* Color amarillo de advertencia */
+  color: #212529;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.badge-warning:hover {
+  background-color: #e0a800; /* Oscurece el color al pasar el mouse */
+}
+
+.badge-error {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #dc3545; /* Color rojo de error */
   color: #212529;
   text-decoration: none;
   border-radius: 5px;
@@ -60,6 +93,22 @@ label {
   transition: background-color 0.3s ease;
 }
 
-.badge-warning:hover {
-  background-color: #e0a800;
+.badge-error:hover {
+  background-color: #bd2130; /* Oscurece el color al pasar el mouse */
+}
+
+.badge-secondary {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #6c757d; /* Color gris para opciones secundarias */
+  color: #212529;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  margin-right: 5px;
+}
+
+.badge-secondary:hover {
+  background-color: #5a6268; /* Oscurece el color al pasar el mouse */
 }

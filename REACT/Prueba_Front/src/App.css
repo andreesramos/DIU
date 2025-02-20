@@ -1,20 +1,20 @@
-.main{
-  background-color: #e8f5e9 /*#faf3e0*/;
-  min-height: 100vh;
+.main {
+  background-color: #e8f5e9 /*#faf3e0*/; /* Fondo de color verde claro para una apariencia suave */
+  min-height: 100vh; /* Asegura que la altura mínima sea del 100% de la pantalla */
 }
 
 .list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+  text-align: left; /* Alinea el texto a la izquierda dentro de la lista */
+  max-width: 750px; /* Limita el ancho de la lista a un máximo de 750px */
+  margin: auto; /* Centra la lista horizontalmente */
 }
 
 .submit-form {
-  max-width: 300px;
-  margin: auto;
+  max-width: 300px; /* Establece un ancho máximo de 300px para el formulario de envío */
+  margin: auto; /* Centra el formulario horizontalmente en la página */
 }
 
 .edit-form {
-  max-width: 300px;
-  margin: auto;
+  max-width: 300px; /* Define el mismo ancho máximo para el formulario de edición */
+  margin: auto; /* Centra el formulario horizontalmente */
 }

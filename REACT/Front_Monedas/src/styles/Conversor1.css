@@ -1,0 +1,105 @@
+/* Estilos generales para la página */
+body {
+  font-family: Arial, sans-serif; /* Fuente predeterminada */
+  background-color: #f4f4f4; /* Color de fondo gris claro */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Usa flexbox para centrar contenido */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+/* Contenedor principal del conversor */
+.conversor-container {
+  background-color: white; /* Fondo blanco */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  width: 80%;
+  max-width: 600px; /* Limita el ancho máximo */
+  text-align: center; /* Centra el texto */
+}
+
+/* Estilos para el título */
+h1 {
+  color: #333; /* Color de texto oscuro */
+}
+
+/* Contenedor del input de conversión */
+.input-container {
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos para etiquetas */
+label {
+  font-weight: bold; /* Texto en negrita */
+  display: block; /* Ocupa todo el ancho disponible */
+  margin-bottom: 5px; /* Espaciado entre etiqueta e input */
+}
+
+/* Estilos para los inputs */
+input {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  padding: 10px; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde gris claro */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Contenedor de las tablas */
+.tables-container {
+  display: flex; /* Usa flexbox */
+  justify-content: space-between; /* Separa las tablas */
+  margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilos para las tablas */
+table {
+  width: 45%; /* Cada tabla ocupa el 45% del contenedor */
+  border-collapse: collapse; /* Elimina el espacio entre bordes */
+  background-color: #fff; /* Fondo blanco */
+}
+
+/* Estilos para las celdas de la tabla */
+th,
+td {
+  padding: 10px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
+  border: 1px solid #ddd; /* Borde gris claro */
+}
+
+/* Estilos para los encabezados de la tabla */
+th {
+  background-color: #007bff; /* Color azul */
+  color: white; /* Texto blanco */
+}
+
+/* Cambio de color al pasar el cursor sobre una fila */
+tr:hover {
+  background-color: #f1f1f1; /* Color de fondo más claro */
+  cursor: pointer; /* Cambia el cursor a una mano */
+}
+
+/* Estilos para el botón de conversión */
+button {
+  background-color: #28a745; /* Color verde */
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Indica que es un botón clickeable */
+}
+
+/* Cambio de color cuando se pasa el cursor sobre el botón */
+button:hover {
+  background-color: #218838; /* Verde más oscuro */
+}
+
+/* Contenedor del resultado de la conversión */
+.result-container {
+  margin-top: 20px; /* Espaciado superior */
+  font-size: 18px; /* Tamaño de fuente más grande */
+  font-weight: bold; /* Texto en negrita */
+}

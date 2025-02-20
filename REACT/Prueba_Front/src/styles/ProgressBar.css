@@ -1,34 +1,36 @@
 .progress-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    background: #e0e0e0;
-    border-radius: 8px;
-    padding: 5px;
-    margin-bottom: 20px;
-  }
-  
-  .progress-bar {
-    flex-grow: 1;
-    height: 12px;
-    border-radius: 6px;
-    background: #4caf50;
-    appearance: none;
-  }
-  
-  .progress-bar::-webkit-progress-bar {
-    background: #ddd;
-    border-radius: 6px;
-  }
-  
-  .progress-bar::-webkit-progress-value {
-    background: #4caf50;
-    border-radius: 6px;
-  }
-  
-  .progress-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-  }
+  display: flex; /* Utiliza flexbox para alinear la barra de progreso y la etiqueta */
+  align-items: center; /* Centra los elementos verticalmente */
+  gap: 10px; /* Espacio entre la barra de progreso y la etiqueta */
+  width: 100%; /* Ocupa todo el ancho disponible */
+  background: #e0e0e0; /* Color de fondo gris claro */
+  border-radius: 8px; /* Bordes redondeados para un diseño más moderno */
+  padding: 5px; /* Espaciado interno para una mejor presentación */
+  margin-bottom: 20px; /* Espacio debajo de la barra de progreso */
+}
+
+.progress-bar {
+  flex-grow: 1; /* Permite que la barra de progreso ocupe el espacio disponible */
+  height: 12px; /* Define la altura de la barra */
+  border-radius: 6px; /* Bordes redondeados para un diseño más suave */
+  background: #4caf50; /* Color verde para la barra de progreso */
+  appearance: none; /* Elimina los estilos predeterminados del navegador */
+}
+
+/* Estilos para navegadores basados en WebKit (Chrome, Safari) */
+.progress-bar::-webkit-progress-bar {
+  background: #ddd; /* Fondo gris claro de la barra de progreso */
+  border-radius: 6px; /* Mantiene los bordes redondeados */
+}
+
+.progress-bar::-webkit-progress-value {
+  background: #4caf50; /* Color verde para el valor de la barra de progreso */
+  border-radius: 6px; /* Aplica bordes redondeados al área de progreso */
+}
+
+/* Estilos para la etiqueta de porcentaje */
+.progress-label {
+  font-size: 14px; /* Ajusta el tamaño del texto */
+  font-weight: bold; /* Hace que el texto sea más visible */
+  color: #333; /* Color oscuro para mejor contraste */
+}
