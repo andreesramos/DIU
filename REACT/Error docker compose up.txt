@@ -1,0 +1,9 @@
+Error docker-compose up
+
+✘ Network prueba_mired  Error                                                            0.0s 
+failed to create network prueba_mired: Error response from daemon: invalid pool request: Pool overlaps with other one on this address space ---> docker network rm prueba_mired
+
+Error response from daemon: Conflict. The container name "/mongo_DB_examen_2025" is already in use by container "2b2c8dae07bee29d714ace6aa9b51206cf3c2aa4dfb808615fa73c5becf45a15". You have to remove (or rename) that container to be able to reuse that name. ---> docker rm mongo_DB_examen_2025
+
+Error response from daemon: Conflict. The container name "/app_monedas_app_examen" is already in use by container "24c9887c2d2d165b78bd3a4726ce910de6b638599066cf67d96f19e3b62e3920". You have to remove (or rename) that container to be able to reuse that name. ---> docker rm app_monedas_app_examen
+
