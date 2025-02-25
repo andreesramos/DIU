@@ -1,28 +1,31 @@
 import React, { useState } from "react";
-import "../styles/ButtonDelete.css"
+import "../styles/ButtonDelete.css";
 import { usePersons } from "../context/PersonContext";
 
-const ButtonDelete = () => {
+const ButtonDelete = ({ personId }) => {  
     const { deletePerson } = usePersons();
     const [isDeleting, setIsDeleting] = useState(false);
-    const [isDeleted, setIsDeleted] = useState(false);
-    
-    const handleClick = async () => {
+
+    const handleClick = () => {
+        if (!personId) return;  
+
         setIsDeleting(true);
-        await deletePerson();
-        setIsDeleting(false)
-        setIsDeleted(true)
-        setTimeout(() => setIsDeleted(false), 2000);
+
+        // Esperar antes de eliminar, para que la animación se complete
+        setTimeout(async () => {
+            await deletePerson(personId);  // Eliminamos después de la animación
+            setIsDeleting(false);
+        }, 2500);
     };
 
     return (
         <button 
             onClick={handleClick} 
-            className={isDeleting || isDeleted ? "deleting" : ""}
-            disabled={isDeleting || isDeleted}
+            className={isDeleting ? "deleting" : ""}
+            disabled={isDeleting} // Evita múltiples clics durante la animación
         >
             <span className="button-text">
-                {isDeleting || isDeleted ? "Deleting" : "Delete"}
+                {isDeleting ? "Deleting..." : "Delete"}
             </span>
             <span className="animation">
                 <span className="balls"></span>
@@ -32,7 +35,7 @@ const ButtonDelete = () => {
                 </span>
             </span>
         </button>
-    )
+    );
 }
 
 export default ButtonDelete;

@@ -67,10 +67,6 @@ const EditPerson = () => {
                     </div>
                 ) : (
                     <div>
-                    <div className="form-group">
-                        <label htmlFor="id">Id</label>
-                        <input type="text" className="form-control" id="id" name="id" value={id} required readOnly />
-                    </div>
     
                     <div className="form-group">
                         <label htmlFor="nombre">Nombre</label>
@@ -107,7 +103,7 @@ const EditPerson = () => {
                         <input className="form-control" type="text" id="tutoriales" name="tutoriales" value={tutoriales} required onChange={(e) => setTutoriales(e.target.value)} />
                     </div>*/}
     
-                    <div>
+                    <div style={{ marginTop: "10px" }}>
                         <button type="submit" className="btn btn-success" onClick={updatePerson}>
                             Update
                         </button>

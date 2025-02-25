@@ -29,24 +29,29 @@ export const PersonProvider = ({ children }) => {
     };
 
     // Eliminar una persona
-    const deletePerson = async () => {
-        if (!currentPerson) return;
-
+    const deletePerson = async (id) => { 
+        if (!id) return;
+    
         try {
-            await AgendaDataService.delete(currentPerson.id);
-            setPersons(persons.filter(person => person.id !== currentPerson.id)); // Filtrar la persona eliminada
-            setCurrentPerson(null);
-            setCurrentIndex(-1);
+            await AgendaDataService.delete(id);
+            setPersons(persons.filter(person => person.id !== id));  // Filtra la persona eliminada
+            if (currentPerson?.id === id) {
+                setCurrentPerson(null);
+                setCurrentIndex(-1);
+            }
         } catch (error) {
             console.error("Error deleting person:", error);
         }
     };
+    
 
     return (
         <PersonContext.Provider value={{
             persons,
+            setPersons,
             currentPerson,
             setCurrentPerson,
+            currentIndex,
             setCurrentIndex,
             deletePerson
         }}>

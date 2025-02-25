@@ -3,7 +3,6 @@ import AgendaDataService from "../services/agenda.service";
 
 const AddPerson = () => {
     // Definimos los estados para manejar los valores del formulario y el estado de envío
-    const [id, setId] = useState(""); 
     const [nombre, setNombre] = useState(""); 
     const [apellidos, setApellidos] = useState(""); 
     const [calle, setCalle] = useState("");
@@ -22,7 +21,6 @@ const AddPerson = () => {
     const savePerson = () => {
         // Creamos un objeto con los datos ingresados
         const data = {
-            id,
             nombre: nombre,
             apellidos: apellidos,
             calle: calle,
@@ -36,7 +34,7 @@ const AddPerson = () => {
         AgendaDataService.create(data)
             .then(response => {
                 // Si la respuesta es exitosa, actualizamos los estados con los valores de la base de datos
-                setId(response.data.id);
+                //setId(response.data.id);
                 setNombre(response.data.nombre);
                 setApellidos(response.data.apellidos);
                 setCalle(response.data.calle);
@@ -53,7 +51,6 @@ const AddPerson = () => {
 
     // Función para reiniciar el formulario y agregar una nueva persona
     const newPerson = () => {
-        setId(""); 
         setNombre(""); 
         setApellidos(""); 
         setCalle("");
@@ -77,11 +74,6 @@ const AddPerson = () => {
             ) : (
                 // Si el formulario no ha sido enviado, mostramos los campos de entrada
                 <div>
-                    <div className="form-group">
-                        <label htmlFor="id">Id</label>
-                        <input type="text" className="form-control" id="id" name="id" required onChange={(e) => setId(e.target.value)} />
-                    </div>
-
                     <div className="form-group">
                         <label htmlFor="title">Nombre</label>
                         <input type="text" className="form-control" id="title" name="title" required onChange={(e) => setNombre(e.target.value)} />
@@ -118,8 +110,8 @@ const AddPerson = () => {
                     </div>*/}
 
                     {/* Botón para enviar los datos y guardar la persona */}
-                    <div>
-                        <button type="submit" className="btn btn-success" onClick={savePerson}>
+                    <div style={{marginTop: "10px"}}>
+                        <button type="submit" className="btn btn-success " onClick={savePerson}>
                             Submit
                         </button>
                     </div>
