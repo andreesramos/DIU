@@ -9,6 +9,8 @@ import PersonsList from "./components/Persons-list.component";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import { PersonProvider } from "./context/PersonContext";
+import { AuthProvider } from "./context/AuthContext";
+import TutorialsList from "./components/Tutorials-list.component";
 
 class App extends Component {
   render() {
@@ -34,21 +36,31 @@ class App extends Component {
                 Login
               </Link>
             </li>
+            {/*{user ? (
+              <>
+                <span className="mr-3">Bienvenido, {user.email}</span>
+                <button className="btn btn-danger btn-sm" onClick={logout}>Logout</button>
+              </>
+            ) : (
+              <Link className="btn btn-primary btn-sm" to="/signIn">Sign In</Link>
+            )}*/}
           </div>
         </nav>
 
         <div className="container mt-3">
-          <PersonProvider>
-            <Routes>
-              <Route path="/" element={<PersonsList />} />
-              <Route path="/agenda" element={<PersonsList />} />
-              <Route path="/add" element={<AddPerson />} />
-              <Route path="/agenda/:id" element={<EditPerson />} />
-              <Route path="/signIn" element={<SignIn/>} />
-              <Route path="/signUp" element={<SignUp />} />
-            </Routes>
-          </PersonProvider>
-          
+          <AuthProvider>
+            <PersonProvider>
+              <Routes>
+                <Route path="/" element={<PersonsList />} />
+                <Route path="/agenda" element={<PersonsList />} />
+                <Route path="/add" element={<AddPerson />} />
+                <Route path="/agenda/:id" element={<EditPerson />} />
+                <Route path="/signIn" element={<SignIn/>} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/tutoriales" element={<TutorialsList />} />
+              </Routes>
+            </PersonProvider>
+          </AuthProvider>
         </div>
       </div>
     );

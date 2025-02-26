@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import AgendaDataService from "../services/agenda.service";
+import TutorialDataService from "../services/tutorial.service";
 
 // Crear el contexto
 const PersonContext = createContext();
@@ -18,15 +19,29 @@ export const PersonProvider = ({ children }) => {
         retrievePersons();
     }, []);
 
-    // Obtener todas las personas
     const retrievePersons = async () => {
         try {
-            const response = await AgendaDataService.getAll();
-            setPersons(response.data);
+            const personsResponse = await AgendaDataService.getAll();
+            const tutorialResponse = await TutorialDataService.getAll(); // Obtener todos los tutoriales
+    
+            // Crear un diccionario (mapa) para buscar títulos de tutoriales por ID
+            const tutorialsMap = tutorialResponse.data.reduce((map, tutorial) => {
+                map[tutorial.id] = tutorial.title; // Cambiado de "nombre" a "title"
+                return map;
+            }, {});
+    
+            // Reemplazar los IDs de los tutoriales con sus títulos en cada persona
+            const personsWithTutorialTitles = personsResponse.data.map(person => ({
+                ...person,
+                tutoriales: person.tutoriales.map(tutorialId => tutorialsMap[tutorialId] || "Tutorial Desconocido")
+            }));
+    
+            setPersons(personsWithTutorialTitles);
         } catch (error) {
-            console.error("Error retrieving persons:", error);
+            console.error("Error retrieving persons or tutorials:", error);
         }
     };
+    
 
     // Eliminar una persona
     const deletePerson = async (id) => { 

@@ -17,7 +17,7 @@ public class PersonMapper {
                 .codigoPostal(personDto.getCodigoPostal())
                 .ciudad(personDto.getCiudad())
                 .fechaNacimiento(personDto.getFechaNacimiento())
-                //.tutoriales(personDto.getTutoriales())
+                .tutoriales(personDto.getTutoriales())
                 .build();
     }
 
@@ -30,7 +30,7 @@ public class PersonMapper {
                 .codigoPostal(personVO.getCodigoPostal())
                 .ciudad(personVO.getCiudad())
                 .fechaNacimiento(personVO.getFechaNacimiento())
-                //.tutoriales(personVO.getTutoriales())
+                .tutoriales(personVO.getTutoriales())
                 .build();
     }
 

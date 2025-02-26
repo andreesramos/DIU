@@ -21,6 +21,6 @@ public class PersonVO {
     private int codigoPostal;
     private String ciudad;
     private LocalDate fechaNacimiento;
-    //private String[] tutoriales;
+    private String[] tutoriales;
 
 }

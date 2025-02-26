@@ -67,7 +67,7 @@ public class PersonServiceImpl implements PersonService {
             existingPerson.setCodigoPostal(person.getCodigoPostal());
             existingPerson.setCiudad(person.getCiudad());
             existingPerson.setFechaNacimiento(person.getFechaNacimiento());
-            //existingPerson.setTutoriales(person.getTutoriales());
+            existingPerson.setTutoriales(person.getTutoriales());
 
             PersonVO updatedPerson = personRepository.save(existingPerson);
 
