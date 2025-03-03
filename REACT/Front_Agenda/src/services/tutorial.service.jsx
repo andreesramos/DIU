@@ -9,6 +9,10 @@ class TutorialDataService {
     return http.get(`/tutorials/${id}`);
   }
 
+  getPublished(){
+    return http.get("/tutorials/published");
+  }
+
   create(data) {
     return http.post("/tutorials", data);
   }
@@ -25,12 +29,9 @@ class TutorialDataService {
     return http.delete(`/tutorials`);
   }
 
- // findByTitle(title) {
- //   return http.get(`/tutorials?title=${title}`);
- // }
- findByTitle(title) {
-     return http.get(`/tutorials/title/${title}`);
-   }
+  findByTitle(title) {
+    return http.get(`/tutorials/title/${title}`);
+  }
 }
 
 export default new TutorialDataService();

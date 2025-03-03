@@ -68,7 +68,8 @@ export const PersonProvider = ({ children }) => {
             setCurrentPerson,
             currentIndex,
             setCurrentIndex,
-            deletePerson
+            deletePerson,
+            retrievePersons
         }}>
             {children}
         </PersonContext.Provider>

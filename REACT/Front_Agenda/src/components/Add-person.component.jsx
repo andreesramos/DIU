@@ -1,124 +1,182 @@
-import React, { useState } from "react";  
+import React, { useEffect, useState } from "react";
 import AgendaDataService from "../services/agenda.service";
+import TutorialDataService from "../services/tutorial.service";
+import { useNavigate } from "react-router-dom";
+import { usePersons } from "../context/PersonContext";
+import "../styles/AddPerson.css";
 
 const AddPerson = () => {
-    // Definimos los estados para manejar los valores del formulario y el estado de envío
-    const [nombre, setNombre] = useState(""); 
-    const [apellidos, setApellidos] = useState(""); 
-    const [calle, setCalle] = useState("");
-    const [codigoPostal, setCodigoPostal] = useState(0);
-    const [ciudad, setCiudad] = useState("");
-    const [fechaNacimiento, setFechaNacimiento] = useState("");
-    const [tutoriales, setTutoriales] = useState([]);
-    const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const { retrievePersons } = usePersons();
 
-    // Maneja el cambio de estado del checkbox
-    // const handleCheckboxChange = (event) => {
-    //     setCalle(event.target.checked);
-    // };
+  // Definimos los estados para manejar los valores del formulario y el estado de envío
+  const [nombre, setNombre] = useState("");
+  const [apellidos, setApellidos] = useState("");
+  const [calle, setCalle] = useState("");
+  const [codigoPostal, setCodigoPostal] = useState(0);
+  const [ciudad, setCiudad] = useState("");
+  const [fechaNacimiento, setFechaNacimiento] = useState("");
+  const [tutoriales, setTutoriales] = useState([]);
+  const [tutorialesDisponibles, setTutorialesDisponibles] = useState([]);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-    // Función para guardar la persona en la base de datos
-    const savePerson = () => {
-        // Creamos un objeto con los datos ingresados
-        const data = {
-            nombre: nombre,
-            apellidos: apellidos,
-            calle: calle,
-            codigoPostal: parseInt(codigoPostal),
-            ciudad: ciudad,
-            fechaNacimiento: fechaNacimiento,
-            //tutoriales: tutoriales
-        };
-
-        // Llamamos al servicio para crear la persona
-        AgendaDataService.create(data)
-            .then(response => {
-                // Si la respuesta es exitosa, actualizamos los estados con los valores de la base de datos
-                //setId(response.data.id);
-                setNombre(response.data.nombre);
-                setApellidos(response.data.apellidos);
-                setCalle(response.data.calle);
-                setCodigoPostal(response.data.codigoPostal);
-                setCiudad(response.data.ciudad);
-                setFechaNacimiento(response.data.fechaNacimiento);
-                //setTutoriales(response.data.tutoriales);
-                setSubmitted(true); // Cambiamos el estado a "enviado"
-            })
-            .catch(error => {
-                console.error("Error adding person:", error);
-            });        
+  useEffect(() => {
+    // Cargar tutoriales publicados desde la API
+    const fetchTutoriales = async () => {
+      try {
+        const response = await TutorialDataService.getPublished();
+        setTutorialesDisponibles(
+          Array.isArray(response.data) ? response.data : []
+        );
+      } catch (error) {
+        console.error("Error obteniendo tutoriales:", error);
+        setTutorialesDisponibles([]);
+      }
     };
 
-    // Función para reiniciar el formulario y agregar una nueva persona
-    const newPerson = () => {
-        setNombre(""); 
-        setApellidos(""); 
-        setCalle("");
-        setCodigoPostal(0);
-        setCiudad("");
-        setFechaNacimiento("");
-        //setTutoriales([]);
-        setSubmitted(false); 
+    fetchTutoriales();
+  }, []);
+
+  // Función para guardar la persona en la base de datos
+  const savePerson = async () => {
+    setError("");
+
+    if (
+      !nombre ||
+      !apellidos ||
+      !calle ||
+      !codigoPostal ||
+      !ciudad ||
+      !fechaNacimiento
+    ) {
+      setError("Todos los campos son obligatorios.");
+      return;
+    }
+
+    // Creamos un objeto con los datos ingresados
+    const data = {
+      nombre,
+      apellidos,
+      calle,
+      codigoPostal: parseInt(codigoPostal, 10),
+      ciudad,
+      fechaNacimiento,
+      tutoriales,
     };
 
-    return (
-        <div className="submit-form">
-            {/* Si el formulario ha sido enviado, mostramos el mensaje de éxito y un botón para agregar otro */}
-            { submitted ? (
-                <div>
-                    <h4>Person added successfully!</h4>
-                    <button className="btn btn-success" onClick={newPerson}>
-                        Add
-                    </button> {/* Botón para agregar una nueva persona */}
-                </div>
-            ) : (
-                // Si el formulario no ha sido enviado, mostramos los campos de entrada
-                <div>
-                    <div className="form-group">
-                        <label htmlFor="title">Nombre</label>
-                        <input type="text" className="form-control" id="title" name="title" required onChange={(e) => setNombre(e.target.value)} />
-                    </div>
+    try {
+      await AgendaDataService.create(data);
+      await retrievePersons();
+      navigate("/agenda");
+    } catch (error) {
+      console.error("Error añadiendo persona:", error);
+      setError("No se pudo guardar la persona.");
+    }
+  };
 
-                    <div className="form-group">
-                        <label htmlFor="description">Apellidos</label>
-                        <input className="form-control" type="text" id="description" name="description" required onChange={(e) => setApellidos(e.target.value)} />
-                    </div>
+  return (
+    <div className="add-person-container">
+      <div className="add-person-form">
+        <h2>Añadir Persona</h2>
+        {error && <p className="error-message">{error}</p>}
 
-                    <div className="form-group">
-                        <label htmlFor="calle">Calle</label>
-                        <input className="form-control" type="text" id="calle" name="calle" required onChange={(e) => setCalle(e.target.value)} />
-                    </div>
+        <label htmlFor="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          required
+          onChange={(e) => setNombre(e.target.value)}
+        />
 
-                    <div className="form-group">
-                        <label htmlFor="codigoPostal">Codigo Postal</label>
-                        <input className="form-control" type="number" id="codigoPostal" name="codigoPostal" required onChange={(e) => setCodigoPostal(e.target.value)} />
-                    </div>
+        <label htmlFor="apellidos">Apellidos</label>
+        <input
+          type="text"
+          id="apellidos"
+          required
+          onChange={(e) => setApellidos(e.target.value)}
+        />
 
-                    <div className="form-group">
-                        <label htmlFor="ciudad">Ciudad</label>
-                        <input className="form-control" type="text" id="ciudad" name="ciudad" required onChange={(e) => setCiudad(e.target.value)} />
-                    </div>
+        <label htmlFor="calle">Calle</label>
+        <input
+          type="text"
+          id="calle"
+          required
+          onChange={(e) => setCalle(e.target.value)}
+        />
 
-                    <div className="form-group">
-                        <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
-                        <input className="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" required onChange={(e) => setFechaNacimiento(e.target.value)} />
-                    </div>
+        <label htmlFor="codigoPostal">Código Postal</label>
+        <input
+          type="number"
+          id="codigoPostal"
+          min="1"
+          required
+          onChange={(e) => {
+            const value = parseInt(e.target.value, 10);
+            setCodigoPostal(value < 1 || isNaN(value) ? 1 : value);
+          }}
+        />
 
-                    {/*<div className="form-group">
-                        <label htmlFor="tutoriales">Tutoriales</label>
-                        <input className="form-control" type="text" id="tutoriales" name="tutoriales" required onChange={(e) => setTutoriales(e.target.value)} />
-                    </div>*/}
+        <label htmlFor="ciudad">Ciudad</label>
+        <input
+          type="text"
+          id="ciudad"
+          required
+          onChange={(e) => setCiudad(e.target.value)}
+        />
 
-                    {/* Botón para enviar los datos y guardar la persona */}
-                    <div style={{marginTop: "10px"}}>
-                        <button type="submit" className="btn btn-success " onClick={savePerson}>
-                            Submit
-                        </button>
-                    </div>
-                </div>
-            )}
+        <label htmlFor="fechaNacimiento">Fecha de Nacimiento</label>
+        <input
+          type="date"
+          id="fechaNacimiento"
+          required
+          onChange={(e) => setFechaNacimiento(e.target.value)}
+        />
+
+        <label htmlFor="tutoriales">Tutoriales</label>
+        <select
+          id="tutoriales"
+          multiple
+          value={tutoriales}
+          onChange={(e) =>
+            setTutoriales(
+              Array.from(e.target.selectedOptions, (option) => option.value)
+            )
+          }
+        >
+          {Array.isArray(tutorialesDisponibles) &&
+          tutorialesDisponibles.length > 0 ? (
+            tutorialesDisponibles.map((tutorial) => (
+              <option key={tutorial.id} value={String(tutorial.id)}>
+                {tutorial.title}
+              </option>
+            ))
+          ) : (
+            <option disabled>No hay tutoriales disponibles</option>
+          )}
+        </select>
+
+        <div className="button-group">
+          <button
+            type="submit"
+            className="btn-success"
+            onClick={savePerson}
+            disabled={
+              !nombre ||
+              !apellidos ||
+              !calle ||
+              !codigoPostal ||
+              !ciudad ||
+              !fechaNacimiento ||
+              codigoPostal < 1
+            }
+          >
+            Guardar
+          </button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default AddPerson;

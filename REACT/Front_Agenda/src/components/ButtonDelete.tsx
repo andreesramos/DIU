@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/ButtonDelete.css";
 import { usePersons } from "../context/PersonContext";
 
-const ButtonDelete = ({ personId }) => {  
+const ButtonDelete = ({ personId, onDelete }) => {  
     const { deletePerson } = usePersons();
     const [isDeleting, setIsDeleting] = useState(false);
 
@@ -14,6 +14,7 @@ const ButtonDelete = ({ personId }) => {
         // Esperar antes de eliminar, para que la animación se complete
         setTimeout(async () => {
             await deletePerson(personId);  // Eliminamos después de la animación
+            onDelete(personId);
             setIsDeleting(false);
         }, 2500);
     };

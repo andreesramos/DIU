@@ -4,8 +4,10 @@ import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import logo from "../assets/logo_agenda.png";
+import { useAuth } from "../context/UserContext";
 
 const SignIn = () => {
+  const { setUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -14,7 +16,13 @@ const SignIn = () => {
   const signInWithEmailAndPasswordHandler = async (event) => {
     event.preventDefault();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential=await signInWithEmailAndPassword(auth, email, password);
+      const user=userCredential.user;
+
+      await user.reload();
+      const updatedUser = auth.currentUser;
+      setUser(updatedUser);
+
       navigate("/");
     } catch (error) {
       setError("Error signing in with email and password!");
@@ -22,43 +30,29 @@ const SignIn = () => {
     }
   };
 
-  const onChangeHandler = (event) => {
-    const { name, value } = event.currentTarget;
-
-    if (name === "userEmail") {
-      setEmail(value);
-    } else if (name === "userPassword") {
-      setPassword(value);
-    }
-  };
-
   return (
-    <div className="container d-flex justify-content-center align-items-center min-vh-100">
+    <div className="login-container"> 
       <div className="card">
         <img src={logo} alt="Logo" className="logo" />
         <h2>Sign In</h2>
-        {error !== null && <div className="error-message">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
         <form className="form" onSubmit={signInWithEmailAndPasswordHandler}>
           <input
             type="email"
-            name="userEmail"
             value={email}
             placeholder="Email"
-            id="userEmail"
-            onChange={onChangeHandler}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
-            name="userPassword"
             value={password}
             placeholder="Password"
-            id="userPassword"
-            onChange={onChangeHandler}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <button type="submit">Sign In</button>
         </form>
         <footer>
-          Need an account? <Link to="/signUp">Sign up <span>here</span></Link>
+          ¿No tienes cuenta? <Link to="/signUp">Registrate <span>aqui</span></Link>
         </footer>
       </div>
     </div>

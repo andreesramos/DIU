@@ -1,24 +1,323 @@
-.flex-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
+/* Contenedor principal */
+.persons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 20px;
+  margin-top: 60px;
+  min-height: 90vh;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.btn-warning{
-    display: flex;
+/* Barra de búsqueda */
+.search-container {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  font-size: 18px;
+  color: white;
+  background: #222;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenido con espacio y alineado */
+.content {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  align-items: flex-start;
+}
+
+/* Lista de personas */
+.persons-list {
+  width: auto;
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.persons-list h2 {
+  color: #00B4D8;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 180, 216, 0.4);
+  margin-bottom: 10px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Tarjetas de cada persona */
+.person-card {
+  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+.person-card:hover {
+  background: #333;
+}
+
+.person-card.active {
+  background: #444;
+}
+
+/* Detalles de la persona */
+.person-details {
+  width: auto;
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+}
+
+.person-details h2 {
+  color: #00B4D8;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 180, 216, 0.4);
+  margin-bottom: 10px;
+}
+
+/* Estilos para los Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1px;
+}
+
+.tab {
+  background: #5a189a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease-in-out;
+}
+
+.tab:hover {
+  background: #3c096c;
+}
+
+.tab.active {
+  background: #3c096c;
+  font-weight: bold;
+}
+
+/* Contenido de los Tabs */
+.info-tab,
+.tutorials-tab {
+  padding: 10px;
+  background: rgba(50, 50, 50, 0.8);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+/* Lista de tutoriales */
+.tutorials-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tutorial-item {
+  background: #373737; 
+  padding: 8px;
+  border-radius: 5px;
+  margin: 5px 0;
+  text-align: center;
+  color: white;
+}
+
+.tutorial-item:hover {
+  background: #505050;
+}
+
+/* Contenedor de detalles del tutorial */
+.tutorial-details {
+  width: 100%;
+  max-width: 500px;
+  background: #1c1c1c; 
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Título del tutorial */
+.tutorial-details h2 {
+  color: #00B4D8;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 180, 216, 0.4);
+  margin-bottom: 10px;
+}
+
+/* Descripción del tutorial */
+.tutorial-details p {
+  font-size: 18px;
+  color: #ccc;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+/* Imagen del tutorial */
+.tutorial-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  margin-top: 10px;
+}
+
+/* Efecto de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mensaje cuando no hay persona seleccionada */
+.select-message {
+  font-size: 18px;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Botones */
+.btn-primary {
+  background: #5a189a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background: #3c096c;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-danger {
+  background: #c82333;
+  color: white;
+  padding: 8px 0;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+
+.btn-danger:hover {
+  background: #a71b2a;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    border: 0;
-    background: rgb(252, 217, 17);
-    font-size: 14px;
-    font-weight: 400;
-    font-family: "Euclid Circular A";
-    color: black;
-    padding: 0 12px 0 16px;
-    height: 35px;
-    width: 100px;
-    text-align: center;
-    cursor: pointer;
+  }
+
+  .persons-list,
+  .person-details {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+/* Botón de editar */
+.btn-warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #7b2cbf;
+  font-size: 15px;
+  font-weight: 400;
+  color: white;
+  padding: 0 12px 0 16px;
+  height: 35px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-warning:hover {
+  background: #5a189a;
+}
+
+/* Barra de progreso */
+.progress-container {
+  width: 100%;
+  height: 20px;
+  background-color: #444;
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #9d4edd;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
 }

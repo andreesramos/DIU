@@ -19,8 +19,8 @@ button {
   justify-content: center;
   border-radius: 10px;
   border: 0;
-  background: #ff0349;
-  font-size: 14px;
+  background: #c82333/*#ff0349*/;
+  font-size: 15px;
   font-weight: 400;
   font-family: "Euclid Circular A";
   color: #f9f9f9;
@@ -30,6 +30,10 @@ button {
   text-align: left;
   cursor: pointer;
   transition: 0.3s;
+}
+
+button:hover {
+  background: #c82333;
 }
 
 .button-text {
@@ -138,7 +142,6 @@ button {
 }
 
 button:disabled {
-  /* cursor: not-allowed; */
   opacity: 0.8;
 }
 
