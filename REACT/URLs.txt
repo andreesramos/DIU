@@ -1,3 +1,4 @@
 Firebase ---> https://miprimeraappreact-21e2c-ed8c7.web.app
 
-AWS ---> http://agendaAndres.us-east-1.elasticbeanstalk.com
+AWS ---> http://agendaandres.us-east-1.elasticbeanstalk.com:81/api/v1/agenda
+	 http://agendaandres.us-east-1.elasticbeanstalk.com:82/api/v1/tutorials

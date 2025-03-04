@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "miprimeraappreact-21e2c-ed8c7",
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
